@@ -123,6 +123,10 @@ div.r-event-body.show {
     border-top: 0.25rem !important;
 }
 
+div.r-event-body .card-body .description {
+    font-size: 10pt !important;
+}
+
 /* Icon */
 img.r-event-icon {
     height: 20px;

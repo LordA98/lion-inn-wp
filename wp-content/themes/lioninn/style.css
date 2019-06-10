@@ -60,6 +60,10 @@ Tags: bootstrap, restaurant, pub
   border-right: 1px solid #000;
 }
 
+.events .regular .tab-content div.description {
+  font-size: 9pt !important;
+}
+
 .events .upcoming .date .month {
   font-size: 12pt;
 }
