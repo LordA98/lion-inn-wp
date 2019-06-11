@@ -140,3 +140,18 @@ img.icon {
 .subitem-price {
     color: #673ab7 !important;
 }
+
+/* Admin Menu Icon */
+#adminmenu .toplevel_page_lm-menu-page div.wp-menu-image {
+    background-image: url("../images/menu-icon.png");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#adminmenu #toplevel_page_lm-menu-page:hover div.wp-menu-image {
+    background-image: url("../images/menu-icon-hover.png");
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

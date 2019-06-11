@@ -35,14 +35,14 @@ class LionMenu {
 
         // Setup Admin Pages
         add_action('admin_menu', array( $this, 'admin_menu_pages' ) );
-        add_action('admin_head', array( $this, 'set_icon' ));
     }
 
     /**
      * Register Assets
      */
     public function register() {
-        add_action('admin_enqueue_scripts', array($this, 'enqueue'));  
+        add_action('admin_enqueue_scripts', array($this, 'enqueue'));
+        add_action( 'wp_ajax_my_action', array( $this, 'my_action'));
     }
 
     /**
@@ -83,6 +83,9 @@ class LionMenu {
         wp_enqueue_script('lm-edit-menu', plugins_url() . '/lion-menu/assets/js/edit-menu.js', array('jquery'));
         wp_enqueue_script('lm-lists', plugins_url() . '/lion-menu/assets/js/custom-lists.js', array('jquery'));
 
+        wp_enqueue_script('lm-ajax', plugins_url() . '/lion-menu/assets/js/ajax.js', array('jquery'));
+        wp_localize_script( 'lm-ajax', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'we_value' => 1234 ) );
+
         // Add Bootstrap CSS & JS & PopperJS
         wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('jquery'));
         wp_enqueue_style('bs-css', plugins_url() . '/lion-menu/assets/css/bootstrap.min.css');
@@ -99,29 +102,6 @@ class LionMenu {
     public function admin_menu_pages() {
         add_menu_page( 'Menu Page', 'Menu', 'manage_options', 'lm-menu-page', array( $this, 'menu_init' ), ' ' );
         add_submenu_page( 'lm-menu-page', 'Menu Edit Subpage', 'Edit Menu', 'manage_options', 'lm-menu-edit-subpage', array( $this, 'edit_menu_init' ) );
-    }
-
-    /**
-     * Set Icon to FontAwesome cutlery icon
-     * Change to blue version when hovered
-     */
-    public function set_icon() {
-        echo 
-        "<style type='text/css' media='screen'>
-            #adminmenu .toplevel_page_lm-menu-page div.wp-menu-image {
-                background-image: url(" . plugins_url() . '/lion-menu/assets/images/menu-icon.png' . ");
-                background-size: 16px;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-
-            #adminmenu #toplevel_page_lm-menu-page:hover div.wp-menu-image {
-                background-image: url(" . plugins_url() . '/lion-menu/assets/images/menu-icon-hover.png' . ");
-                background-size: 16px;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-     	</style>";
     }
     
     /**
@@ -226,6 +206,14 @@ class LionMenu {
         $nav = $this->db->get( "menu" , array ( "toPublish" => 1 ) );      
                 
         echo $tpl->render( 'list' , array( "listOf" => $nav, "type" => "NAV", "classes" => " " ));
+    }
+
+    // Same handler function...
+    function my_action() {
+        global $wpdb;
+        $whatever = $_POST['edit-item'];
+        lm_console_log($whatever);
+        wp_die();
     }
 
 }
