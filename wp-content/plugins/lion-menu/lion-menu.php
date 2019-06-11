@@ -16,6 +16,7 @@ if(!defined('ABSPATH')) exit;
 
 require_once(plugin_dir_path(__FILE__).'/includes/lm-template.class.php');
 require_once(plugin_dir_path(__FILE__).'/includes/lm-sql-manager.class.php');
+require_once(plugin_dir_path(__FILE__).'templates/admin/post-new.php');
 
 /**
  * Plugin Class
@@ -42,7 +43,7 @@ class LionMenu {
      */
     public function register() {
         add_action('admin_enqueue_scripts', array($this, 'enqueue'));
-        add_action( 'wp_ajax_my_action', array( $this, 'my_action'));
+        // add_action( 'wp_ajax_my_action', array( $this, 'my_action'));
     }
 
     /**
@@ -112,7 +113,7 @@ class LionMenu {
         $tpl = new LMTemplate( __DIR__ . '/templates/admin' );
 
         // Render POST & GET request handlers
-        echo $tpl->render( 'post' );
+        // echo $tpl->render( 'post-new' );
 
         // Add Modal Support & Render Modals
         add_thickbox();
@@ -146,7 +147,7 @@ class LionMenu {
         $icon_tpl = new LMTemplate( __DIR__ . '/templates/admin/items' );
 
         // Render POST request handlers
-        echo $tpl->render( 'post' );
+        // echo $tpl->render( 'post-new' );
 
         // Add Modal Support & Render Modals
         add_thickbox();
@@ -208,13 +209,14 @@ class LionMenu {
         echo $tpl->render( 'list' , array( "listOf" => $nav, "type" => "NAV", "classes" => " " ));
     }
 
-    // Same handler function...
-    function my_action() {
-        global $wpdb;
-        $whatever = $_POST['edit-item'];
-        lm_console_log($whatever);
-        wp_die();
-    }
+    // // Same handler function...
+    // function my_action() {
+    //     global $wpdb;
+    //     $whatever = $_POST['edit-item'];
+    //     $whataver = 'hello';
+    //     echo $whatever;
+    //     wp_die();
+    // }
 
 }
 

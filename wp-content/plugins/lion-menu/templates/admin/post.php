@@ -107,24 +107,24 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         return;
     }
     // Edit Item
-    if(isset($_POST["edit-item"])) {
-        $type = setItemType();
+    // if(isset($_POST["edit-item"])) {
+    //     $type = setItemType();
         
-        $db->update("item", array(
-                'name' => $_POST["item-name"],
-                'date_updated' => current_time( 'mysql' ), 
-                'editor' => get_current_user_id(),
-                'price' => $_POST["item-price"],
-                'type' => $type,
-                'description' => $_POST["item-desc"],
-                'isVegetarian' => (isset($_POST["item-veg"]))?(1):(0),
-                'isGlutenFree' => (isset($_POST["item-gf"]))?(1):(0),
-                'toPublish' => (isset($_POST["publish-item"]))?(1):(0)
-            ), 
-            array('id' => $_POST["edit-item"])
-        );
-        return;
-    }
+    //     $db->update("item", array(
+    //             'name' => $_POST["item-name"],
+    //             'date_updated' => current_time( 'mysql' ), 
+    //             'editor' => get_current_user_id(),
+    //             'price' => $_POST["item-price"],
+    //             'type' => $type,
+    //             'description' => $_POST["item-desc"],
+    //             'isVegetarian' => (isset($_POST["item-veg"]))?(1):(0),
+    //             'isGlutenFree' => (isset($_POST["item-gf"]))?(1):(0),
+    //             'toPublish' => (isset($_POST["publish-item"]))?(1):(0)
+    //         ), 
+    //         array('id' => $_POST["edit-item"])
+    //     );
+    //     return;
+    // }
     // Delete Item
     if(isset($_POST["delete-item"])) {
         $db->delete("item", array(
