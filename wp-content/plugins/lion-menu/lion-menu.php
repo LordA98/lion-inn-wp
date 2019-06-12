@@ -16,7 +16,7 @@ if(!defined('ABSPATH')) exit;
 
 require_once(plugin_dir_path(__FILE__).'/includes/lm-template.class.php');
 require_once(plugin_dir_path(__FILE__).'/includes/lm-sql-manager.class.php');
-require_once(plugin_dir_path(__FILE__).'templates/admin/post-new.php');
+require_once(plugin_dir_path(__FILE__).'templates/admin/post.php');
 
 /**
  * Plugin Class

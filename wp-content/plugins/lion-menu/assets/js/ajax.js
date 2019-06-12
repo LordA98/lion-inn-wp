@@ -1,6 +1,6 @@
 jQuery(function($) {
 
-    $('#edit-item-form').submit(function(event) {
+    $('.menu-form').submit(function(event) {
         var form_data = $(this).serialize();
         console.log(form_data);
 
