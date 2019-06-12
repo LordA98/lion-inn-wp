@@ -85,7 +85,7 @@
 <!-- Edit Item Modal -->
 <div id="edit-item-modal" style="display:none;">
 
-    <form action="#" method="post" id="edit-item-form" class="p-3">
+    <form action="" method="post" id="edit-item-form" class="p-3">
         <h3>Edit Item</h3>
         <input type="hidden" name="edit-item" /> <br/>
         <?php echo $tpl->render( 'lm-text-input', array( "id" => "item-name-input", "name" => "item-name", "label" => "Item Name", "optClasses" => "hideIfNote", "placeholder" => "Enter Name" )); ?>

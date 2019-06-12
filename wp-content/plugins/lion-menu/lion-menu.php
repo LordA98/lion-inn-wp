@@ -43,7 +43,6 @@ class LionMenu {
      */
     public function register() {
         add_action('admin_enqueue_scripts', array($this, 'enqueue'));
-        // add_action( 'wp_ajax_my_action', array( $this, 'my_action'));
     }
 
     /**
@@ -83,9 +82,7 @@ class LionMenu {
         // Add Custom Javascript
         wp_enqueue_script('lm-edit-menu', plugins_url() . '/lion-menu/assets/js/edit-menu.js', array('jquery'));
         wp_enqueue_script('lm-lists', plugins_url() . '/lion-menu/assets/js/custom-lists.js', array('jquery'));
-
         wp_enqueue_script('lm-ajax', plugins_url() . '/lion-menu/assets/js/ajax.js', array('jquery'));
-        wp_localize_script( 'lm-ajax', 'ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ), 'we_value' => 1234 ) );
 
         // Add Bootstrap CSS & JS & PopperJS
         wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('jquery'));
@@ -111,9 +108,6 @@ class LionMenu {
     public function menu_init() {
         
         $tpl = new LMTemplate( __DIR__ . '/templates/admin' );
-
-        // Render POST & GET request handlers
-        // echo $tpl->render( 'post-new' );
 
         // Add Modal Support & Render Modals
         add_thickbox();
@@ -145,9 +139,6 @@ class LionMenu {
 
         $tpl = new LMTemplate( __DIR__ . '/templates/admin' );
         $icon_tpl = new LMTemplate( __DIR__ . '/templates/admin/items' );
-
-        // Render POST request handlers
-        // echo $tpl->render( 'post-new' );
 
         // Add Modal Support & Render Modals
         add_thickbox();
@@ -208,15 +199,6 @@ class LionMenu {
                 
         echo $tpl->render( 'list' , array( "listOf" => $nav, "type" => "NAV", "classes" => " " ));
     }
-
-    // // Same handler function...
-    // function my_action() {
-    //     global $wpdb;
-    //     $whatever = $_POST['edit-item'];
-    //     $whataver = 'hello';
-    //     echo $whatever;
-    //     wp_die();
-    // }
 
 }
 
