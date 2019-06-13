@@ -1,7 +1,7 @@
 <div class="row admin-buttons">
 
     <!-- Save Button in Admin Page - to Save Menu Ranking -->
-    <form action="#" method="POST" class="mx-3">
+    <form action="#" method="POST" class="menu-form mx-3">
         <input type="hidden" name="rankings" />
         <input class="btn btn-success" type="submit" value="Save Order" />
     </form>
