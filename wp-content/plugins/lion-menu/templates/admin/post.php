@@ -67,7 +67,7 @@ function handle_ajax() {
                 'author' => get_current_user_id(),
                 'side' => $form_data["section-side"],
                 'toPublish' => (array_key_exists("publish-section", $form_data))?(1):(0),
-                'parent_menu' => $_GET["menu_id"]
+                'parent_menu' => $form_data["add-section"] // contains parent menu_id (despite it's name)
             );
 
             $db->insert("section", $params);

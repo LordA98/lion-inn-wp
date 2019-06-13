@@ -15,6 +15,15 @@ jQuery(function($) {
     }
 
     /**
+     * Handle 'Add Section' differently as no parent li
+     * Get parent menu_id from URL
+     */
+    function setMenuId($inputName) {
+        $parentMenuId = $(document).getUrlParam("menu_id");
+        $('input[name='+$inputName+']').val($parentMenuId);
+    }
+
+    /**
      * Checking length of DOM item identifies if it exists
      * The span with .toPublish is only rendered if the item set to be published.
      */
@@ -52,7 +61,7 @@ jQuery(function($) {
     });
 
     $(".add-section").on("click", function() {
-        setPostVar("add-section", this);
+        setMenuId("add-section", this);
         // Ensure form values are empty
         $('input[name="section-name"]').val('');
         $('input[id="section-left-radio"]').prop('checked', true);

@@ -84,6 +84,10 @@ class LionMenu {
         wp_enqueue_script('lm-lists', plugins_url() . '/lion-menu/assets/js/custom-lists.js', array('jquery'));
         wp_enqueue_script('lm-ajax', plugins_url() . '/lion-menu/assets/js/ajax.js', array('jquery'));
 
+        // Add getUrlParam plugin code
+        //https://github.com/repalogic/jquery.geturlparam && https://mathias-bank.de/2007/04/21/jquery-plugin-geturlparam-version-2/
+        wp_enqueue_script('get-url-param', plugins_url() . '/lion-menu/assets/js/getUrlParam.js', array('jquery'));
+
         // Add Bootstrap CSS & JS & PopperJS
         wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('jquery'));
         wp_enqueue_style('bs-css', plugins_url() . '/lion-menu/assets/css/bootstrap.min.css');
