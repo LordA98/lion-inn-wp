@@ -2,7 +2,6 @@ jQuery(function($) {
 
     $('.menu-form').submit(function(event) {
         var form_data = $(this).serialize();
-        console.log(form_data);
 
         var data = {
             'action': 'handle_ajax',
@@ -10,7 +9,7 @@ jQuery(function($) {
         };
         
         $.post(ajaxurl, data, function(response) {
-            console.log(data);
+            console.log(response);
             
             // Confirmation Messages Here
 

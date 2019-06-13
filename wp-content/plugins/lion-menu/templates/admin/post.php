@@ -15,6 +15,18 @@ function setItemType() {
 }
 
 /**
+ * Handle Database Query Result
+ * So that correct server response is sent
+ */
+function handleResult($result) {
+    if($result !== false) {
+        echo "Success";
+    } else {
+        echo "Failure";
+    }
+}
+
+/**
  * WordPress AJAX Hook
  * Handle any POST/AJAX requests
  */
@@ -38,25 +50,28 @@ function handle_ajax() {
                 'toPublish' => (array_key_exists("publish-menu", $form_data))?(1):(0)
             );
 
-            $db->insert("menu", $params);
-            return;
+            $result = $db->insert("menu", $params);
+
+            handleResult($result);
         }
         // Edit Menu
         if(array_key_exists("edit-menu",$form_data)) {
-            $db->update("menu", array(
+            $result = $db->update("menu", array(
                     'name' => $form_data["menu-name"],
                     'toPublish' => (array_key_exists("publish-menu", $form_data))?(1):(0)
                 ), 
                 array('id' => $form_data["edit-menu"])
             );
-            return;
+
+            handleResult($result);
         }
         // Delete Menu
         if(array_key_exists("delete-menu",$form_data)) {
-            $db->delete("menu", array(
+            $result = $db->delete("menu", array(
                 'id' => $form_data["delete-menu"]
             ));
-            return;
+
+            handleResult($result);
         }
 
         // Add Section
@@ -70,26 +85,29 @@ function handle_ajax() {
                 'parent_menu' => $form_data["add-section"] // contains parent menu_id (despite it's name)
             );
 
-            $db->insert("section", $params);
-            return;
+            $result = $db->insert("section", $params);
+
+            handleResult($result);
         }
         // Edit Section
         if(array_key_exists("edit-section",$form_data)) {
-            $db->update("section", array(
+            $result = $db->update("section", array(
                     'name' => $form_data["section-name"],
                     'side' => $form_data["section-side"],
                     'toPublish' => (array_key_exists("publish-section", $form_data))?(1):(0)
                 ), 
                 array('id' => $form_data["edit-section"])
             );
-            return;
+
+            handleResult($result);
         }
         // Delete Section
         if(array_key_exists("delete-section",$form_data)) {
-            $db->delete("section", array(
+            $result = $db->delete("section", array(
                 'id' => $form_data["delete-section"]
             ));
-            return;
+
+            handleResult($result);
         }
 
         // Add Item
@@ -109,14 +127,15 @@ function handle_ajax() {
                 'parent_section' => $form_data["add-item"]
             );
 
-            $db->insert("item", $params);
-            return;
+            $result = $db->insert("item", $params);
+
+            handleResult($result);
         }
         // Edit Item
         if(array_key_exists("edit-item",$form_data)) {
             $type = setItemType();
 
-            $db->update("item", array(
+            $result = $db->update("item", array(
                     'name' => $form_data["item-name"],
                     'date_updated' => current_time( 'mysql' ), 
                     'editor' => get_current_user_id(),
@@ -129,14 +148,16 @@ function handle_ajax() {
                 ), 
                 array('id' => $form_data["edit-item"])
             );
-            return;
+
+            handleResult($result);
         }
         // Delete Item
         if(array_key_exists("delete-item",$form_data)) {
-            $db->delete("item", array(
+            $result = $db->delete("item", array(
                 'id' => $form_data["delete-item"]
             ));
-            return;
+
+            handleResult($result);
         }
 
         // Add Subitem
@@ -150,12 +171,13 @@ function handle_ajax() {
                 'parent_item' => $form_data["add-subitem"]
             );
 
-            $db->insert("subitem", $params);
-            return;
+            $result = $db->insert("subitem", $params);
+
+            handleResult($result);
         }
         // Edit Subitem
         if(array_key_exists("edit-subitem",$form_data)) {
-            $db->update("subitem", array(
+            $result = $db->update("subitem", array(
                     'name' => $form_data["subitem-name"],
                     'date_updated' => current_time( 'mysql' ), 
                     'editor' => get_current_user_id(),
@@ -164,14 +186,16 @@ function handle_ajax() {
                 ), 
                 array('id' => $form_data["edit-subitem"])
             );
-            return;
+
+            handleResult($result);
         }
         // Delete Subitem
         if(array_key_exists("delete-subitem",$form_data)) {
-            $db->delete("subitem", array(
+            $result = $db->delete("subitem", array(
                 'id' => $form_data["delete-subitem"]
             ));
-            return;
+
+            handleResult($result);
         }
 
         // Save Menu List on main Menu admin page (Mainly to Save Rankings / Menu Order)
@@ -180,7 +204,7 @@ function handle_ajax() {
             $menu_rankings = str_replace("\\", "", $form_data["rankings"]);
             $menu_rankings = json_decode($menu_rankings, true);
 
-            if(!$menu_rankings) return;
+            if(!$menu_rankings) wp_die();
             
             // Update Menu List - set rank equal to it's turn ($i) in the $menu_rankings list
             $i = 1;
@@ -196,8 +220,6 @@ function handle_ajax() {
                 }
                 $i++;
             }
-
-            return;
         }
 
         // Save Menu Item List on Edit Menu subpage (Mainly to Save Rankings / Order)
@@ -206,7 +228,7 @@ function handle_ajax() {
             $item_rankings = str_replace("\\", "", $form_data["menu_item_rankings"]);
             $item_rankings = json_decode($item_rankings, true);
 
-            if(!$item_rankings) return;
+            if(!$item_rankings) wp_die();
             
             // Update All Menu Item ranks 
             // Update section ranks --> update item ranks for section --> update subitem ranks for item
@@ -261,12 +283,8 @@ function handle_ajax() {
 
                 $secRank = 1;            
             }
-
-            return;
         }
     }
-    
-    echo "Success?";
 
     wp_die();
 }

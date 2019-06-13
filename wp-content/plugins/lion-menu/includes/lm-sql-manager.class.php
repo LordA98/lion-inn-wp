@@ -91,7 +91,7 @@ class LMSQLManager {
     public function insert($table, $params) {
         $table = $this->wpdb->prefix . "lm_" . $table;
 
-        $this->wpdb->insert($table, $params);
+        return $this->wpdb->insert($table, $params);
     }
     
     /**
@@ -141,7 +141,7 @@ class LMSQLManager {
     public function update($table, $params, $where) {
         $table = $this->wpdb->prefix . "lm_" . $table;
 
-        $this->wpdb->update($table, $params, $where);
+        return $this->wpdb->update($table, $params, $where);
     }
 
     /**
@@ -153,7 +153,7 @@ class LMSQLManager {
     public function delete($table, $where) {
         $table = $this->wpdb->prefix . "lm_" . $table;
 
-        $this->wpdb->delete($table, $where);
+        return $this->wpdb->delete($table, $where);
     }
 
 }
