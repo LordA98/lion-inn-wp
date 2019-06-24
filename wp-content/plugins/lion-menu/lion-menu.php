@@ -148,6 +148,9 @@ class LionMenu {
         add_thickbox();
         echo $tpl->render( 'lm-modals' );
 
+        // message response
+        echo $tpl->render( 'lm-message' );
+
         // Render Title and Desc
         $data = array ('title' => 'Edit Menu', 'desc' => "Edit Menu Here.  Use the 'Change Menu' dropdown below to select a new menu.");
         echo $tpl->render( 'lm-header', $data );
