@@ -9,11 +9,12 @@ jQuery(function($) {
         };
         
         $.post(ajaxurl, data, function(response) {
-            console.log(response);
-            
-            // Confirmation Messages Here
+            console.log(response);            
 
             location.reload();
+
+            // Confirmation Messages Here
+            $('#message-content').html("<strong>Success!</strong> Message here.");
         });
 
         return false;
