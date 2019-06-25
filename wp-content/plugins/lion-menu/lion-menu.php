@@ -117,6 +117,9 @@ class LionMenu {
         add_thickbox();
         echo $tpl->render( 'lm-modals' );
 
+        // message response
+        echo $tpl->render( 'lm-message' );
+
         // Print Header section of Admin Page
         $data = array ('title' => 'Menu', 'desc' => "Create and manage menu's from this page. Click 'Add Menu' below to create a new menu. Select a menu from the list below to edit a menu.");
         echo $tpl->render( 'lm-header', $data );

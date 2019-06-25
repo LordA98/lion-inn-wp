@@ -27,7 +27,7 @@
 </div>
 
 <!-- Delete Menu Modal -->
-<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-menu-modal", "name" => "delete-menu" )); ?>
+<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-menu-modal", "name" => "delete-menu", "to_delete" => "menu-name" )); ?>
 
 <!-- Add Section Modal -->
 <div id="add-section-modal" style="display:none;">
@@ -60,7 +60,7 @@
 </div>
 
 <!-- Delete Section Modal -->
-<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-section-modal", "name" => "delete-section" )); ?>
+<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-section-modal", "name" => "delete-section", "to_delete" => "section-name" )); ?>
 
 
 <!-- Add Item Modal -->
@@ -102,7 +102,7 @@
 </div>
 
 <!-- Delete Item Modal -->
-<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-item-modal", "name" => "delete-item" )); ?>
+<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-item-modal", "name" => "delete-item", "to_delete" => "item-name" )); ?>
 
 <!-- Add Subitem Modal -->
 <div id="add-subitem-modal" style="display:none;">
@@ -133,4 +133,4 @@
 </div>
 
 <!-- Delete Subitem Modal -->
-<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-subitem-modal", "name" => "delete-subitem" )); ?>
+<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-subitem-modal", "name" => "delete-subitem", "to_delete" => "subitem-name" )); ?>

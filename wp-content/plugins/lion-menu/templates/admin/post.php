@@ -4,10 +4,10 @@
  * Support Function
  * Set Item Type when Item is edited or added
  */
-function setItemType() {
-    if(isset($form_data["item-subsec"])) {
+function setItemType($form_data) {
+    if(array_key_exists("item-subsec",$form_data)) {
         return 'subtitle';
-    } else if(isset($form_data["item-note"])) {
+    } else if(array_key_exists("item-note",$form_data)) {
         return 'note';
     } else {
         return 'item';
@@ -18,11 +18,19 @@ function setItemType() {
  * Handle Database Query Result
  * So that correct server response is sent
  */
-function handleResult($result) {
+function handleResult($result, $type, $name) {
     if($result !== false) {
-        echo "Success";
+        if($type == "add") {
+            echo "<strong>Success!</strong> " . $name . " added successfully.";
+        } else if($type == "edit") {
+            echo "<strong>Success!</strong> " . $name . " updated successfully.";
+        } else if($type == "delete") {
+            echo "<strong>Success!</strong> " . $name . " deleted successfully.";
+        } else if($type == "reorder") {
+            echo "<strong>Success!</strong> Menu reordered successfully.";
+        }
     } else {
-        echo "Failure";
+        echo "<strong>Failure!</strong> Something went wrong. Please try again.";
     }
 }
 
@@ -52,7 +60,7 @@ function handle_ajax() {
 
             $result = $db->insert("menu", $params);
 
-            handleResult($result);
+            handleResult($result, "add", $form_data["menu-name"]);
         }
         // Edit Menu
         if(array_key_exists("edit-menu",$form_data)) {
@@ -63,7 +71,7 @@ function handle_ajax() {
                 array('id' => $form_data["edit-menu"])
             );
 
-            handleResult($result);
+            handleResult($result, "edit", $form_data["menu-name"]);
         }
         // Delete Menu
         if(array_key_exists("delete-menu",$form_data)) {
@@ -71,7 +79,7 @@ function handle_ajax() {
                 'id' => $form_data["delete-menu"]
             ));
 
-            handleResult($result);
+            handleResult($result, "delete", $form_data["menu-name"]);
         }
 
         // Add Section
@@ -87,7 +95,7 @@ function handle_ajax() {
 
             $result = $db->insert("section", $params);
 
-            handleResult($result);
+            handleResult($result, "add", $form_data["section-name"]);
         }
         // Edit Section
         if(array_key_exists("edit-section",$form_data)) {
@@ -99,7 +107,7 @@ function handle_ajax() {
                 array('id' => $form_data["edit-section"])
             );
 
-            handleResult($result);
+            handleResult($result, "edit", $form_data["section-name"]);
         }
         // Delete Section
         if(array_key_exists("delete-section",$form_data)) {
@@ -107,12 +115,12 @@ function handle_ajax() {
                 'id' => $form_data["delete-section"]
             ));
 
-            handleResult($result);
+            handleResult($result, "delete", $form_data["section-name"]);
         }
 
         // Add Item
         if(array_key_exists("add-item",$form_data)) {
-            $type = setItemType();
+            $type = setItemType($form_data);
 
             $params = array(
                 'name' => $form_data["item-name"], 
@@ -129,11 +137,11 @@ function handle_ajax() {
 
             $result = $db->insert("item", $params);
 
-            handleResult($result);
+            handleResult($result, "add", $form_data["item-name"]);
         }
         // Edit Item
         if(array_key_exists("edit-item",$form_data)) {
-            $type = setItemType();
+            $type = setItemType($form_data);
 
             $result = $db->update("item", array(
                     'name' => $form_data["item-name"],
@@ -149,7 +157,7 @@ function handle_ajax() {
                 array('id' => $form_data["edit-item"])
             );
 
-            handleResult($result);
+            handleResult($result, "edit", $form_data["item-name"]);
         }
         // Delete Item
         if(array_key_exists("delete-item",$form_data)) {
@@ -157,7 +165,7 @@ function handle_ajax() {
                 'id' => $form_data["delete-item"]
             ));
 
-            handleResult($result);
+            handleResult($result, "delete", $form_data["item-name"]);
         }
 
         // Add Subitem
@@ -173,7 +181,7 @@ function handle_ajax() {
 
             $result = $db->insert("subitem", $params);
 
-            handleResult($result);
+            handleResult($result, "add", $form_data["subitem-name"]);
         }
         // Edit Subitem
         if(array_key_exists("edit-subitem",$form_data)) {
@@ -187,7 +195,7 @@ function handle_ajax() {
                 array('id' => $form_data["edit-subitem"])
             );
 
-            handleResult($result);
+            handleResult($result, "edit", $form_data["subitem-name"]);
         }
         // Delete Subitem
         if(array_key_exists("delete-subitem",$form_data)) {
@@ -195,7 +203,7 @@ function handle_ajax() {
                 'id' => $form_data["delete-subitem"]
             ));
 
-            handleResult($result);
+            handleResult($result, "delete", $form_data["subitem-name"]);
         }
 
         // Save Menu List on main Menu admin page (Mainly to Save Rankings / Menu Order)
@@ -203,6 +211,7 @@ function handle_ajax() {
             // Remove '\' from JSON string & decode / convert to array
             $menu_rankings = str_replace("\\", "", $form_data["rankings"]);
             $menu_rankings = json_decode($menu_rankings, true);
+            $result = 0;
 
             if(!$menu_rankings) wp_die();
             
@@ -212,7 +221,7 @@ function handle_ajax() {
             // So a double loop is needed to access the menu id's.
             foreach($menu_rankings as $key => $value) {
                 foreach($value as $id => $rank) {
-                    $db->update("menu", array(
+                    $result += $db->update("menu", array(
                             'rank' => $i
                         ), 
                         array('id' => $rank)
@@ -220,6 +229,9 @@ function handle_ajax() {
                 }
                 $i++;
             }
+
+            if($result == 0) $result = false;
+            handleResult($result, "reorder", "");
         }
 
         // Save Menu Item List on Edit Menu subpage (Mainly to Save Rankings / Order)
@@ -232,6 +244,7 @@ function handle_ajax() {
             
             // Update All Menu Item ranks 
             // Update section ranks --> update item ranks for section --> update subitem ranks for item
+            $result = 0;
             $secRank = 1;
             $itemRank = 1;
             $subItemRank = 1;
@@ -239,7 +252,7 @@ function handle_ajax() {
 
                 foreach($sections as $sKey => $sValue) {
                     // Update Section Rank in sections table
-                    $db->update("section", array(
+                    $result += $db->update("section", array(
                             'rank' => $secRank,
                             'side' => $sValue['side']
                         ), 
@@ -251,7 +264,7 @@ function handle_ajax() {
                     $items = reset($items);
                     foreach($items as $iKey => $iValue) {
                         // Update Each Item Rank & Parent Section in items table
-                        $db->update("item", array(
+                        $result += $db->update("item", array(
                                 'rank' => $itemRank,
                                 'parent_section' => $sValue['id']
                             ), 
@@ -263,7 +276,7 @@ function handle_ajax() {
                         $subitems = reset($subitems);
                         foreach($subitems as $siKey => $siValue) {
                             // Update Each Item Rank & Parent Section in items table
-                            $db->update("subitem", array(
+                            $result += $db->update("subitem", array(
                                     'rank' => $subItemRank,
                                     'parent_item' => $iValue['id']
                                 ), 
@@ -283,6 +296,9 @@ function handle_ajax() {
 
                 $secRank = 1;            
             }
+
+            if($result == 0) $result = false;
+            handleResult($result, "reorder", "");
         }
     }
 

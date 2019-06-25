@@ -1,6 +1,26 @@
 jQuery(function($) {
 
-    $('.menu-form').submit(function(event) {
+    /**
+     * Set notification message
+     */
+    if(sessionStorage.getItem('message')) {
+        $('#message-content').html(sessionStorage.getItem('message'));
+        sessionStorage.removeItem('message');
+    } else {
+        $('#message').hide();
+    }
+
+    /**
+     * Completely close message alert when 'x' is clicked
+     */
+    $('.close').click(function() {
+        $('#message').hide();
+    });
+
+    /**
+     * Handle submit of any menu form using AJAX
+     */
+    $('.menu-form').submit(function() {
         var form_data = $(this).serialize();
 
         var data = {
@@ -9,12 +29,11 @@ jQuery(function($) {
         };
         
         $.post(ajaxurl, data, function(response) {
-            console.log(response);            
+            console.log(response);
 
-            location.reload();
+            sessionStorage.setItem('message', response);
 
-            // Confirmation Messages Here
-            $('#message-content').html("<strong>Success!</strong> Message here.");
+            window.location.reload();
         });
 
         return false;

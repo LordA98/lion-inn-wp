@@ -155,3 +155,19 @@ img.icon {
     background-repeat: no-repeat;
     background-position: center;
 }
+
+/* POST Response Message */
+#message {
+    top: 32px;
+    left: 160px;
+}
+@media (max-width: 960px) {
+    #message {
+        left: 36px;
+    }
+}
+@media (max-width: 785px) {
+    #message {
+        left: 0px;
+    }
+}

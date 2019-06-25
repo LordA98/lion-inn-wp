@@ -58,6 +58,7 @@ jQuery(function($) {
     });
     $(".delete-menu").on("click", function() {
         setPostVar("delete-menu", this);
+        setTextInput("menu-name", this);
     });
 
     $(".add-section").on("click", function() {
@@ -81,6 +82,7 @@ jQuery(function($) {
     });
     $(".delete-section").on("click", function() {
         setPostVar("delete-section", this);
+        setTextInput("section-name", this);
     });
     
     $(".add-item").on("click", function() {
@@ -141,6 +143,7 @@ jQuery(function($) {
     });    
     $(".delete-item").on("click", function() {
         setPostVar("delete-item", this);
+        setTextInput("item-name", this);
     });
 
     $(".add-subitem").on("click", function() {
@@ -159,6 +162,7 @@ jQuery(function($) {
     });
     $(".delete-subitem").on("click", function() {
         setPostVar("delete-subitem", this);
+        setTextInput("subitem-name", this);
     });
 
 
