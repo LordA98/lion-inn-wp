@@ -161,6 +161,28 @@ if (class_exists( 'LionEvents' )) {
 
     </div> <!-- Container -->
 
+    <!-- About Us -->
+    <div class="container">
+    
+        <div id="about-us" class="about-us my-5">
+
+            <div class="about-us row">
+
+                <div class="col-lg-6 bg-warning">
+                    About Us
+                </div>
+
+                <div class="col-lg-6 bg-primary">
+                    Image Here
+                </div>
+
+            </div>
+        
+        </div>
+
+    </div> <!-- Container -->
+
+    <!-- Food -->
     <div class="container">
 
         <div id="food" class="food my-5">
