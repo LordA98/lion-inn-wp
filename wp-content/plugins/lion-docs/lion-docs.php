@@ -23,9 +23,16 @@ require_once(plugin_dir_path(__FILE__).'/includes/ld-sql-manager.class.php');
 class LionDocs {
 
     /**
+     * LDSQLManager - Manage Database
+     */
+    public $db;
+
+    /**
      * Class Constructor
      */
 	public function __construct() {
+        $this->db = new LDSQLManager();
+
         // Setup Admin Pages
         add_action('admin_menu', array( $this, 'admin_menu_pages' ) );
     }
@@ -41,6 +48,8 @@ class LionDocs {
      * Plugin Activation Hook
      */
 	function activate() {
+        $this->db->createTables();
+
         flush_rewrite_rules();
 	}
 
@@ -48,6 +57,8 @@ class LionDocs {
      * Plugin Deactivation Hook
      */
 	function deactivate() {
+        $this->db->deleteTables();
+
         flush_rewrite_rules();
 	}
 
@@ -70,6 +81,7 @@ class LionDocs {
      */
     public function admin_menu_pages() {
         add_menu_page( 'Documentation Page', 'HowTo', 'manage_options', 'ld-how-to', array( $this, 'docs_init' ), 'dashicons-media-document' );
+        add_submenu_page( 'ld-how-to', 'Upload Documentation', 'Upload', 'manage_options', 'ld-upload-docs-subpage', array( $this, 'upload_docs_init' ) );
     }
     
     /**
@@ -80,6 +92,27 @@ class LionDocs {
 
         // Render side nav & doc iframe
         echo $tpl->render( 'ld-docs' );
+    }
+
+    /**
+     * Upload New Documentation Subpage
+     */
+    public function upload_docs_init() {
+        $tpl = new LDTemplate( __DIR__ . '/templates' );
+        $upld = new LDTemplate( __DIR__ . '/templates/upload' );
+
+        // Add Modal Support & Render Modals
+        add_thickbox();
+        echo $tpl->render( 'ld-modals' );
+
+        // Print Header section of Admin Page
+        $data = array ('title' => 'Upload Documentation', 'desc' => "Upload new documentation here to be visible on the 'HowTo' page.");
+        echo $tpl->render( 'ld-header', $data );
+
+        // Upload button
+        echo $upld->render( 'ld-upload-button' );
+
+        // List of docs? 
     }
     
 }
