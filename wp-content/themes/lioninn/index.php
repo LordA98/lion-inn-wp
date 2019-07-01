@@ -163,31 +163,63 @@ if (class_exists( 'LionEvents' )) {
 
     <!-- About Us -->
     <div class="container">
-    
-        <div id="about-us" class="about-us my-5">
 
-            <div class="about-us row">
+        <div id="about-us" class="about-us mt-5">
 
-                <div class="col-lg-6 bg-warning">
-                    About Us
+            <div class="row">
+
+                <!-- Text -->
+                <div id="left-content" class="col-lg-6 col-xl-5 offset-xl-1 text-center pt-4 bg-white">
+
+                    <div class="title">
+                        <h1 class="great-vibes section-heading">About Us</h1>
+                    </div>
+
+                    <div class="pt-3 px-4">
+                        <p>
+                            Situated in Monmouthshire, in the heart of the picturesque Wye Valley, South Wales.  
+                            The Lion Inn is a well established and extremely popular public house.
+                        </p>
+                        <p>
+                            Built in the late 16th Century, actually completed in 1580, The Lion Inn was originally a coaching inn, brew house and pig farm.
+                            Many of the original features of the brewing cellar still remain, as do a number of outhouses that were used as pig sty's.
+                        </p>
+                        <p>
+                            The Lion Inn is the only traditional inn in the ancient village of Trellech.  It consists
+                            of two rooms, both with open fires and exposed wooden beams.  One room is used as a traditional
+                            village bar, the other as a restaurant area.
+                        </p>
+                        <p>
+                            The pub stocks a fine range of real ales and ciders, as well as the traditional range of keg Lager,
+                            Bitters, Ciders, Guiness and Spirits including a large range of whiskies, Gins and Rums.
+                        </p>
+                        <p>
+                            The whole emphasis of the pub is towards the traditional - Traditional Beers, Real Ciders, Quality
+                            Home Made Food and a Friendly atmosphere.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="col-lg-6 bg-primary">
-                    Image Here
+                <!-- Image -->
+                <div id="right-content" class="col-lg-6 col-xl-5 p-4 bg-white text-center text-lg-left">
+                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/pub_original.jpg" alt="Image of The Lion Inn" class="mt-lg-5 ml-xl-4 mt-xl-0 about-us-image" />
                 </div>
-
+                
             </div>
-        
+            
         </div>
 
     </div> <!-- Container -->
+
+    <!-- Background image for FOOD section -->
+    <div class="food-bg-image"></div>
 
     <!-- Food -->
     <div class="container">
 
         <div id="food" class="food my-5">
 
-            <div class="title text-center">
+            <div class="title text-center col-12">
                 <h1 class="great-vibes section-heading">Food</h1>
             </div>
 
@@ -243,7 +275,7 @@ if (class_exists( 'LionEvents' )) {
                     </div>
                 </div>
 
-                <div class="reservation col-lg-8 text-center pt-4">
+                <div class="reservation col-lg-8 text-center pt-4 bg-white">
                     <h2 class="great-vibes minor-heading">Reservation</h2>
                     <i class="fas fa-book-open"></i>
                     <h4 class="mt-3">Please call us on the number below.</h4>
@@ -267,9 +299,10 @@ if (class_exists( 'LionEvents' )) {
                     </div>
                 </div>
             </div>
-        </div>
+        </div>        
+    </div> <!-- Container -->
 
-        <!-- <div id="accommodation" class="accommodation">
+    <!-- <div id="accommodation" class="accommodation">
             <div class="cottage">
 
             </div>
@@ -282,7 +315,6 @@ if (class_exists( 'LionEvents' )) {
 
             </div>
         </div> -->
-    </div> <!-- Container -->
 
     <!-- Container fluid used just so that I can have full width background -->
     <div class="container-fluid bg-light pb-4">

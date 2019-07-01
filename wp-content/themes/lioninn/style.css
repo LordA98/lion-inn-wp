@@ -6,6 +6,44 @@ Version: 0.0.1
 Tags: bootstrap, restaurant, pub
 */
 
+.about-us #left-content {
+  -webkit-box-shadow: 7px 7px 50px #000;
+  box-shadow: 7px 7px 50px #000;
+}
+
+.about-us #right-content {
+  -webkit-box-shadow: 20px 0 40px -20px #000;
+  box-shadow: 20px 0 40px -20px #000;
+}
+
+.about-us h1 {
+  color: #000;
+  font-size: 3vw;
+}
+
+@media (min-width:768px) and (max-width:1200px) {
+  .about-us h1 {
+    font-size: 6vw!important;
+  }
+}
+
+.about-us p {
+  color: #000;
+  line-height: 200%;
+}
+
+.about-us-image {
+  width: 90%;
+  height: auto;
+}
+
+@media (min-width:900px) and (max-width:1200px) {
+  .about-us-image {
+    width: 100%;
+    height: auto;
+  }
+}
+
 .events {
   color: #000;
 }
@@ -118,9 +156,26 @@ Tags: bootstrap, restaurant, pub
   font-weight: 400;
   font-style: normal;
 }
+
 .food {
-  color: #000;
+  color: #fff;
 }
+
+.food-bg-image {
+  background: -webkit-gradient(linear,left top, left bottom,from(rgba(0,0,0,.2)),to(rgba(0,0,0,.2))),url("images/food-bg.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url("images/food-bg.jpg") no-repeat center center;
+  background-size: cover;
+  -o-background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 120%;
+  margin-top: -40px;
+  z-index: -1;
+}
+
+.food h1 {
+  color: #fff;
+}		
 
 .food .menu a:hover {
   color: #fff;
@@ -233,7 +288,7 @@ body {
 }
 
 .section-heading {
-  font-size: 6vw !important;
+  font-size: 6vw;
 }
 
 .minor-heading {
@@ -265,7 +320,8 @@ p {
   -o-background-size: cover;
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 110%;
+  top: 0;
 }
 
 nav a {
@@ -343,7 +399,7 @@ nav .mobile-footer {
 }
 @media (max-width:576px) {
   .section-heading {
-    font-size: 15vw;
+    font-size: 15vw !important;
   }
 
   .minor-heading {
