@@ -42,7 +42,7 @@ if (class_exists( 'LionEvents' )) {
                 <div class="collapse navbar-collapse col-xl-6 p-0" id="navbarSupportedContent">
                     <ul class="navbar-nav row justify-content-center">
                         <li class="nav-item mr-xl-5 collapse-purple">
-                            <a class="nav-link disabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#about-us">
+                            <a class="nav-link enabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#about-us">
                                 <span class="my-auto">About Us</span>
                             </a>
                         </li>
