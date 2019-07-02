@@ -192,7 +192,7 @@ class LionEvents {
     public function render_r_events() {
         $tpl = new LETemplate( __DIR__ . '/templates/front-end' );
 
-        $r_events = $this->db->get( "r_event" );      
+        $r_events = $this->db->get( "r_event" );
                 
         if(!$r_events) {
             echo "There are no regular events at the moment.";

@@ -16,6 +16,7 @@ if(!defined('ABSPATH')) exit;
 
 require_once(plugin_dir_path(__FILE__).'/includes/ld-template.class.php');
 require_once(plugin_dir_path(__FILE__).'/includes/ld-sql-manager.class.php');
+require_once(plugin_dir_path(__FILE__).'templates/post.php');
 
 /**
  * Plugin Class
@@ -69,6 +70,10 @@ class LionDocs {
         // Add Main CSS
         wp_enqueue_style('ld-style', plugins_url() . '/lion-docs/assets/css/style.css');
 
+        // Add Custom Javascript
+        wp_enqueue_script('ld-edit-docs', plugins_url() . '/lion-docs/assets/js/edit-docs.js', array('jquery'));
+        wp_enqueue_script('ld-ajax', plugins_url() . '/lion-docs/assets/js/ajax.js', array('jquery'));
+
         // Add Bootstrap CSS & JS & PopperJS
         wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('jquery'));
         wp_enqueue_style('bs-css', plugins_url() . '/lion-docs/assets/css/bootstrap.min.css');
@@ -104,6 +109,9 @@ class LionDocs {
         // Add Modal Support & Render Modals
         add_thickbox();
         echo $tpl->render( 'ld-modals' );
+
+        // message response
+        echo $tpl->render( 'lm-message' );
 
         // Print Header section of Admin Page
         $data = array ('title' => 'Upload Documentation', 'desc' => "Upload new documentation here to be visible on the 'HowTo' page.");
