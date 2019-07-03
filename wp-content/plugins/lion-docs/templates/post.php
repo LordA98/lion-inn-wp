@@ -33,11 +33,6 @@ function handle_ajax_docs() {
     $form_data = array();
     parse_str($_POST["form_data"], $form_data);
 
-    ld_log_me('Files:');
-    ld_log_me($_FILES);
-    ld_log_me($_FILES["file-upload"]);
-    ld_log_me($_FILES["file-upload"]["name"]);
-
     // handle request
     if($form_data) {
         // Add Doc
