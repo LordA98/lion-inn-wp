@@ -1,3 +1,9 @@
+<!-- 
+    ALSO SORT OF USELESS NOW
+    WAS USED FOR AJAX RESPONSE MESSAGE
+
+    BUT AJAX WAS SCRAPPED SO THIS ISN'T USED
+ -->
 
 <div id="docs-message" class="bg-white fixed-top pt-3 pl-3 w-100">
     <div class="alert alert-success alert-dismissible fade show w-75" role="alert">

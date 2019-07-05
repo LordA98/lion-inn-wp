@@ -9,7 +9,7 @@
 <!-- Upload New Doc Modal -->
 <div id="upload-doc-modal" style="display:none;">
 
-    <form action="#" method="post" class="doc-form" enctype="multipart/form-data">
+    <form action="upload.php" method="post" class="doc-form" enctype="multipart/form-data">
         <h3 class="mb-4">Upload Documentation</h3>
         <input type="hidden" name="add-doc" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "doc-name-input", "name" => "doc-name", "label" => "Document Name", "placeholder" => "Enter Display Name" )); ?>
