@@ -120,7 +120,9 @@ class LionDocs {
         // Upload button
         echo $upld->render( 'ld-upload-button' );
 
-        // List of docs? 
+        // List of docs
+        $docs = $this->db->get( 'docs' );
+        echo $tpl->render( 'ld-doc-list', array('docs' => $docs) );
     }
     
 }
