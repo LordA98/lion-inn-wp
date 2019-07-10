@@ -199,7 +199,7 @@ Tags: bootstrap, restaurant, pub
   width: 10%;
 }
 
-.food .book-table h4 {
+.food .book-table h4.times-heading {
   font-size: 1.2vw;
 }
 
@@ -848,3 +848,38 @@ nav .mobile-footer {
   color: #fff;
   font-size: 14pt;
 }
+
+#accommodation h1,
+#accommodation h2,
+#accommodation h4,
+#accommodation p,
+#accommodation .cards {
+  color: #000; }
+
+#accommodation p {
+  line-height: 250%; }
+
+#accommodation a {
+  color: inherit; 
+  height: 100%;
+  width: 100%;
+}
+
+#accommodation a:hover {
+  text-decoration: none; }
+
+#accommodation .cottage-img {
+  width: 100%; }
+
+#accommodation .card-header {
+  color: #FFF;
+  background-color: #673ab7;
+  font-size: 30pt; }
+
+#accommodation .card-body p {
+  font-size: 10pt; }
+
+#accommodation .card {
+  border: none;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2); }
+

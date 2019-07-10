@@ -16,6 +16,7 @@ if (class_exists( 'LionEvents' )) {
 }
 ?>
 
+<!-- Built in WordPress function to get 'header.php' -->
 <?php get_header(); ?>
 
 <body class="montserrat" data-spy="scroll" data-target="#navbar-main">
@@ -52,7 +53,7 @@ if (class_exists( 'LionEvents' )) {
                             </a>
                         </li>
                         <li class="nav-item mr-xl-5 collapse-purple">
-                            <a class="nav-link disabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#accommodation">
+                            <a class="nav-link enabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#accommodation">
                                 <span class="my-auto">Accommodation</span>
                             </a>
                         </li>
@@ -78,7 +79,7 @@ if (class_exists( 'LionEvents' )) {
                                 </div>
                                 <div class="col-4 order-xl-2 col-xl-1">
                                     <i class="fas fa-envelope mt-2"></i>
-                                    <p class="mb-0 mt-1">debs@globalnet.com</p>
+                                    <p class="mb-0 mt-1">debs@globalnet.co.uk</p>
                                 </div>
                                 <div class="col-4 order-xl-3 col-xl-1">
                                     <i class="fas fa-map-marker-alt mt-2"></i>
@@ -252,7 +253,7 @@ if (class_exists( 'LionEvents' )) {
                     <h2 class="great-vibes minor-heading">Times</h2>
                     <i class="far fa-clock"></i>
                     <div class="opening-times">
-                        <h4 class="mt-3">Opening Times</h4>
+                        <h4 class="mt-3 times-heading">Opening Times</h4>
                         <hr class="bg-light mx-auto mt-0"/>
                         <p>
                             Monday - Wednesday <br/>
@@ -264,7 +265,7 @@ if (class_exists( 'LionEvents' )) {
                         </p>
                     </div>
                     <div class="dining-times">
-                        <h4 class="mt-3">Dining Times</h4>
+                        <h4 class="mt-3 times-heading">Dining Times</h4>
                         <hr class="bg-light mx-auto mt-0"/>
                         <p>
                             Monday - Saturday <br/>
@@ -280,7 +281,7 @@ if (class_exists( 'LionEvents' )) {
                     <i class="fas fa-book-open"></i>
                     <h4 class="mt-3">Please call us on the number below.</h4>
                     <p class="mt-5">
-                        Please mention any special dietary requirements </br>
+                        Please mention any special dietary requirements <br/>
                         (vegetarian, gluten free, peanut allergy).
                     </p>
                     <p>
@@ -302,19 +303,103 @@ if (class_exists( 'LionEvents' )) {
         </div>        
     </div> <!-- Container -->
 
-    <!-- <div id="accommodation" class="accommodation">
-            <div class="cottage">
-
+    <div class="container">
+        <div id="accommodation" class="accommodation">
+            <div class="title text-center">
+                <h1 class="great-vibes section-heading">Accommodation</h1>
             </div>
 
-            <div class="cards">
-
+            <div class="cottage row">
+                <div class="col-6 text-center">
+                    <h2 class="great-vibes minor-heading">Cottage</h2>
+                    <div class="px-5">
+                        <p>The Lion Inn Cottage was originally an Elizabethan stone pig cot.</p>
+                        <p>
+                            The cottage has been tastefully decorated in a traditional country style and can sleep a family of four.
+                            The open plan room is enhanced by skylights and contains a double bed and double sofa bed.
+                        </p>
+                        <p>
+                            The luxurious marble tiled bathroom contains a spacious shower unit.
+                            The fully equipped compact kitchen has been made to measure and boasts a traditional Belfast sink, double hob,
+                            microwave and refigerator.  Central heating (supplied by new slim-line storage heaters) and a carpeted floor
+                            ensure the cottage is cosy all year around.  To the front of the cottage a walled patio ensures privacy
+                            and is a sun trap during warmer...
+                        </p>
+                    </div>
+                    <button type="button" class="btn mt-4 py-1 px-3">
+                        <a href="#book-now-number">
+                            <span>Book Now</span>
+                        </a>
+                    </button>
+                </div>
+                <div class="col-6 p-4">
+                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/stock-accomm.jpg" alt="Image of Cottage Bed" class="cottage-img">
+                </div>
             </div>
 
-            <div class="phone-number">
-
+            <!-- 
+                book-now-number refers to the point on the page that be directed to when the user clicks
+                the book now button above (in cottage paragraph)
+            -->
+            <div class="cards card-deck text-center mt-4" id="book-now-number">
+                <div class="card">
+                    <div class="great-vibes card-header">B&B</div>
+                    <div class="card-body px-5">
+                        <p class="card-text">
+                            Low Season £70 per night. <br/>
+                            High Season £80 per night. <br/>
+                            Prices assume 2 people sharing.
+                        </p>
+                        <p class="card-text">
+                            All year £58 per night 1 person.
+                        </p>
+                        <p class="card-text">
+                            Well behaved dogs welcome £2.50 per dog per day.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="great-vibes card-header">Self-Catering</div>
+                    <div class="card-body px-5">
+                        <p class="card-text">
+                            Low Season £50 per night. <br/>
+                            High Season £60 per night.  <br/>
+                        </p>
+                        <p class="card-text">
+                            Self Catering Tariff we provide bedding only, you <br/>
+                            provide towels, food, etc. <br/>
+                            Packed lunches can be provided.  <br/>
+                            £9.00 each includes sandwiches, soft drink, fruit, chocolate & crisps.  <br/>
+                            Towels can be hired at £5.00 each.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="great-vibes card-header">Season Dates</div>
+                    <div class="card-body px-5">
+                        <p class="card-text">
+                            High Season <br/>
+                            May - September <br/>
+                            Decemeber 22nd - January 5th inclusive
+                        </p>
+                        <p class="card-text">
+                            Low Season <br/>
+                            October - April
+                        </p>
+                    </div>
+                </div>
             </div>
-        </div> -->
+
+            <div class="phone-number text-center mt-5">
+                <div class="book-now mt-4 mb-lg-0 mb-3">
+                    <h4 class="great-vibes mb-0">Book Now</h4>
+                    <button type="button" id="accomm-book-now" class="btn btn-lg mt-4 py-1 px-3">
+                        <span>01600 860322</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div> <!-- Container -->
 
     <!-- Container fluid used just so that I can have full width background -->
     <div class="container-fluid bg-light pb-4">
@@ -411,6 +496,7 @@ if (class_exists( 'LionEvents' )) {
 
     </div> <!-- Container Fluid -->
 
+    <!-- Built in WordPress function to get 'footer.php' -->
     <?php get_footer(); ?>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
