@@ -177,6 +177,12 @@ Tags: bootstrap, restaurant, pub
   color: #fff;
 }		
 
+@media (min-width:1000px) and (max-width:1100px) {
+  .food-bg-image {
+    height: 80%;
+  }
+}
+
 .food .menu a:hover {
   color: #fff;
 }
@@ -882,4 +888,4 @@ nav .mobile-footer {
 #accommodation .card {
   border: none;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2); }
-
+  

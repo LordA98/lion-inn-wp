@@ -310,9 +310,9 @@ if (class_exists( 'LionEvents' )) {
             </div>
 
             <div class="cottage row">
-                <div class="col-6 text-center">
+                <div class="col-12 col-xl-6 text-center">
                     <h2 class="great-vibes minor-heading">Cottage</h2>
-                    <div class="px-5">
+                    <div class="px-md-5">
                         <p>The Lion Inn Cottage was originally an Elizabethan stone pig cot.</p>
                         <p>
                             The cottage has been tastefully decorated in a traditional country style and can sleep a family of four.
@@ -322,70 +322,71 @@ if (class_exists( 'LionEvents' )) {
                             The luxurious marble tiled bathroom contains a spacious shower unit.
                             The fully equipped compact kitchen has been made to measure and boasts a traditional Belfast sink, double hob,
                             microwave and refigerator.  Central heating (supplied by new slim-line storage heaters) and a carpeted floor
-                            ensure the cottage is cosy all year around.  To the front of the cottage a walled patio ensures privacy
-                            and is a sun trap during warmer...
+                            ensure the cottage is cosy all year around.
+                        </p>
+                        <p>
+                            To the front of the cottage a walled patio ensures privacy
+                            and is a sun trap during warmer weather.  A welcome pack is available and packed lunches can be provided at a 
+                            small cost, if requested.
                         </p>
                     </div>
-                    <button type="button" class="btn mt-4 py-1 px-3">
-                        <a href="#book-now-number">
-                            <span>Book Now</span>
-                        </a>
-                    </button>
                 </div>
-                <div class="col-6 p-4">
-                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/stock-accomm.jpg" alt="Image of Cottage Bed" class="cottage-img">
+                <div class="col-12 col-xl-6 p-4">
+                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/stock-accomm.jpg" alt="Image of Bed" class="cottage-img">
                 </div>
             </div>
 
-            <!-- 
-                book-now-number refers to the point on the page that be directed to when the user clicks
-                the book now button above (in cottage paragraph)
-            -->
-            <div class="cards card-deck text-center mt-4" id="book-now-number">
-                <div class="card">
-                    <div class="great-vibes card-header">B&B</div>
-                    <div class="card-body px-5">
-                        <p class="card-text">
-                            Low Season £70 per night. <br/>
-                            High Season £80 per night. <br/>
-                            Prices assume 2 people sharing.
-                        </p>
-                        <p class="card-text">
-                            All year £58 per night 1 person.
-                        </p>
-                        <p class="card-text">
-                            Well behaved dogs welcome £2.50 per dog per day.
-                        </p>
+            <div class="cards text-center mt-4 row">
+                <div class="col-xl-4 mb-3 mb-xl-0">
+                    <div class="card h-100">
+                        <div class="great-vibes card-header">B&B</div>
+                        <div class="card-body px-5">
+                            <p class="card-text">
+                                Low Season £70 per night. <br/>
+                                High Season £80 per night. <br/>
+                                Prices assume 2 people sharing.
+                            </p>
+                            <p class="card-text">
+                                All year £58 per night 1 person.
+                            </p>
+                            <p class="card-text">
+                                Well behaved dogs welcome £2.50 per dog per day.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="great-vibes card-header">Self-Catering</div>
-                    <div class="card-body px-5">
-                        <p class="card-text">
-                            Low Season £50 per night. <br/>
-                            High Season £60 per night.  <br/>
-                        </p>
-                        <p class="card-text">
-                            Self Catering Tariff we provide bedding only, you <br/>
-                            provide towels, food, etc. <br/>
-                            Packed lunches can be provided.  <br/>
-                            £9.00 each includes sandwiches, soft drink, fruit, chocolate & crisps.  <br/>
-                            Towels can be hired at £5.00 each.
-                        </p>
+                <div class="col-xl-4 mb-3 mb-xl-0">
+                    <div class="card h-100">
+                        <div class="great-vibes card-header">Self-Catering</div>
+                        <div class="card-body px-5">
+                            <p class="card-text">
+                                Low Season £50 per night. <br/>
+                                High Season £60 per night.  <br/>
+                            </p>
+                            <p class="card-text">
+                                Self Catering Tariff we provide bedding only, you <br/>
+                                provide towels, food, etc. <br/>
+                                Packed lunches can be provided.  <br/>
+                                £9.00 each includes sandwiches, soft drink, fruit, chocolate & crisps.  <br/>
+                                Towels can be hired at £5.00 each.
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="great-vibes card-header">Season Dates</div>
-                    <div class="card-body px-5">
-                        <p class="card-text">
-                            High Season <br/>
-                            May - September <br/>
-                            Decemeber 22nd - January 5th inclusive
-                        </p>
-                        <p class="card-text">
-                            Low Season <br/>
-                            October - April
-                        </p>
+                <div class="col-xl-4 mb-3 mb-xl-0">
+                    <div class="card h-100">
+                        <div class="great-vibes card-header">Season Dates</div>
+                        <div class="card-body px-5">
+                            <p class="card-text">
+                                High Season <br/>
+                                May - September <br/>
+                                Decemeber 22nd - January 5th inclusive
+                            </p>
+                            <p class="card-text">
+                                Low Season <br/>
+                                October - April
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -393,13 +394,13 @@ if (class_exists( 'LionEvents' )) {
             <div class="phone-number text-center mt-5">
                 <div class="book-now mt-4 mb-lg-0 mb-3">
                     <h4 class="great-vibes mb-0">Book Now</h4>
-                    <button type="button" id="accomm-book-now" class="btn btn-lg mt-4 py-1 px-3">
+                    <button type="button" class="btn btn-lg mt-4 py-1 px-3">
                         <span>01600 860322</span>
                     </button>
                 </div>
             </div>
         </div>
-    </div> <!-- Container -->
+    </div>
 
     <!-- Container fluid used just so that I can have full width background -->
     <div class="container-fluid bg-light pb-4">
