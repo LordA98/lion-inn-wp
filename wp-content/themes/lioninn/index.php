@@ -310,7 +310,7 @@ if (class_exists( 'LionEvents' )) {
             </div>
 
             <div class="cottage row">
-                <div class="col-12 col-xl-6 text-center">
+                <div class="col-12 col-xl-6 text-center mt-xl-5">
                     <h2 class="great-vibes minor-heading">Cottage</h2>
                     <div class="px-md-5">
                         <p>The Lion Inn Cottage was originally an Elizabethan stone pig cot.</p>
@@ -332,7 +332,7 @@ if (class_exists( 'LionEvents' )) {
                     </div>
                 </div>
                 <div class="col-12 col-xl-6 p-4">
-                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/stock-accomm.jpg" alt="Image of Bed" class="cottage-img">
+                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/cottage.webp" alt="Image of Bed" class="cottage-img">
                 </div>
             </div>
 
