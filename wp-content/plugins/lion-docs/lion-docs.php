@@ -122,7 +122,7 @@ class LionDocs {
 
         // List of docs
         $docs = $this->db->get( 'docs' );
-        echo $tpl->render( 'ld-doc-list', array('docs' => $docs) );
+        echo $upld->render( 'ld-doc-list', array('docs' => $docs) );
     }
     
 }

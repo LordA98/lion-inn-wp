@@ -10,6 +10,8 @@
             <th scope="col">Parent Document</th>
             <th scope="col">Views</th>
             <th scope="col">Published</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>

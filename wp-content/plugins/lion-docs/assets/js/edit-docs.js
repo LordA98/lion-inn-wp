@@ -10,7 +10,7 @@ jQuery(function($) {
      * When $(.iconClicked) {set hidden input value ready to parent item's ID for form submission} 
      */
     function setPostVar($inputName, $caller) {
-        $parentListItemId = $($caller).closest("li").data("id");
+        $parentListItemId = $($caller).parent().parent().attr('id');
         $('input[name='+$inputName+']').val($parentListItemId);
     }
 
@@ -46,6 +46,9 @@ jQuery(function($) {
         // Set form values to current item values
         setTextInput("doc-name", this);
         setCheckbox("publish-doc", ".toPublish", this);
-    });    
+    });
+    $(".delete-doc").on("click", function() {
+        setPostVar("delete-doc", this);
+    });
     
 });
