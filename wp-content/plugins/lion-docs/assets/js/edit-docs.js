@@ -50,5 +50,13 @@ jQuery(function($) {
     $(".delete-doc").on("click", function() {
         setPostVar("delete-doc", this);
     });
+
+    
+    /**
+     * Print Value of Selected File
+     */
+    $(".custom-file-input").on("change", function() {
+        $(".file-selected").html("<i>" + this.value.replace("C:\\fakepath\\",'') + "</i>");
+    });
     
 });

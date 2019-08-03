@@ -72,7 +72,6 @@ class LionDocs {
 
         // Add Custom Javascript
         wp_enqueue_script('ld-edit-docs', plugins_url() . '/lion-docs/assets/js/edit-docs.js', array('jquery'));
-        wp_enqueue_script('ld-ajax', plugins_url() . '/lion-docs/assets/js/ajax.js', array('jquery'));
 
         // Add Bootstrap CSS & JS & PopperJS
         wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('jquery'));
