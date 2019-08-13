@@ -49,7 +49,6 @@ jQuery(function($) {
      */
     function setSelectInput($inputId, $currentValueHolder, $caller) {
         $value = $($caller).parent().siblings("."+$currentValueHolder).text();
-        console.log($value);
         $('#'+$inputId+' option[value='+$value+']').prop('selected', true);
     }
     
