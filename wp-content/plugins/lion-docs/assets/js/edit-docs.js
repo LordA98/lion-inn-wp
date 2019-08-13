@@ -15,12 +15,12 @@ jQuery(function($) {
     }
 
     /**
-     * Checking length of DOM item identifies if it exists
-     * The span with .toPublish is only rendered if the item set to be published.
+     * Check value of hidden div 
+     * Tick publish checkbox if 1, leave unticked if 0
      */
-    function setCheckbox($inputName, $className, $caller) {
-        $checked = ($($caller).siblings($className).length)?(1):(0);
-        ($checked)?($('input[name='+$inputName+']').prop('checked', true)):($('input[name='+$inputName+']').prop('checked', false));
+    function setCheckbox($parentClassName, $childClassName, $caller) {
+        $checked = $($caller).parent().siblings("."+$parentClassName).children("."+$childClassName).text();
+        (Number($checked))?($('input[name='+$parentClassName+']').prop('checked', true)):($('input[name='+$parentClassName+']').prop('checked', false));
 
         return $checked;
     }
@@ -31,6 +31,26 @@ jQuery(function($) {
     function setTextInput($inputName, $caller) {
         $value = $($caller).parent().siblings('.'+$inputName).text();
         $('input[name='+$inputName+']').val($value);
+    }
+
+    /**
+     * Set currently selected file
+     */
+    function setFile($inputName, $caller) {
+        $value = $($caller).parent().siblings(".filename").text();
+        if($value == "") {
+            $value = "No file selected..."
+        }
+        $(".file-selected").html("<i>" + $value + "</i>");
+    }
+
+    /**
+     * Set select input (dropdown)
+     */
+    function setSelectInput($inputId, $currentValueHolder, $caller) {
+        $value = $($caller).parent().siblings("."+$currentValueHolder).text();
+        console.log($value);
+        $('#'+$inputId+' option[value='+$value+']').prop('selected', true);
     }
     
     /**
@@ -45,7 +65,10 @@ jQuery(function($) {
 
         // Set form values to current item values
         setTextInput("doc-name", this);
-        setCheckbox("publish-doc", ".toPublish", this);
+        setSelectInput("section-select-input", "section", this);
+        setSelectInput("parent-doc-select-input", "parent-doc", this);
+        setFile("file-upload", this);
+        setCheckbox("publish-doc", "publish-value", this);
     });
     $(".delete-doc").on("click", function() {
         setPostVar("delete-doc", this);

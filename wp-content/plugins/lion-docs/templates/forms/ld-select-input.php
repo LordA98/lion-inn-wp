@@ -1,6 +1,6 @@
 <div class="form-group row">  
     <label for="<?php echo $id; ?>" class="col-4 col-form-label"><?php echo $label; ?></label>
-    <select class="col-8 custom-select" name="<?php echo $name; ?>">
+    <select class="col-8 custom-select" name="<?php echo $name; ?>" id="<?php echo $id; ?>">
 
         <?php if($options == "sections") { ?>
         
