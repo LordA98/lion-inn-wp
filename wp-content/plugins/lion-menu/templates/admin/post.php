@@ -49,6 +49,18 @@ function handle_ajax() {
 
     // handle request
     if($form_data) {
+        if(array_key_exists("add-gallery",$form_data)) {
+            $params = array(
+                'title' => $form_data["gallery-name"],
+                'description' => $form_data["gallery-name"],
+                'date_created' => current_time( 'mysql' ),
+                'toPublish' => (array_key_exists("publish-gallery", $form_data))?(1):(0)
+            );
+
+            $result = $db->insert("galleries", $params);
+
+            handleGalleryResult($result, "add", $form_data["gallery-name"]);
+        }
         // Add Menu
         if(array_key_exists("add-menu",$form_data)) {
             $params = array(

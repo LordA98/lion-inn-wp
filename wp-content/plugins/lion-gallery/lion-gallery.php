@@ -16,7 +16,7 @@ if(!defined('ABSPATH')) exit;
 
 require_once(plugin_dir_path(__FILE__).'/includes/lg-template.class.php');
 require_once(plugin_dir_path(__FILE__).'/includes/lg-sql-manager.class.php');
-// require_once(plugin_dir_path(__FILE__).'templates/post.php');
+require_once(plugin_dir_path(__FILE__).'templates/admin/post.php');
 
 /**
  * Plugin Class
@@ -72,11 +72,16 @@ class LionGallery {
 
         // Add Custom Javascript
         wp_enqueue_script('lg-edit-gallery', plugins_url() . '/lion-gallery/assets/js/edit-gallery.js', array('jquery'));
+        wp_enqueue_script('lg-ajax', plugins_url() . '/lion-gallery/assets/js/ajax.js', array('jquery'));
 
         // Add Bootstrap CSS & JS & PopperJS
         wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('jquery'));
         wp_enqueue_style('bs-css', plugins_url() . '/lion-gallery/assets/css/bootstrap.min.css');
         wp_enqueue_script('bs-js', plugins_url() . '/lion-gallery/assets/js/bootstrap.min.js');
+
+        // Add getUrlParam plugin code
+        //https://github.com/repalogic/jquery.geturlparam && https://mathias-bank.de/2007/04/21/jquery-plugin-geturlparam-version-2/
+        wp_enqueue_script('get-url-param', plugins_url() . '/lion-gallery/assets/js/getUrlParam.js', array('jquery'));
     }
     
     /**
@@ -92,17 +97,36 @@ class LionGallery {
      * Initialise Admin Page with Menu-related content
      */
     public function gallery_init() {
-        $tpl = new LGTemplate( __DIR__ . '/templates' );
+        $tpl = new LGTemplate( __DIR__ . '/templates/admin' );
 
-        // Render side nav & doc iframe
-        echo $tpl->render( 'lg-gallery' );
+        // Add Modal Support & Render Modals
+        add_thickbox();
+        echo $tpl->render( 'lg-modals' );
+
+        // ajax message response
+        echo $tpl->render( 'lg-message' );
+
+        // Print Header section of Admin Page
+        $data = array ('title' => 'Gallery', 'desc' => "Create and manage galleries from this page.  Click 'Add Gallery' to create a new gallery, or click a gallery below to edit it.");
+        echo $tpl->render( 'lg-header', $data );
+
+        //  Add New Gallery Button
+        echo $tpl->render('lg-button', array ('title' => 'Add Gallery')); 
+
+        // Get galleries and render them
+        $galleries = $this->db->get( 'galleries' );
+        if(!$galleries) {
+            echo "You have not created any galleries.";
+            return;
+        }
+        echo $tpl->render( 'lg-galleries', $galleries );
     }
 
     /**
      * Init Manage A Gallery subpage
      */
     public function manage_gallery_init() {
-        $tpl = new LGTemplate( __DIR__ . '/templates' );
+        $tpl = new LGTemplate( __DIR__ . '/templates/admin' );
 
         // Render side nav & doc iframe
         echo $tpl->render( 'lg-manage' );

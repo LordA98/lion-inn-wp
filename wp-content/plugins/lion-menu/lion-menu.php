@@ -190,6 +190,7 @@ class LionMenu {
 
     /**
      * Render Menu(s)
+     * Front-End
      */
     public function render_menu() {
         $tpl = new LMTemplate( __DIR__ . '/templates/front-end' );
@@ -201,6 +202,7 @@ class LionMenu {
 
     /**
      * Render Menu Nav
+     * Front-End
      */
     public function render_menu_nav() {
         $tpl = new LMTemplate( __DIR__ . '/templates/front-end' );

@@ -27,7 +27,8 @@ class LGSQLManager {
      * Create the 4 Tables Needed for the Plugin
      */
     public function createTables() {
-        // $this->createTable("docs");
+        $this->createTable("galleries");
+        $this->createTable("images");
     }
 
     /**
@@ -59,7 +60,8 @@ class LGSQLManager {
      * Remove Plugin Tables
      */
     public function deleteTables() {
-        // $this->deleteTable("docs");
+        $this->createTable("galleries");
+        $this->createTable("images");
     }
 
     /**
