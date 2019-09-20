@@ -16,5 +16,11 @@ $tpl = new LGTemplate( __DIR__ . '/items' );
             Delete
     -->
     
-    <?php echo $galleries; ?>
+    <?php 
+        foreach($galleries as $gallery) {
+            // echo $tpl->render( 'lg-' , $gallery );
+            echo print_r($gallery);
+            echo "<br/><br/>";
+        } 
+    ?>
 </div>

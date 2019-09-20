@@ -24,7 +24,7 @@ jQuery(function($) {
         var form_data = $(this).serialize();
 
         var data = {
-            'action': 'handle_ajax_gallery',
+            'action': 'handle_ajax_lg',
             form_data: form_data
         };
 

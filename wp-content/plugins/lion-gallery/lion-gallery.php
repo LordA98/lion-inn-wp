@@ -82,6 +82,10 @@ class LionGallery {
         // Add getUrlParam plugin code
         //https://github.com/repalogic/jquery.geturlparam && https://mathias-bank.de/2007/04/21/jquery-plugin-geturlparam-version-2/
         wp_enqueue_script('get-url-param', plugins_url() . '/lion-gallery/assets/js/getUrlParam.js', array('jquery'));
+
+        // Custom script that will interact with wp.media
+        wp_enqueue_media();
+        wp_enqueue_script( 'lg-media-manager', plugins_url( '/assets/js/media-manager.js' , __FILE__ ), array('jquery'), '0.1' );
     }
     
     /**
@@ -119,7 +123,7 @@ class LionGallery {
             echo "You have not created any galleries.";
             return;
         }
-        echo $tpl->render( 'lg-galleries', $galleries );
+        echo $tpl->render( 'lg-galleries', array( 'galleries' => $galleries ));
     }
 
     /**

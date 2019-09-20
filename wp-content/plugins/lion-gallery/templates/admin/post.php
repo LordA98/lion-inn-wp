@@ -24,7 +24,7 @@ function handleGalleryResult($result, $type, $name) {
  * WordPress AJAX Hook
  * Handle any POST/AJAX requests
  */
-function handle_ajax_gallery() {
+function handle_ajax_lg() {
     // require DB class & init
     require_once( WP_PLUGIN_DIR . '/lion-gallery/includes/lg-sql-manager.class.php' );
     $db = new LGSQLManager();
@@ -39,7 +39,8 @@ function handle_ajax_gallery() {
         if(array_key_exists("add-gallery",$form_data)) {
             $params = array(
                 'title' => $form_data["gallery-name"],
-                'description' => $form_data["gallery-name"],
+                'description' => $form_data["gallery-desc"],
+                'gallery_image_url' => $form["gallery-img-url"],
                 'date_created' => current_time( 'mysql' ),
                 'toPublish' => (array_key_exists("publish-gallery", $form_data))?(1):(0)
             );
@@ -74,4 +75,4 @@ function handle_ajax_gallery() {
 }
 
 // WordPress AJAX action
-add_action( 'wp_ajax_handle_ajax', 'handle_ajax_gallery');
+add_action( 'wp_ajax_handle_ajax_lg', 'handle_ajax_lg');
