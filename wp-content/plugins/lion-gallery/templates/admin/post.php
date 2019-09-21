@@ -40,7 +40,7 @@ function handle_ajax_lg() {
             $params = array(
                 'title' => $form_data["gallery-name"],
                 'description' => $form_data["gallery-desc"],
-                'gallery_image_url' => $form["gallery-img-url"],
+                'gallery_image_url' => $form["add-gallery-img"],
                 'date_created' => current_time( 'mysql' ),
                 'toPublish' => (array_key_exists("publish-gallery", $form_data))?(1):(0)
             );

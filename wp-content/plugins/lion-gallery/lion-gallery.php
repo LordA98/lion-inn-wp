@@ -111,7 +111,7 @@ class LionGallery {
         echo $tpl->render( 'lg-message' );
 
         // Print Header section of Admin Page
-        $data = array ('title' => 'Gallery', 'desc' => "Create and manage galleries from this page.  Click 'Add Gallery' to create a new gallery, or click a gallery below to edit it.");
+        $data = array ('title' => 'Gallery', 'desc' => "Create and manage galleries from this page.  Click 'Add Gallery' to create a new gallery, or click a gallery's name below to view and edit it.");
         echo $tpl->render( 'lg-header', $data );
 
         //  Add New Gallery Button

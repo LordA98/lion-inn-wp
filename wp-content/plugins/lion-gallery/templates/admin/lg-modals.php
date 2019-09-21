@@ -8,7 +8,7 @@
         <input type="hidden" name="add-gallery" /> 
         <?php echo $tpl->render( 'lg-text-input', array( "id" => "gallery-name-input", "name" => "gallery-name", "label" => "Gallery Name", "placeholder" => "Enter Name" )); ?>
         <?php echo $tpl->render( 'lg-textarea-input', array( "id" => "desc-input", "name" => "gallery-desc", "label" => "Description" )); ?>
-        <?php echo $tpl->render( 'lg-image-select', array( "id" => "edit-gallery-image-select", "label_id" => "edit-gallery-img-name", "name" => "edit-gallery-img", "label" => "No Image Selected" )); ?>
+        <?php echo $tpl->render( 'lg-image-select', array( "id" => "add-gallery-image-select", "label_id" => "add-gallery-img-name", "name" => "add-gallery-img", "label" => "No Image Selected" )); ?>
         <?php echo $tpl->render( 'lg-checkbox-input', array( "id" => "publish-gallery-check", "name" => "publish-gallery", "label" => "Publish", "optClasses" => "mb-3" )); ?>
         <?php echo $tpl->render( 'lg-form-buttons', array( "value" => "Add" )); ?>
     </form>
