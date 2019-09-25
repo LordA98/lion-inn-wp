@@ -118,12 +118,17 @@ class LionGallery {
         echo $tpl->render('lg-button', array ('title' => 'Add Gallery')); 
 
         // Get galleries and render them
-        $galleries = $this->db->get( 'galleries' );
-        if(!$galleries) {
-            echo "You have not created any galleries.";
-            return;
-        }
-        echo $tpl->render( 'lg-galleries', array( 'galleries' => $galleries ));
+        // $galleries = $this->db->get( 'galleries' );
+        // if(!$galleries) {
+        //     echo "You have not created any galleries.";
+        //     return;
+        // }
+        // echo $tpl->render( 'lg-galleries', array( 'galleries' => $galleries ));
+
+        // POC
+        // Get list of folders from FileBird plugin
+        $galleries = $this->db->get( '' );
+        // Display folders in similar list
     }
 
     /**

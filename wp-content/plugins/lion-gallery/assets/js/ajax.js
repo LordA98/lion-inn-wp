@@ -28,7 +28,7 @@ jQuery(function($) {
             form_data: form_data
         };
 
-        // console.log(data);
+        console.log(data);
         
         $.post(ajaxurl, data, function(response) {
             sessionStorage.setItem('message', response);

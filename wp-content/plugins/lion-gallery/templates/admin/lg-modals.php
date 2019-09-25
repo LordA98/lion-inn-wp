@@ -31,7 +31,7 @@
 <!-- Delete Gallery Modal -->
 <div id="delete-gallery-modal" style="display:none;">
 
-    <form action="#" method="post" class="gallery-form">
+    <form action="#" method="post" class="gallery-form menu-form row d-flex p-3">
         <h3 class="mb-4">Are you sure you want to delete this?</h3>
         <input type="hidden" name="delete-gallery" /> <br/>
         <input type="hidden" name="gallery-name" /> <br/>

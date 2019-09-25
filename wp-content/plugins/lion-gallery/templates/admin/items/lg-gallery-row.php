@@ -17,9 +17,9 @@
         ?>
     </td>
     <td>
-    <?php echo $tpl->render( 'lg-icon-link', array( "aClasses" => "edit-doc", "modal" => "edit-doc-modal", "tooltip" => "Edit", "iClasses" => "fa-edit mr-3", "w" => "500", "h" => "420" )); ?>
+    <?php echo $tpl->render( 'lg-icon-link', array( "aClasses" => "edit-gallery", "modal" => "edit-gallery-modal", "tooltip" => "Edit", "iClasses" => "fa-edit mr-3", "w" => "500", "h" => "420" )); ?>
     </td>
     <td>
-    <?php echo $tpl->render( 'lg-icon-link', array( "aClasses" => "delete-doc", "modal" => "delete-doc-modal", "tooltip" => "Delete", "iClasses" => "fa-trash-alt", "w" => "275", "h" => "215" )); ?>
+    <?php echo $tpl->render( 'lg-icon-link', array( "aClasses" => "delete-gallery", "modal" => "delete-gallery-modal", "tooltip" => "Delete", "iClasses" => "fa-trash-alt", "w" => "275", "h" => "215" )); ?>
     </td>
 </tr>
