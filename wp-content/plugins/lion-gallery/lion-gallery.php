@@ -5,7 +5,7 @@
 /**
  * Plugin Name: Lion Gallery
  * Plugin URI:
- * Description: Gallery Plugin for lioninn.co.uk
+ * Description: Gallery Plugin - pulls folders from Media section.  Must be using a folder plugin (like FileBird & Mediamatic)
  * Version: 1.0.0
  * Author: Alexander Lord
  * Author URI:
@@ -79,10 +79,6 @@ class LionGallery {
         wp_enqueue_style('bs-css', plugins_url() . '/lion-gallery/assets/css/bootstrap.min.css');
         wp_enqueue_script('bs-js', plugins_url() . '/lion-gallery/assets/js/bootstrap.min.js');
 
-        // Add getUrlParam plugin code
-        //https://github.com/repalogic/jquery.geturlparam && https://mathias-bank.de/2007/04/21/jquery-plugin-geturlparam-version-2/
-        wp_enqueue_script('get-url-param', plugins_url() . '/lion-gallery/assets/js/getUrlParam.js', array('jquery'));
-
         // Custom script that will interact with wp.media
         wp_enqueue_media();
         wp_enqueue_script( 'lg-media-manager', plugins_url( '/assets/js/media-manager.js' , __FILE__ ), array('jquery'), '0.1' );
@@ -94,7 +90,6 @@ class LionGallery {
      */
     public function admin_menu_pages() {
         add_menu_page( 'Gallery', 'Gallery', 'manage_options', 'lg-gallery', array( $this, 'gallery_init' ), 'dashicons-images-alt2' );
-        add_submenu_page( 'lg-gallery', 'Manage A Gallery', 'Manage A Gallery', 'manage_options', 'lg-manage-single-gallery-subpage', array( $this, 'manage_gallery_init' ) );
     }
     
     /**
@@ -111,34 +106,55 @@ class LionGallery {
         echo $tpl->render( 'lg-message' );
 
         // Print Header section of Admin Page
-        $data = array ('title' => 'Gallery', 'desc' => "Create and manage galleries from this page.  Click 'Add Gallery' to create a new gallery, or click a gallery's name below to view and edit it.");
+        $data = array ('title' => 'Gallery', 'desc' => "Create and manage galleries from this page.  To create a new gallery, go to the 'Media' section and create a new folder.  Ensure it is 'Published' below, so that it appears on the site.");
         echo $tpl->render( 'lg-header', $data );
 
-        //  Add New Gallery Button
-        echo $tpl->render('lg-button', array ('title' => 'Add Gallery')); 
+        // Sync media folders to gallery database table
+        $folders = $this->db->get( 'terms' );
+        if(!$folders) {
+            echo "ERROR :- Error retrieving folders from 'Media' tab.";
+            return;
+        }
+        $this->syncGalleries($folders);
 
         // Get galleries and render them
-        // $galleries = $this->db->get( 'galleries' );
-        // if(!$galleries) {
-        //     echo "You have not created any galleries.";
-        //     return;
-        // }
-        // echo $tpl->render( 'lg-galleries', array( 'galleries' => $galleries ));
+        $galleries = $this->db->get( 'galleries' );
+        if(!$galleries) {
+            echo "ERROR :- There appears to have been an error syncing the 'Media' tab's folders with the galleries.";
+            return;
+        }
+        echo $tpl->render( 'lg-galleries', array( 'galleries' => $galleries ));
 
-        // POC
-        // Get list of folders from FileBird plugin
-        $galleries = $this->db->get( '' );
-        // Display folders in similar list
     }
 
     /**
-     * Init Manage A Gallery subpage
+     * Support function to sync the Media folders into our plugins db table
      */
-    public function manage_gallery_init() {
-        $tpl = new LGTemplate( __DIR__ . '/templates/admin' );
+    private function syncGalleries($folders) {
+        foreach($folders as $folder) {
+            $params = array(
+                'title' => $folder->name,
+                'date_created' => current_time( 'mysql' ),
+                'toPublish' => 1
+            );
 
-        // Render side nav & doc iframe
-        echo $tpl->render( 'lg-manage' );
+            // Check if a folder already exists in the galleries database
+            $alreadyExists = false;
+            $galleries = $this->db->get( 'galleries' );
+            foreach($galleries as $gallery) {
+                if($gallery->title == $folder->name) {
+                    $alreadyExists = true;
+                    continue;
+                }
+            }
+
+            // remove galleries that no longer have a corresponding media folder
+            // if gallery exists but doesn't have matching media folder, remove it
+            
+            // insert new gallery from media folders if it's new
+            if($alreadyExists == false)
+                $result = $this->db->insert("galleries", $params);
+        }        
     }
     
 }

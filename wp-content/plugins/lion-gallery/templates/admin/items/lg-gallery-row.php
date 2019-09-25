@@ -3,9 +3,6 @@
 <tr id="<?php echo $id; ?>">
     <th scope="row"><?php echo $id; ?></th>
     <td class="gallery-name"><?php echo $title; ?></td>
-    <td class="gallery-image"><?php echo $gallery_image_url; ?></td>
-    <td class="image-count"><?php echo $image_count; ?></td>
-    <td class="gallery-desc"><?php echo $description; ?></td>
     <td class="publish-gallery">
         <div class="publish-value" data-id="<?php echo $toPublish; ?>" hidden><?php echo $toPublish; ?></div>
         <?php
