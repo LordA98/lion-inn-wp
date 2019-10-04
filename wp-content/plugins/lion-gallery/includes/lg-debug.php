@@ -17,5 +17,9 @@ function lg_log_me($message) {
  * Print to console in browser dev tools
  */
 function lg_console_log($toPrint) {
-    echo "<script>console.log('$toPrint');</script>";
+    if(is_array($toPrint)) {
+        echo "<script>console.log('" . json_encode($toPrint) . "');</script>";
+    } else {
+        echo "<script>console.log('" . $toPrint . "');</script>";
+    }
 }

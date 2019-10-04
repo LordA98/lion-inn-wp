@@ -131,6 +131,17 @@ class LionGallery {
      * Support function to sync the Media folders into our plugins db table
      */
     private function syncGalleries($folders) {
+        $this->addNewGalleries($folders);
+        $this->removeOldGalleries($folders);
+    }
+
+    /**
+     * Support function for syncGalleries
+     * Add new galleries if there are new folders in the media section
+     */
+    private function addNewGalleries($folders) {
+        $galleries = $this->db->get( 'galleries' );
+
         foreach($folders as $folder) {
             $params = array(
                 'title' => $folder->name,
@@ -140,21 +151,45 @@ class LionGallery {
 
             // Check if a folder already exists in the galleries database
             $alreadyExists = false;
-            $galleries = $this->db->get( 'galleries' );
             foreach($galleries as $gallery) {
                 if($gallery->title == $folder->name) {
                     $alreadyExists = true;
                     continue;
                 }
-            }
-
-            // remove galleries that no longer have a corresponding media folder
-            // if gallery exists but doesn't have matching media folder, remove it
+            }            
             
             // insert new gallery from media folders if it's new
             if($alreadyExists == false)
                 $result = $this->db->insert("galleries", $params);
-        }        
+        }
+    }
+
+    /**
+     * Support function for syncGalleries
+     * Remove old galleries if the corresponding folders have been deleted from the media section
+     */
+    private function removeOldGalleries($folders) {
+        $galleries = $this->db->get( 'galleries' );
+
+        foreach($galleries as $gallery) {
+            // check which galleries still have folders in media
+            $exists = false;
+            foreach($folders as $folder) {
+                // If we find a match, it exists
+                if($folder->name == $gallery->title) {
+                    $exists = true;
+                    break;
+                }
+            }
+
+            // if we didn't find a match, that means the folder has been deleted from the media tab
+            // so we remove it's corresponding gallery row
+            if($exists == false) {
+                $result = $this->db->delete("galleries", array(
+                    'title' => $gallery->title
+                ));
+            }
+        }
     }
     
 }
