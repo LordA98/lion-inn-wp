@@ -17,10 +17,20 @@ jQuery(function($) {
         $('#message').hide();
     });
 
+    /** 
+     * When toggle is clicked - set hidden var for post
+     */
+    function setPostVar($inputName, $caller) {
+        $parentListItemId = $($caller).closest("li").data("id");
+        $('input[name='+$inputName+']').val($parentListItemId);
+    }
+
     /**
      * Handle submit of any menu form using AJAX
      */
     $('.gallery-form').submit(function() {
+        setPostVar("edit-gallery", this);
+
         var form_data = $(this).serialize();
 
         var data = {

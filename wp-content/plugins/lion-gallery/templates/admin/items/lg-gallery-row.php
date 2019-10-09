@@ -7,16 +7,10 @@
         <div class="publish-value" data-id="<?php echo $toPublish; ?>" hidden><?php echo $toPublish; ?></div>
         <?php
             if($toPublish) {
-                echo $tpl->render( 'lg-icon', array( "classes" => "fas fa-check-circle toPublish mr-3", "tooltip" => "Published"));
+                echo $tpl->render( 'lg-toggle', array( "classes" => "fas fa-check-circle toPublish mr-3", "tooltip" => "Published", "colour" => "btn-success" ));
             } else {
-                echo $tpl->render( 'lg-icon', array( "classes" => "fas fa-times-circle mr-3", "tooltip" => "Not Published"));
+                echo $tpl->render( 'lg-toggle', array( "classes" => "fas fa-times-circle mr-3", "tooltip" => "Not Published", "colour" => "btn-danger" ));
             }
         ?>
-    </td>
-    <td>
-    <?php echo $tpl->render( 'lg-icon-link', array( "aClasses" => "edit-gallery", "modal" => "edit-gallery-modal", "tooltip" => "Edit", "iClasses" => "fa-edit mr-3", "w" => "500", "h" => "420" )); ?>
-    </td>
-    <td>
-    <?php echo $tpl->render( 'lg-icon-link', array( "aClasses" => "delete-gallery", "modal" => "delete-gallery-modal", "tooltip" => "Delete", "iClasses" => "fa-trash-alt", "w" => "275", "h" => "215" )); ?>
     </td>
 </tr>

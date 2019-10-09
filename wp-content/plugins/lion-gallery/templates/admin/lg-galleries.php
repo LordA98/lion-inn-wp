@@ -9,8 +9,6 @@ $tpl = new LGTemplate( __DIR__ . '/items' );
             <th scope="col">ID</th>
             <th scope="col">Gallery Name</th>
             <th scope="col">Published</th>
-            <th scope="col">Edit</th>
-            <th scope="col">Delete</th>
         </tr>
     </thead>
     <tbody>

@@ -71,7 +71,6 @@ class LionGallery {
         wp_enqueue_style('lg-style', plugins_url() . '/lion-gallery/assets/css/style.css');
 
         // Add Custom Javascript
-        wp_enqueue_script('lg-edit-gallery', plugins_url() . '/lion-gallery/assets/js/edit-gallery.js', array('jquery'));
         wp_enqueue_script('lg-ajax', plugins_url() . '/lion-gallery/assets/js/ajax.js', array('jquery'));
 
         // Add Bootstrap CSS & JS & PopperJS
@@ -106,7 +105,7 @@ class LionGallery {
         echo $tpl->render( 'lg-message' );
 
         // Print Header section of Admin Page
-        $data = array ('title' => 'Gallery', 'desc' => "Create and manage galleries from this page.  To create a new gallery, go to the 'Media' section and create a new folder.  Ensure it is 'Published' below, so that it appears on the site.");
+        $data = array ('title' => 'Gallery', 'desc' => "Create and manage galleries from this page.  To create or delete a gallery, go to the 'Media' section and create or delete a folder.  Ensure it is 'Published' below, so that it appears on the site.");
         echo $tpl->render( 'lg-header', $data );
 
         // Sync media folders to gallery database table

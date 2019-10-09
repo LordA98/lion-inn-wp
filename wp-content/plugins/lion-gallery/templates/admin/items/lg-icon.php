@@ -1,1 +1,0 @@
-<i class='<?php echo $classes; ?>' data-toggle='tooltip' title='<?php echo $tooltip; ?>'></i>
