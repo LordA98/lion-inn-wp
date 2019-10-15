@@ -21,7 +21,7 @@ jQuery(function($) {
      * When toggle is clicked - set hidden var for post
      */
     function setPostVar($inputName, $caller) {
-        $parentListItemId = $($caller).closest("li").data("id");
+        $parentListItemId = $($caller).closest("tr").attr("id");
         $('input[name='+$inputName+']').val($parentListItemId);
     }
 

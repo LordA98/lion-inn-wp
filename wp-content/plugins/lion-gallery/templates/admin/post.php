@@ -37,8 +37,10 @@ function handle_ajax_lg() {
     if($form_data) {
         // Edit Gallery
         if(array_key_exists("edit-gallery",$form_data)) {
-            $result = $db->update("gallery", array(
-                    'toPublish' => (array_key_exists("publish-gallery", $form_data))?(1):(0)
+            $toggle = $form_data["publish-gallery"] ? 0 : 1;
+
+            $result = $db->update("galleries", array(
+                    'toPublish' => $toggle
                 ), 
                 array('id' => $form_data["edit-gallery"])
             );
