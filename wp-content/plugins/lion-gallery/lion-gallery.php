@@ -190,7 +190,26 @@ class LionGallery {
             }
         }
     }
-    
+
+    /**
+     * Generate list Front-End 
+     */
+    public function render_galleries() {
+        $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
+
+        $galleries = $this->db->get( "gallery_images" );      
+                
+        if(!$galleries) {
+            echo "There are no galleries.";
+            return;
+        } else {
+            foreach($galleries as $gallery) {
+                // echo $tpl->render( 'gallery' , $gallery );
+                echo print_r($gallery) . "<br/><br/>";
+            }
+        }
+    }
+
 }
 
 /**

@@ -9,9 +9,21 @@ if (class_exists( 'LionEvents' )) {
 
 } else {
 
-    echo "<h3>Class doesn't exist (i.e. plugin not installed or something).</h3>";
+    echo "<h3>Sorry, there appears to be an error loading the events.</h3>";
     log_me("ERROR :- LionEvents Class does not exist.  Object cannot be created.");
     console_log("LionEvents class tried to create but failed - class doesn't exist.");
+
+}
+
+if (class_exists( 'LionGallery' )) {
+
+    $lionGallery = new LionGallery();
+
+} else {
+
+    echo "<h3>Sorry, there appears to be an error loading the gallery.</h3>";
+    log_me("ERROR :- LionGallery Class does not exist.  Object cannot be created.");
+    console_log("LionGallery class tried to create but failed - class doesn't exist.");
 
 }
 ?>
@@ -485,6 +497,40 @@ if (class_exists( 'LionEvents' )) {
                             echo "<h3>Error loading upcoming events.</h3>";
                             log_me("ERROR :- LionEvents upcoming events could not be loaded.");
                             console_log("Error loading events.");
+
+                        }
+
+                    ?>
+
+                </div>
+            </div>
+
+        </div> <!-- Container -->
+
+    </div> <!-- Container Fluid -->
+
+    <!-- Container fluid used just so that I can have full width background -->
+    <div class="container-fluid pb-4">
+        <div class="container">
+
+            <div id="events" class="events mt-5 pt-5">
+                <div class="title text-center">
+                    <h1 class="great-vibes section-heading">Gallery</h1>
+                </div>
+                
+                <div class="row">
+
+                    <?php
+
+                        if(method_exists($lionGallery, 'render_galleries')) {
+
+                            $lionGallery->render_galleries();
+
+                        } else {
+
+                            echo "<h3>Error loading galleries.</h3>";
+                            log_me("ERROR :- LionGallery upcoming events could not be loaded.");
+                            console_log("Error loading galleries.");
 
                         }
 
