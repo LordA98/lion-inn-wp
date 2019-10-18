@@ -31,6 +31,8 @@
             </div>
             <span class="level-2">
                 <?php echo $nav->render('ld-nav-link', array('filename' => plugins_url() . '/lion-docs/docs/pdf/general/the-text-editor.pdf', 'title' => 'The Text Editor')); ?>
+                <?php echo $nav->render('ld-nav-link', array('filename' => plugins_url() . '/lion-docs/docs/pdf/general/password-change.pdf', 'title' => 'Password Change / Password Reset')); ?>
+                <?php echo $nav->render('ld-nav-link', array('filename' => plugins_url() . '/lion-docs/docs/pdf/general/upload-images.pdf', 'title' => 'Upload Images')); ?>
             </span>
         </div>
     </div>

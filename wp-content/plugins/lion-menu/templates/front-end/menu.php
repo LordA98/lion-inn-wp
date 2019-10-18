@@ -1,4 +1,8 @@
-<?php $tpl = new LMTemplate( __DIR__ ); ?>
+<?php 
+    $tpl = new LMTemplate( __DIR__ ); 
+
+    $name = str_replace('\\', '', $name);
+?>
 
 <div class="tab-pane fade <?php if($isFirst) { echo "show active"; } ?>" id="<?php echo strtolower($name); ?>" role="tabpanel" aria-labelledby="<?php echo strtolower($name); ?>-tab">
     

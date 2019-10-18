@@ -2,6 +2,7 @@
     $tpl = new LETemplate( __DIR__ ); 
     
     $title = str_replace('\\', '', $title);
+    
     $description = str_replace('\\', '', $description);
 ?>
 
@@ -33,9 +34,7 @@
             <!-- Event Description -->
             <!-- $description gets printed in <p> tags as they are included in the DB string -->
             <div class="row description">
-                <span class="my-1 mt-lg-0 desc">
-                    <?php echo $description; ?>
-                </span>
+                <?php echo $description; ?>
             </div>
         </div>
     </div>

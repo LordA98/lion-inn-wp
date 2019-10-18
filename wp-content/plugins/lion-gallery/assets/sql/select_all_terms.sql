@@ -1,0 +1,1 @@
+SELECT * FROM hjb01_terms;

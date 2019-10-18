@@ -69,7 +69,7 @@
 
                     <!-- Description -->
                     <hr class="text-left bg-light my-1 my-lg-2 hr-desc"/>
-                    <span class="my-1 mt-lg-0 desc"><?php echo $description; ?></span>
+                    <span class="my-1 mt-lg-0 desc fs-10"><?php echo $description; ?></span>
                 </div>
 
                 <!-- Icons -->

@@ -7,6 +7,9 @@
     $itemClasses = "";
     $purpleBg = "";
     $subHeading = "";
+
+    $name = str_replace('\\', '', $name);
+    $description = str_replace('\\', '', $description);
     
     /**
      * Left (0) side menu items need different classes

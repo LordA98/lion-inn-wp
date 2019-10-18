@@ -16,6 +16,7 @@ if(!defined('ABSPATH')) exit;
 
 require_once(plugin_dir_path(__FILE__).'/includes/lm-template.class.php');
 require_once(plugin_dir_path(__FILE__).'/includes/lm-sql-manager.class.php');
+require_once(plugin_dir_path(__FILE__).'templates/admin/post.php');
 
 /**
  * Plugin Class
@@ -35,14 +36,13 @@ class LionMenu {
 
         // Setup Admin Pages
         add_action('admin_menu', array( $this, 'admin_menu_pages' ) );
-        add_action('admin_head', array( $this, 'set_icon' ));
     }
 
     /**
      * Register Assets
      */
     public function register() {
-        add_action('admin_enqueue_scripts', array($this, 'enqueue'));  
+        add_action('admin_enqueue_scripts', array($this, 'enqueue'));
     }
 
     /**
@@ -82,6 +82,11 @@ class LionMenu {
         // Add Custom Javascript
         wp_enqueue_script('lm-edit-menu', plugins_url() . '/lion-menu/assets/js/edit-menu.js', array('jquery'));
         wp_enqueue_script('lm-lists', plugins_url() . '/lion-menu/assets/js/custom-lists.js', array('jquery'));
+        wp_enqueue_script('lm-ajax', plugins_url() . '/lion-menu/assets/js/ajax.js', array('jquery'));
+
+        // Add getUrlParam plugin code
+        //https://github.com/repalogic/jquery.geturlparam && https://mathias-bank.de/2007/04/21/jquery-plugin-geturlparam-version-2/
+        wp_enqueue_script('get-url-param', plugins_url() . '/lion-menu/assets/js/getUrlParam.js', array('jquery'));
 
         // Add Bootstrap CSS & JS & PopperJS
         wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('jquery'));
@@ -100,29 +105,6 @@ class LionMenu {
         add_menu_page( 'Menu Page', 'Menu', 'manage_options', 'lm-menu-page', array( $this, 'menu_init' ), ' ' );
         add_submenu_page( 'lm-menu-page', 'Menu Edit Subpage', 'Edit Menu', 'manage_options', 'lm-menu-edit-subpage', array( $this, 'edit_menu_init' ) );
     }
-
-    /**
-     * Set Icon to FontAwesome cutlery icon
-     * Change to blue version when hovered
-     */
-    public function set_icon() {
-        echo 
-        "<style type='text/css' media='screen'>
-            #adminmenu .toplevel_page_lm-menu-page div.wp-menu-image {
-                background-image: url(" . plugins_url() . '/lion-menu/assets/images/menu-icon.png' . ");
-                background-size: 16px;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-
-            #adminmenu #toplevel_page_lm-menu-page:hover div.wp-menu-image {
-                background-image: url(" . plugins_url() . '/lion-menu/assets/images/menu-icon-hover.png' . ");
-                background-size: 16px;
-                background-repeat: no-repeat;
-                background-position: center;
-            }
-     	</style>";
-    }
     
     /**
      * Initialise Admin Page with Menu-related content
@@ -131,12 +113,12 @@ class LionMenu {
         
         $tpl = new LMTemplate( __DIR__ . '/templates/admin' );
 
-        // Render POST & GET request handlers
-        echo $tpl->render( 'post' );
-
         // Add Modal Support & Render Modals
         add_thickbox();
         echo $tpl->render( 'lm-modals' );
+
+        // message response
+        echo $tpl->render( 'lm-message' );
 
         // Print Header section of Admin Page
         $data = array ('title' => 'Menu', 'desc' => "Create and manage menu's from this page. Click 'Add Menu' below to create a new menu. Select a menu from the list below to edit a menu.");
@@ -165,12 +147,12 @@ class LionMenu {
         $tpl = new LMTemplate( __DIR__ . '/templates/admin' );
         $icon_tpl = new LMTemplate( __DIR__ . '/templates/admin/items' );
 
-        // Render POST request handlers
-        echo $tpl->render( 'post' );
-
         // Add Modal Support & Render Modals
         add_thickbox();
         echo $tpl->render( 'lm-modals' );
+
+        // message response
+        echo $tpl->render( 'lm-message' );
 
         // Render Title and Desc
         $data = array ('title' => 'Edit Menu', 'desc' => "Edit Menu Here.  Use the 'Change Menu' dropdown below to select a new menu.");
@@ -208,6 +190,7 @@ class LionMenu {
 
     /**
      * Render Menu(s)
+     * Front-End
      */
     public function render_menu() {
         $tpl = new LMTemplate( __DIR__ . '/templates/front-end' );
@@ -219,11 +202,12 @@ class LionMenu {
 
     /**
      * Render Menu Nav
+     * Front-End
      */
     public function render_menu_nav() {
         $tpl = new LMTemplate( __DIR__ . '/templates/front-end' );
 
-        $nav = $this->db->get( "menu" , array ( "toPublish" => 1 ) );      
+        $nav = $this->db->get( "menu" , array ( "toPublish" => 1 ) );
                 
         echo $tpl->render( 'list' , array( "listOf" => $nav, "type" => "NAV", "classes" => " " ));
     }

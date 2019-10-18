@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-4 order-lg-2 col-lg-1">
                     <i class="fas fa-envelope mt-2"></i>
-                    <p class="mb-0 mt-1 overflow">debs@globalnet.com</p>
+                    <p class="mb-0 mt-1 overflow">debs@globalnet.co.uk</p>
                 </div>
                 <div class="col-4 order-lg-3 col-lg-1">
                     <i class="fas fa-map-marker-alt mt-2"></i>

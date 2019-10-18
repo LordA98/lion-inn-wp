@@ -24,8 +24,6 @@ include_once __DIR__ . '/wp-config.common.php';
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('REVISR_GIT_PATH', ''); // Added by Revisr
-define('REVISR_WORK_TREE', 'C:\Bitnami\wampstack-7.1.23-0\apache2\htdocs\wordpress/'); // Added by Revisr
 define('DB_NAME', 'lioninn');
 
 /** MySQL database username */

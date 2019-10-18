@@ -9,13 +9,26 @@ if (class_exists( 'LionEvents' )) {
 
 } else {
 
-    echo "<h3>Class doesn't exist (i.e. plugin not installed or something).</h3>";
+    echo "<h3>Sorry, there appears to be an error loading the events.</h3>";
     log_me("ERROR :- LionEvents Class does not exist.  Object cannot be created.");
     console_log("LionEvents class tried to create but failed - class doesn't exist.");
 
 }
+
+if (class_exists( 'LionGallery' )) {
+
+    $lionGallery = new LionGallery();
+
+} else {
+
+    echo "<h3>Sorry, there appears to be an error loading the gallery.</h3>";
+    log_me("ERROR :- LionGallery Class does not exist.  Object cannot be created.");
+    console_log("LionGallery class tried to create but failed - class doesn't exist.");
+
+}
 ?>
 
+<!-- Built in WordPress function to get 'header.php' -->
 <?php get_header(); ?>
 
 <body class="montserrat" data-spy="scroll" data-target="#navbar-main">
@@ -42,7 +55,7 @@ if (class_exists( 'LionEvents' )) {
                 <div class="collapse navbar-collapse col-xl-6 p-0" id="navbarSupportedContent">
                     <ul class="navbar-nav row justify-content-center">
                         <li class="nav-item mr-xl-5 collapse-purple">
-                            <a class="nav-link disabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#about-us">
+                            <a class="nav-link enabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#about-us">
                                 <span class="my-auto">About Us</span>
                             </a>
                         </li>
@@ -52,7 +65,7 @@ if (class_exists( 'LionEvents' )) {
                             </a>
                         </li>
                         <li class="nav-item mr-xl-5 collapse-purple">
-                            <a class="nav-link disabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#accommodation">
+                            <a class="nav-link enabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#accommodation">
                                 <span class="my-auto">Accommodation</span>
                             </a>
                         </li>
@@ -78,7 +91,7 @@ if (class_exists( 'LionEvents' )) {
                                 </div>
                                 <div class="col-4 order-xl-2 col-xl-1">
                                     <i class="fas fa-envelope mt-2"></i>
-                                    <p class="mb-0 mt-1">debs@globalnet.com</p>
+                                    <p class="mb-0 mt-1">debs@globalnet.co.uk</p>
                                 </div>
                                 <div class="col-4 order-xl-3 col-xl-1">
                                     <i class="fas fa-map-marker-alt mt-2"></i>
@@ -161,11 +174,65 @@ if (class_exists( 'LionEvents' )) {
 
     </div> <!-- Container -->
 
+    <!-- About Us -->
+    <div class="container">
+
+        <div id="about-us" class="about-us mt-5">
+
+            <div class="row">
+
+                <!-- Text -->
+                <div id="left-content" class="col-lg-6 col-xl-5 offset-xl-1 text-center pt-4 bg-white">
+
+                    <div class="title">
+                        <h1 class="great-vibes section-heading">About Us</h1>
+                    </div>
+
+                    <div class="pt-3 px-4">
+                        <p>
+                            Situated in Monmouthshire, in the heart of the picturesque Wye Valley, South Wales.  
+                            The Lion Inn is a well established and extremely popular public house.
+                        </p>
+                        <p>
+                            Built in the late 16th Century, actually completed in 1580, The Lion Inn was originally a coaching inn, brew house and pig farm.
+                            Many of the original features of the brewing cellar still remain, as do a number of outhouses that were used as pig sty's.
+                        </p>
+                        <p>
+                            The Lion Inn is the only traditional inn in the ancient village of Trellech.  It consists
+                            of two rooms, both with open fires and exposed wooden beams.  One room is used as a traditional
+                            village bar, the other as a restaurant area.
+                        </p>
+                        <p>
+                            The pub stocks a fine range of real ales and ciders, as well as the traditional range of keg Lager,
+                            Bitters, Ciders, Guiness and Spirits including a large range of whiskies, Gins and Rums.
+                        </p>
+                        <p>
+                            The whole emphasis of the pub is towards the traditional - Traditional Beers, Real Ciders, Quality
+                            Home Made Food and a Friendly atmosphere.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div id="right-content" class="col-lg-6 col-xl-5 p-4 bg-white text-center text-lg-left">
+                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/pub_original.jpg" alt="Image of The Lion Inn" class="mt-lg-5 ml-xl-4 mt-xl-0 about-us-image" />
+                </div>
+                
+            </div>
+            
+        </div>
+
+    </div> <!-- Container -->
+
+    <!-- Background image for FOOD section -->
+    <div class="food-bg-image"></div>
+
+    <!-- Food -->
     <div class="container">
 
         <div id="food" class="food my-5">
 
-            <div class="title text-center">
+            <div class="title text-center col-12">
                 <h1 class="great-vibes section-heading">Food</h1>
             </div>
 
@@ -198,7 +265,7 @@ if (class_exists( 'LionEvents' )) {
                     <h2 class="great-vibes minor-heading">Times</h2>
                     <i class="far fa-clock"></i>
                     <div class="opening-times">
-                        <h4 class="mt-3">Opening Times</h4>
+                        <h4 class="mt-3 times-heading">Opening Times</h4>
                         <hr class="bg-light mx-auto mt-0"/>
                         <p>
                             Monday - Wednesday <br/>
@@ -210,7 +277,7 @@ if (class_exists( 'LionEvents' )) {
                         </p>
                     </div>
                     <div class="dining-times">
-                        <h4 class="mt-3">Dining Times</h4>
+                        <h4 class="mt-3 times-heading">Dining Times</h4>
                         <hr class="bg-light mx-auto mt-0"/>
                         <p>
                             Monday - Saturday <br/>
@@ -221,12 +288,12 @@ if (class_exists( 'LionEvents' )) {
                     </div>
                 </div>
 
-                <div class="reservation col-lg-8 text-center pt-4">
+                <div class="reservation col-lg-8 text-center pt-4 bg-white">
                     <h2 class="great-vibes minor-heading">Reservation</h2>
                     <i class="fas fa-book-open"></i>
                     <h4 class="mt-3">Please call us on the number below.</h4>
                     <p class="mt-5">
-                        Please mention any special dietary requirements </br>
+                        Please mention any special dietary requirements <br/>
                         (vegetarian, gluten free, peanut allergy).
                     </p>
                     <p>
@@ -245,22 +312,107 @@ if (class_exists( 'LionEvents' )) {
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- <div id="accommodation" class="accommodation">
-            <div class="cottage">
-
-            </div>
-
-            <div class="cards">
-
-            </div>
-
-            <div class="phone-number">
-
-            </div>
-        </div> -->
+        </div>        
     </div> <!-- Container -->
+
+    <div class="container">
+        <div id="accommodation" class="accommodation">
+            <div class="title text-center">
+                <h1 class="great-vibes section-heading">Accommodation</h1>
+            </div>
+
+            <div class="cottage row">
+                <div class="col-12 col-xl-6 text-center mt-xl-5">
+                    <h2 class="great-vibes minor-heading">Cottage</h2>
+                    <div class="px-md-5">
+                        <p>The Lion Inn Cottage was originally an Elizabethan stone pig cot.</p>
+                        <p>
+                            The cottage has been tastefully decorated in a traditional country style and can sleep a family of four.
+                            The open plan room is enhanced by skylights and contains a double bed and double sofa bed.
+                        </p>
+                        <p>
+                            The luxurious marble tiled bathroom contains a spacious shower unit.
+                            The fully equipped compact kitchen has been made to measure and boasts a traditional Belfast sink, double hob,
+                            microwave and refigerator.  Central heating (supplied by new slim-line storage heaters) and a carpeted floor
+                            ensure the cottage is cosy all year around.
+                        </p>
+                        <p>
+                            To the front of the cottage a walled patio ensures privacy
+                            and is a sun trap during warmer weather.  A welcome pack is available and packed lunches can be provided at a 
+                            small cost, if requested.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-12 col-xl-6 p-4">
+                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/cottage.webp" alt="Image of Bed" class="cottage-img">
+                </div>
+            </div>
+
+            <div class="cards text-center mt-4 row">
+                <div class="col-xl-4 mb-3 mb-xl-0">
+                    <div class="card h-100">
+                        <div class="great-vibes card-header">B&B</div>
+                        <div class="card-body px-5">
+                            <p class="card-text">
+                                Low Season £70 per night. <br/>
+                                High Season £80 per night. <br/>
+                                Prices assume 2 people sharing.
+                            </p>
+                            <p class="card-text">
+                                All year £58 per night 1 person.
+                            </p>
+                            <p class="card-text">
+                                Well behaved dogs welcome £2.50 per dog per day.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 mb-3 mb-xl-0">
+                    <div class="card h-100">
+                        <div class="great-vibes card-header">Self-Catering</div>
+                        <div class="card-body px-5">
+                            <p class="card-text">
+                                Low Season £50 per night. <br/>
+                                High Season £60 per night.  <br/>
+                            </p>
+                            <p class="card-text">
+                                Self Catering Tariff we provide bedding only, you <br/>
+                                provide towels, food, etc. <br/>
+                                Packed lunches can be provided.  <br/>
+                                £9.00 each includes sandwiches, soft drink, fruit, chocolate & crisps.  <br/>
+                                Towels can be hired at £5.00 each.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 mb-3 mb-xl-0">
+                    <div class="card h-100">
+                        <div class="great-vibes card-header">Season Dates</div>
+                        <div class="card-body px-5">
+                            <p class="card-text">
+                                High Season <br/>
+                                May - September <br/>
+                                Decemeber 22nd - January 5th inclusive
+                            </p>
+                            <p class="card-text">
+                                Low Season <br/>
+                                October - April
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="phone-number text-center mt-5">
+                <div class="book-now mt-4 mb-lg-0 mb-3">
+                    <h4 class="great-vibes mb-0">Book Now</h4>
+                    <button type="button" class="btn btn-lg mt-4 py-1 px-3">
+                        <span>01600 860322</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Container fluid used just so that I can have full width background -->
     <div class="container-fluid bg-light pb-4">
@@ -357,6 +509,41 @@ if (class_exists( 'LionEvents' )) {
 
     </div> <!-- Container Fluid -->
 
+    <!-- Container fluid used just so that I can have full width background -->
+    <div class="container-fluid pb-4">
+        <div class="container">
+
+            <div id="events" class="events mt-5 pt-5">
+                <div class="title text-center">
+                    <h1 class="great-vibes section-heading">Gallery</h1>
+                </div>
+                
+                <div class="row">
+
+                    <?php
+
+                        if(method_exists($lionGallery, 'render_galleries')) {
+
+                            $lionGallery->render_galleries();
+
+                        } else {
+
+                            echo "<h3>Error loading galleries.</h3>";
+                            log_me("ERROR :- LionGallery upcoming events could not be loaded.");
+                            console_log("Error loading galleries.");
+
+                        }
+
+                    ?>
+
+                </div>
+            </div>
+
+        </div> <!-- Container -->
+
+    </div> <!-- Container Fluid -->
+
+    <!-- Built in WordPress function to get 'footer.php' -->
     <?php get_footer(); ?>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

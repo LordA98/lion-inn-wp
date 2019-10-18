@@ -1,4 +1,8 @@
-<?php $tpl = new LMTemplate( __DIR__ ); ?>
+<?php 
+    $tpl = new LMTemplate( __DIR__ );
+
+    $name = str_replace('\\', '', $name);    
+?>
 
 <div class="mt-5">
 

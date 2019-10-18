@@ -3,7 +3,7 @@
 <!-- Add Menu Modal -->
 <div id="add-menu-modal" style="display:none;">
 
-    <form action="#" method="post">
+    <form action="#" method="post" class="menu-form">
         <h3 class="mb-4">Add Menu</h3>
         <input type="hidden" name="add-menu" /> 
         <?php echo $tpl->render( 'lm-text-input', array( "id" => "menu-name-input", "name" => "menu-name", "label" => "Menu Name", "placeholder" => "Enter Name" )); ?>
@@ -16,7 +16,7 @@
 <!-- Edit Menu Modal -->
 <div id="edit-menu-modal" style="display:none;">
     
-    <form action="#" method="post">
+    <form action="#" method="post" class="menu-form">
         <h3 class="mb-4">Edit Menu</h3>
         <input type="hidden" name="edit-menu" />
         <?php echo $tpl->render( 'lm-text-input', array( "id" => "menu-name-input", "name" => "menu-name", "label" => "Menu Name", "placeholder" => "Enter Name" )); ?>
@@ -27,12 +27,12 @@
 </div>
 
 <!-- Delete Menu Modal -->
-<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-menu-modal", "name" => "delete-menu" )); ?>
+<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-menu-modal", "name" => "delete-menu", "to_delete" => "menu-name" )); ?>
 
 <!-- Add Section Modal -->
 <div id="add-section-modal" style="display:none;">
 
-    <form action="#" method="post">
+    <form action="#" method="post" class="menu-form">
         <h3 class="mb-4">Add Section</h3>
         <input type="hidden" name="add-section" /> 
         <?php echo $tpl->render( 'lm-text-input', array( "id" => "section-name-input", "name" => "section-name", "label" => "Section Name", "placeholder" => "Enter Name" )); ?>
@@ -47,7 +47,7 @@
 <!-- Edit Section Modal -->
 <div id="edit-section-modal" style="display:none;">
 
-    <form action="#" method="post">
+    <form action="#" method="post" class="menu-form">
         <h3 class="mb-4">Edit Section</h3>
         <input type="hidden" name="edit-section" />
         <?php echo $tpl->render( 'lm-text-input', array( "id" => "section-name-input", "name" => "section-name", "label" => "Section Name", "placeholder" => "Enter Name" )); ?>
@@ -60,13 +60,13 @@
 </div>
 
 <!-- Delete Section Modal -->
-<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-section-modal", "name" => "delete-section" )); ?>
+<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-section-modal", "name" => "delete-section", "to_delete" => "section-name" )); ?>
 
 
 <!-- Add Item Modal -->
 <div id="add-item-modal" style="display:none;">
 
-    <form action="#" method="post" class="p-3">
+    <form action="#" method="post" class="menu-form p-3">
         <h3>Add Item</h3>
         <input type="hidden" name="add-item" /> <br/>
         <?php echo $tpl->render( 'lm-text-input', array( "id" => "item-name-input", "name" => "item-name", "label" => "Item Name", "optClasses" => "hideIfNote", "placeholder" => "Enter Name" )); ?>
@@ -85,7 +85,7 @@
 <!-- Edit Item Modal -->
 <div id="edit-item-modal" style="display:none;">
 
-    <form action="#" method="post" class="p-3">
+    <form action="" method="post" class="menu-form p-3">
         <h3>Edit Item</h3>
         <input type="hidden" name="edit-item" /> <br/>
         <?php echo $tpl->render( 'lm-text-input', array( "id" => "item-name-input", "name" => "item-name", "label" => "Item Name", "optClasses" => "hideIfNote", "placeholder" => "Enter Name" )); ?>
@@ -102,12 +102,12 @@
 </div>
 
 <!-- Delete Item Modal -->
-<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-item-modal", "name" => "delete-item" )); ?>
+<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-item-modal", "name" => "delete-item", "to_delete" => "item-name" )); ?>
 
 <!-- Add Subitem Modal -->
 <div id="add-subitem-modal" style="display:none;">
 
-    <form action="#" method="post" class="p-3">
+    <form action="#" method="post" class="menu-form p-3">
         <h3>Add Subitem</h3>
         <input type="hidden" name="add-subitem" /> <br/>
         <?php echo $tpl->render( 'lm-text-input', array( "id" => "subitem-name-input", "name" => "subitem-name", "label" => "Subitem Name", "placeholder" => "Enter Name" )); ?>
@@ -121,7 +121,7 @@
 <!-- Edit Subitem Modal -->
 <div id="edit-subitem-modal" style="display:none;">
 
-    <form action="#" method="post" class="p-3">
+    <form action="#" method="post" class="menu-form p-3">
         <h3>Edit Subitem</h3>
         <input type="hidden" name="edit-subitem" /> <br/>
         <?php echo $tpl->render( 'lm-text-input', array( "id" => "subitem-name-input", "name" => "subitem-name", "label" => "Subitem Name", "placeholder" => "Enter Name" )); ?>
@@ -133,4 +133,4 @@
 </div>
 
 <!-- Delete Subitem Modal -->
-<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-subitem-modal", "name" => "delete-subitem" )); ?>
+<?php echo $tpl->render( 'lm-delete-modal', array( "id" => "delete-subitem-modal", "name" => "delete-subitem", "to_delete" => "subitem-name" )); ?>
