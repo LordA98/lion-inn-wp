@@ -77,16 +77,6 @@ class LionGallery {
         wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('jquery'));
         wp_enqueue_style('bs-css', plugins_url() . '/lion-gallery/assets/css/bootstrap.min.css');
         wp_enqueue_script('bs-js', plugins_url() . '/lion-gallery/assets/js/bootstrap.min.js');
-
-        // Custom script that will interact with wp.media
-        wp_enqueue_media();
-        wp_enqueue_script( 'lg-media-manager', plugins_url( '/assets/js/media-manager.js' , __FILE__ ), array('jquery'), '0.1' );
-
-        // Photoswipe
-        wp_enqueue_style('ps-css', plugins_url() . '/lion-gallery/assets/css/photoswipe/photoswipe.css');
-        wp_enqueue_style('ps-default', plugins_url() . '/lion-gallery/assets/css/photoswipe/default-skin/default-skin.css');
-        wp_enqueue_script('ps-core-js', plugins_url() . '/lion-gallery/assets/js/photoswipe/photoswipe.min.js');
-        wp_enqueue_script('ps-ui-js', plugins_url() . '/lion-gallery/assets/js/photoswipe/photoswipe-ui-default.min.js');
     }
     
     /**

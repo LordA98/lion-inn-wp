@@ -1,5 +1,7 @@
 jQuery(function($) {
 
+    console.log('Helo');
+
     /**
      * Set notification message
      */

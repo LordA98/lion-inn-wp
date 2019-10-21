@@ -16,6 +16,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+    <!-- Photoswipe -->
+    <link href="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/photoswipe.css" rel="stylesheet">
+    <link href="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/default-skin/default-skin.css" rel="stylesheet">
 
     <?php wp_head(); ?>
 

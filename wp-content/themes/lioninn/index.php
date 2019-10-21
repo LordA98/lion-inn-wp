@@ -526,7 +526,7 @@ if (class_exists( 'LionGallery' )) {
 
                             $lionGallery->render_ps();
 
-                            $lionGallery->render_galleries();
+                            // $lionGallery->render_galleries();
 
                         } else {
 
@@ -554,5 +554,9 @@ if (class_exists( 'LionGallery' )) {
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Custom JS -->
     <script src="<?php echo get_bloginfo('template_directory'); ?>/script.js"></script>
+    <!-- Photoswipe -->
+    <script src="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/gallery.js"></script>
+    <script src="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/photoswipe.min.js"></script>
+    <script src="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/photoswipe-ui-default.min.js"></script>
 </body>
 </html>

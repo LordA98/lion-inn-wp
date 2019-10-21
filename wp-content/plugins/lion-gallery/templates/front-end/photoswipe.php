@@ -1,28 +1,28 @@
-// <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
-    // <!-- Background of PhotoSwipe. 
-    //      It's a separate element as animating opacity is faster than rgba(). -->
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba. -->
     <div class="pswp__bg"></div>
 
-    // <!-- Slides wrapper with overflow:hidden. -->
+    <!-- Slides wrapper with overflow:hidden. -->
     <div class="pswp__scroll-wrap">
 
-        // <!-- Container that holds slides. 
-        //     PhotoSwipe keeps only 3 of them in the DOM to save memory.
-        //     Don't modify these 3 pswp__item elements, data is added later on. -->
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
         <div class="pswp__container">
             <div class="pswp__item"></div>
             <div class="pswp__item"></div>
             <div class="pswp__item"></div>
         </div>
 
-        // <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <!-- Default PhotoSwipeUI_Default interface on top of sliding area. Can be changed. -->
         <div class="pswp__ui pswp__ui--hidden">
 
             <div class="pswp__top-bar">
 
-                // <!--  Controls are self-explanatory. Order can be changed. -->
+                <!--  Controls are self-explanatory. Order can be changed. -->
 
                 <div class="pswp__counter"></div>
 
@@ -34,8 +34,8 @@
 
                 <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
 
-                // <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
-                // <!-- element will get class pswp__preloader--active when preloader is running -->
+                <!-- Preloader demo https://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
                 <div class="pswp__preloader">
                     <div class="pswp__preloader__icn">
                       <div class="pswp__preloader__cut">
@@ -64,34 +64,3 @@
     </div>
 
 </div>
-
-<script>
-
-    var pswpElement = document.querySelectorAll('.pswp')[0];
-
-    // build items array
-    var items = [
-        {
-            src: 'https://placekitten.com/600/400',
-            w: 600,
-            h: 400
-        },
-        {
-            src: 'https://placekitten.com/1200/900',
-            w: 1200,
-            h: 900
-        }
-    ];
-
-    // define options (if needed)
-    var options = {
-        // optionName: 'option value'
-        // for example:
-        index: 0 // start at first slide
-    };
-
-    // Initializes and opens PhotoSwipe
-    var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
-    gallery.init();
-
-</script>
