@@ -193,17 +193,33 @@ class LionGallery {
     public function render_galleries() {
         $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
 
-        $galleries = $this->db->get( "gallery_images" );      
-                
-        if(!$galleries) {
-            echo "There are no galleries.";
+        $images = $this->db->get( "gallery_images" );
+
+        if(!$images) {
+            echo "There are no images.";
             return;
-        } else {
-            foreach($galleries as $gallery) {
-                // echo $tpl->render( 'gallery' , $gallery );
-                echo print_r($gallery) . "<br/><br/>";
-            }
         }
+
+        // Get individual folders
+        $galleries = array_count_values(
+            array_column($images, 'name')
+        );
+
+        // Set each folders value to empty array
+        array_walk($galleries, function(&$value) { $value = []; });
+
+        // Assign each image name to it's corresponding folder
+        array_walk($images, function($img) use (&$galleries) {
+            // get image extension
+            $extension = explode("/", $img->post_mime_type);
+            array_push($galleries[$img->name], $img->post_title . "." . $extension[1]);
+        });
+
+        echo print_r($galleries) . "<br/><br/>";
+
+        // TODO: iterate galleries and print a thumbnail template for each with the desired look from docs
+
+        // TODO: possibly assign galleries to post var or form var or something so that the photoswipe JS can pick it up and put it into an array for gallery?
     }
 
     /**

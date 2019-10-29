@@ -1,3 +1,11 @@
+<button type="button" class="btn gallery-1">
+    Gallery 1
+</button>
+
+<button type="button" class="btn gallery-2 ml-3">
+    Gallery 2
+</button>
+
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 

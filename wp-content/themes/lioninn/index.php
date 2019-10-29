@@ -524,9 +524,9 @@ if (class_exists( 'LionGallery' )) {
 
                         if(method_exists($lionGallery, 'render_galleries')) {
 
-                            $lionGallery->render_ps();
+                            // $lionGallery->render_ps();
 
-                            // $lionGallery->render_galleries();
+                            $lionGallery->render_galleries();
 
                         } else {
 
