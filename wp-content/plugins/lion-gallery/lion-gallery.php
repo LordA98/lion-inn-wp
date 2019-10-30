@@ -197,7 +197,12 @@ class LionGallery {
     public function render_galleries() {
         $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
 
-        $galleries = $this->db->get( "gallery_images" );      
+        $galleries = $this->db->get( "gallery_images" );  
+        // TODO: create array of folder/gallery : [images] from list of images above ^
+        // loop - get all folder names and create array index of it w/ empty images array
+        // loop again - back through same galleries array and assign each photo to it's corresponing folder
+        
+        // OR could be done in one array?  if not too complicated
                 
         if(!$galleries) {
             echo "There are no galleries.";
