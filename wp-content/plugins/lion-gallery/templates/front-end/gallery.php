@@ -1,3 +1,5 @@
 <?php
 
-echo $title . "<br/>";
+echo $post_title . " from ";
+
+echo $name . "<br/>";
