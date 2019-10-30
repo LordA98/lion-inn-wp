@@ -77,10 +77,6 @@ class LionGallery {
         wp_enqueue_script('popper', 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', array('jquery'));
         wp_enqueue_style('bs-css', plugins_url() . '/lion-gallery/assets/css/bootstrap.min.css');
         wp_enqueue_script('bs-js', plugins_url() . '/lion-gallery/assets/js/bootstrap.min.js');
-
-        // Custom script that will interact with wp.media
-        wp_enqueue_media();
-        wp_enqueue_script( 'lg-media-manager', plugins_url( '/assets/js/media-manager.js' , __FILE__ ), array('jquery'), '0.1' );
     }
     
     /**
@@ -197,22 +193,42 @@ class LionGallery {
     public function render_galleries() {
         $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
 
-        $galleries = $this->db->get( "gallery_images" );  
-        // TODO: create array of folder/gallery : [images] from list of images above ^
-        // loop - get all folder names and create array index of it w/ empty images array
-        // loop again - back through same galleries array and assign each photo to it's corresponing folder
-        
-        // OR could be done in one array?  if not too complicated
-                
-        if(!$galleries) {
-            echo "There are no galleries.";
+        $images = $this->db->get( "gallery_images" );
+
+        if(!$images) {
+            echo "There are no images.";
             return;
-        } else {
-            foreach($galleries as $gallery) {
-                // echo $tpl->render( 'gallery' , $gallery );
-                echo print_r($gallery) . "<br/><br/>";
-            }
         }
+
+        // Get individual folders
+        $galleries = array_count_values(
+            array_column($images, 'name')
+        );
+
+        // Set each folders value to empty array
+        array_walk($galleries, function(&$value) { $value = []; });
+
+        // Assign each image name to it's corresponding folder
+        array_walk($images, function($img) use (&$galleries) {
+            // get image extension
+            $extension = explode("/", $img->post_mime_type);
+            array_push($galleries[$img->name], $img->post_title . "." . $extension[1]);
+        });
+
+        echo print_r($galleries) . "<br/><br/>";
+
+        // TODO: iterate galleries and print a thumbnail template for each with the desired look from docs
+
+        // TODO: possibly assign galleries to post var or form var or something so that the photoswipe JS can pick it up and put it into an array for gallery?
+    }
+
+    /**
+     * Generate Photoswipe
+     */
+    public function render_ps() {
+        $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
+
+        echo $tpl->render( 'photoswipe' );
     }
 
 }
