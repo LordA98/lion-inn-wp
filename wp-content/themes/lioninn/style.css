@@ -888,4 +888,12 @@ nav .mobile-footer {
 #accommodation .card {
   border: none;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2); }
+
+.gallery-arrow {
+    border-radius: 15px !important;
+}
+
+.gallery-arrow:hover {
+  background-color: #673ab7 !important;
+}
   

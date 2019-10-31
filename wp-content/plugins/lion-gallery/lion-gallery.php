@@ -212,12 +212,18 @@ class LionGallery {
         array_walk($images, function($img) use (&$galleries) {
             // get image extension
             $extension = explode("/", $img->post_mime_type);
+            if($extension[1] == 'jpeg') $extension[1] = "jpg";
             array_push($galleries[$img->name], $img->post_title . "." . $extension[1]);
         });
 
-        echo print_r($galleries) . "<br/><br/>";
+        // Remove all images except 1 to be used as thumbnail
+        $thumbnails = $galleries;
+        array_walk($thumbnails, function(&$gallery) {
+            $gallery = array_slice($gallery, -1);
+        });
 
         // TODO: iterate galleries and print a thumbnail template for each with the desired look from docs
+        echo $tpl->render( 'gallery' , array("thumbnails" => $thumbnails) );
 
         // TODO: possibly assign galleries to post var or form var or something so that the photoswipe JS can pick it up and put it into an array for gallery?
     }
