@@ -904,6 +904,10 @@ nav .mobile-footer {
   height: 225px;
 }
 
+.figure:hover {
+  cursor: pointer;
+}
+
 .gallery-thumbnail {
   object-fit: cover;
   width: 100%;
