@@ -5,7 +5,7 @@
 
   <!--Slides and lightbox-->
 
-	<div class="carousel-inner" role="listbox">
+	<div class="carousel-inner row justify-content-center mr-0" role="listbox">
 
 		<?php 
 
@@ -14,12 +14,12 @@
 			$slides[0] = [];
 			$counter = 0;
 			$index = 0;
-			foreach($thumbnails as $thumbnail) {
+			foreach($thumbnails as $gallery => $thumbnail) {
 				if($counter % 6 == 0 && $counter > 0) {
 					$index++;
 					$slides[$index] = [];
 				} 
-				array_push($slides[$index], $thumbnail[0]);
+				array_push($slides[$index], array("gallery" => $gallery, "thumbnail" => $thumbnail[0]));
 				$counter = $counter+1;
 			}
 
@@ -29,9 +29,9 @@
 
 				$active = ($i==0 ? "active" : "");
 				
-				echo "<div class='carousel-item $active text-center'>";
+				echo "<div class='carousel-item $active text-center col-10 pl-4 pr-0'>";
 
-				foreach($slide as $tn) {
+				foreach($slide as $gallery => $tn) {
 					echo $tpl->render( "thumbnail", array("thumbnail" => $tn) );
 				}
 
@@ -41,58 +41,6 @@
 			}
 
 		?>
-
-		<!-- Third slide-->
-		<div class="carousel-item text-center">
-
-		<figure class="col-md-3 d-md-inline-block">
-			<a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(44).jpg"
-			data-size="1600x1067">
-			<img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(44).jpg"
-				class="img-fluid">
-			</a>
-		</figure>
-
-		<figure class="col-md-3 d-md-inline-block">
-			<a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(45).jpg"
-			data-size="1600x1067">
-			<img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(45).jpg"
-				class="img-fluid">
-			</a>
-		</figure>
-
-		<figure class="col-md-3 d-md-inline-block">
-			<a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(66).jpg"
-			data-size="1600x1067">
-			<img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(66).jpg"
-				class="img-fluid">
-			</a>
-		</figure>
-
-		<figure class="col-md-3 d-md-inline-block">
-			<a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(53).jpg"
-			data-size="1600x1067">
-			<img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(53).jpg"
-				class="img-fluid">
-			</a>
-		</figure>
-		<figure class="col-md-3 d-md-inline-block">
-			<a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(56).jpg"
-			data-size="1600x1067">
-			<img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(56).jpg"
-				class="img-fluid">
-			</a>
-		</figure>
-		<figure class="col-md-3 d-md-inline-block">
-			<a href="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(77).jpg"
-			data-size="1600x1067">
-			<img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(77).jpg"
-				class="img-fluid">
-			</a>
-		</figure>
-
-		</div>
-		<!--/.Third slide -->
 
 	</div>
 	<!--/.Slides-->

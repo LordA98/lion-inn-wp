@@ -896,4 +896,24 @@ nav .mobile-footer {
 .gallery-arrow:hover {
   background-color: #673ab7 !important;
 }
-  
+
+.figure {
+  position: relative;
+  color: white;
+  width: 350px;
+  height: 225px;
+}
+
+.gallery-thumbnail {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.figure .gallery-name {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  width: 91.5%;
+  overflow: hidden;
+}
