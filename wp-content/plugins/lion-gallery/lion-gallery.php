@@ -93,10 +93,6 @@ class LionGallery {
     public function gallery_init() {
         $tpl = new LGTemplate( __DIR__ . '/templates/admin' );
 
-        // Add Modal Support & Render Modals
-        add_thickbox();
-        echo $tpl->render( 'lg-modals' );
-
         // ajax message response
         echo $tpl->render( 'lg-message' );
 

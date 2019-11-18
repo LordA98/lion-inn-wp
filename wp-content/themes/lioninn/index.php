@@ -19,6 +19,10 @@ if (class_exists( 'LionGallery' )) {
 
     $lionGallery = new LionGallery();
 
+    // require("modal.php");
+    // require("ps-modal.php");
+    require("ps.php");
+
 } else {
 
     echo "<h3>Sorry, there appears to be an error loading the gallery.</h3>";
@@ -502,7 +506,7 @@ if (class_exists( 'LionGallery' )) {
 
                     ?>
 
-                </div>
+                </div>                
             </div>
 
         </div> <!-- Container -->
