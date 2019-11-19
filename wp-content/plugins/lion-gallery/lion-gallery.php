@@ -218,10 +218,7 @@ class LionGallery {
             $gallery = array_slice($gallery, -1);
         });
 
-        // TODO: iterate galleries and print a thumbnail template for each with the desired look from docs
         echo $tpl->render( 'gallery' , array("thumbnails" => $thumbnails) );
-
-        // TODO: possibly assign galleries to post var or form var or something so that the photoswipe JS can pick it up and put it into an array for gallery?
     }
 
     /**
@@ -231,6 +228,26 @@ class LionGallery {
         $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
 
         echo $tpl->render( 'photoswipe' );
+    }
+
+    /**
+     * Return images for given gallery on modal
+     */
+    public function render_images(): array {
+        $images = $this->db->get( "gallery_images" );
+
+        if(!$images) {
+            echo "There are no images.";
+            return [];
+        }
+
+        // Get individual folders
+        $galleries = array_count_values(
+            array_column($images, 'name')
+        );
+        echo print_r($galleries);
+
+        return [];
     }
 
 }
