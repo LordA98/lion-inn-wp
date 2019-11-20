@@ -525,7 +525,7 @@ if (class_exists( 'LionGallery' )) {
 
                         if(method_exists($lionGallery, 'render_galleries')) {
 
-                            // $lionGallery->render_ps();
+                            $lionGallery->render_lightbox();
 
                             $lionGallery->render_galleries();
 
@@ -540,7 +540,7 @@ if (class_exists( 'LionGallery' )) {
                     ?>
 
                 </div>
-            </div>
+            </div>            
 
         </div> <!-- Container -->
 

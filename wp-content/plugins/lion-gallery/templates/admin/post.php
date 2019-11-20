@@ -6,14 +6,8 @@
  */
 function handleGalleryResult($result, $type, $name) {
     if($result !== false) {
-        if($type == "add") {
-            echo "<strong>Success!</strong> " . $name . " added successfully.";
-        } else if($type == "edit") {
+        if($type == "edit") {
             echo "<strong>Success!</strong> " . $name . " updated successfully.";
-        } else if($type == "delete") {
-            echo "<strong>Success!</strong> " . $name . " deleted successfully.";
-        } else if($type == "reorder") {
-            echo "<strong>Success!</strong> Menu reordered successfully.";
         }
     } else {
         echo "<strong>Failure!</strong> Something went wrong. Please try again.";
@@ -51,6 +45,18 @@ function handle_ajax_lg() {
 
     wp_die();
 }
-
 // WordPress AJAX action
 add_action( 'wp_ajax_handle_ajax_lg', 'handle_ajax_lg');
+
+/**
+ * AJAX Call for front-end Lightbox
+ */
+function handle_lightbox_ajax() {
+    require_once( WP_PLUGIN_DIR . '/lion-gallery/includes/lg-template.class.php' );
+
+    $tpl = new LGTemplate( WP_PLUGIN_DIR . '/lion-gallery/templates/front-end' );
+
+    echo $tpl->render( 'lightbox-slide' );
+}
+// WordPress AJAX action
+add_action( 'wp_ajax_handle_lightbox_ajax', 'handle_lightbox_ajax');

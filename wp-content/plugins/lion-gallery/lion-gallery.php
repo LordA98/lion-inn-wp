@@ -231,6 +231,15 @@ class LionGallery {
     }
 
     /**
+     * Generate Photoswipe
+     */
+    public function render_lightbox() {
+        $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
+
+        echo $tpl->render( 'lightbox' );
+    }
+
+    /**
      * Return images for given gallery on modal
      */
     public function render_images() {
