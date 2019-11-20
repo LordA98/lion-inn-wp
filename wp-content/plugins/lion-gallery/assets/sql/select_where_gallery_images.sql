@@ -5,4 +5,5 @@ LEFT JOIN hjb01_term_taxonomy AS tax ON tax.term_taxonomy_id = rls.term_taxonomy
 LEFT JOIN hjb01_terms AS terms ON terms.term_id = tax.term_id
 LEFT JOIN hjb01_posts AS posts ON posts.ID = rls.object_id
 WHERE tax.term_taxonomy_id IS NOT NULL
+AND where_placeholder
 ORDER BY terms.term_id ASC

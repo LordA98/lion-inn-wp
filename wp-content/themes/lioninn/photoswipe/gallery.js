@@ -31,20 +31,18 @@ jQuery(function($) {
         // var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options );
         // gallery.init();
 
-        console.log("Initialized.");
+        // console.log("Initialized.");
     });
 
-
-    $('.figure').on('click', function() {
-        $("#gallery").text($(this).parent().data("gallery"));
+    $('.figure').on('click', function() {        
+        var data = {
+            'action': 'load_images_ajax',
+            gallery: $(this).parent().data("gallery")
+        };
         
-        $.ajax({
-            type: 'get',
-            url: 'get-images.php',
-            data: 'gallery=' + $(this).parent().data("gallery"), 
-            success: function(data){
-                $('#gallery-images').html(data);
-            }
+        $.post(the_ajax_script.ajaxurl, data, function(response) {
+            console.log(response);
+            $('#gallery-images').html(response);
         });
     });
         

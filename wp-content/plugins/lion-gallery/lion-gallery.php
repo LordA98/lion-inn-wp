@@ -233,21 +233,27 @@ class LionGallery {
     /**
      * Return images for given gallery on modal
      */
-    public function render_images(): array {
-        $images = $this->db->get( "gallery_images" );
+    public function render_images() {
+        $images = $this->db->get( "gallery_images" , array ( "terms.name" => $_POST["gallery"] )  );
 
         if(!$images) {
             echo "There are no images.";
-            return [];
+            return "Sorry, either there are no images in this gallery or there is an error loading them.";
         }
 
-        // Get individual folders
-        $galleries = array_count_values(
-            array_column($images, 'name')
-        );
-        echo print_r($galleries);
+        // Fix extensions
+        array_walk($images, function($img) use (&$galleries) {
+            $extension = explode("/", $img->post_mime_type);
+            if($extension[1] == 'jpeg') $extension[1] = "jpg";
+            $img->post_mime_type = $extension[1];            
+        });
 
-        return [];
+        echo "<div class='row'>";
+        array_walk($images, function($value, $key) {
+            $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
+            echo $tpl->render( 'modal-image', $value );
+        });
+        echo "</div>";
     }
 
 }

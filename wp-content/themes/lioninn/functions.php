@@ -96,4 +96,51 @@ function console_log($toPrint) {
     echo "<script>console.log('$toPrint');</script>";
 }
 
+/**
+ * Queue JS
+ */
+function js_enqueue_scripts() {
+    wp_enqueue_script ("my-ajax-handler", get_template_directory_uri() . "/photoswipe/gallery.js", array('jquery')); 
+    //the_ajax_script will use to print admin-ajaxurl in custom ajax.js
+    wp_localize_script('my-ajax-handler', 'the_ajax_script', array('ajaxurl' =>admin_url('admin-ajax.php')));
+} 
+add_action("wp_enqueue_scripts", "js_enqueue_scripts");
+
+/**
+ * AJAX Handler for Gallery
+ */
+function load_images_ajax() {
+    // TODO: we could probably just call lion gallery render images function here
+    
+    if (class_exists( 'LionGallery' )) {
+
+        $lionGallery = new LionGallery();
+        if(method_exists($lionGallery, 'render_images')) {
+
+            $lionGallery->render_images();
+            wp_die();
+    
+        } else {
+    
+            echo "<h3>Error loading images for gallery in modal.</h3>";
+            log_me("ERROR :- Error loading images for gallery in modal.");
+            console_log("Error loading images for gallery in modal.");
+            wp_die();
+    
+        }
+    
+    } else {
+    
+        echo "<h3>Sorry, there appears to be an error loading the images for this gallery.</h3>";
+        log_me("ERROR :- LionGallery Class does not exist.  Object cannot be created.");
+        console_log("Error :- Images can't loaded for gallery.");
+        wp_die();
+    
+    }
+
+	wp_die();
+}
+add_action('wp_ajax_nopriv_load_images_ajax', 'load_images_ajax');
+add_action('wp_ajax_load_images_ajax', 'load_images_ajax');
+
 ?>

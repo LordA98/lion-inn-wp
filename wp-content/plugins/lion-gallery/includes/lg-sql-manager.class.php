@@ -105,7 +105,7 @@ class LGSQLManager {
             $whereSql = "";
             foreach($where as $key => $value) {
                 if($i++ == 0) {
-                    $whereSql .= "{$key} = {$value}"; // one / first where clause
+                    $whereSql .= "{$key} = '{$value}'"; // one / first where clause
                 } else {
                     $whereSql .= " AND {$key} = {$value}"; // multiple where clauses
                 }
