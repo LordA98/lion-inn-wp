@@ -100,8 +100,7 @@ function console_log($toPrint) {
  * Queue JS
  */
 function js_enqueue_scripts() {
-    wp_enqueue_script ("my-ajax-handler", get_template_directory_uri() . "/photoswipe/gallery.js", array('jquery')); 
-    //the_ajax_script will use to print admin-ajaxurl in custom ajax.js
+    wp_enqueue_script ("my-ajax-handler", get_template_directory_uri() . "/gallery.js", array('jquery'));
     wp_localize_script('my-ajax-handler', 'the_ajax_script', array('ajaxurl' =>admin_url('admin-ajax.php')));
 } 
 add_action("wp_enqueue_scripts", "js_enqueue_scripts");
@@ -110,8 +109,6 @@ add_action("wp_enqueue_scripts", "js_enqueue_scripts");
  * AJAX Handler for Gallery
  */
 function load_images_ajax() {
-    // TODO: we could probably just call lion gallery render images function here
-    
     if (class_exists( 'LionGallery' )) {
 
         $lionGallery = new LionGallery();

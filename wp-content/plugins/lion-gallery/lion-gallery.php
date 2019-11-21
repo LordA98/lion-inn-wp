@@ -218,25 +218,10 @@ class LionGallery {
             $gallery = array_slice($gallery, -1);
         });
 
+        // Render gallery
         echo $tpl->render( 'gallery' , array("thumbnails" => $thumbnails) );
-    }
-
-    /**
-     * Generate Photoswipe
-     */
-    public function render_ps() {
-        $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
-
-        echo $tpl->render( 'photoswipe' );
-    }
-
-    /**
-     * Generate Photoswipe
-     */
-    public function render_lightbox() {
-        $tpl = new LGTemplate( __DIR__ . '/templates/front-end' );
-
-        echo $tpl->render( 'lightbox' );
+        // Render modal to be used when thumbnail clicked on
+        echo $tpl->render( 'modal' );
     }
 
     /**

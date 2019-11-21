@@ -16,9 +16,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
-    <!-- Photoswipe -->
-    <link href="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/photoswipe.css" rel="stylesheet">
-    <link href="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/default-skin/default-skin.css" rel="stylesheet">
+    <!-- FancyBox -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+
 
     <?php wp_head(); ?>
 

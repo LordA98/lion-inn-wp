@@ -18,7 +18,6 @@ if (class_exists( 'LionEvents' )) {
 if (class_exists( 'LionGallery' )) {
 
     $lionGallery = new LionGallery();
-    require("modal.php");
 
 } else {
 
@@ -524,9 +523,7 @@ if (class_exists( 'LionGallery' )) {
                     <?php
 
                         if(method_exists($lionGallery, 'render_galleries')) {
-
-                            $lionGallery->render_lightbox();
-
+                            
                             $lionGallery->render_galleries();
 
                         } else {
@@ -549,15 +546,13 @@ if (class_exists( 'LionGallery' )) {
     <!-- Built in WordPress function to get 'footer.php' -->
     <?php get_footer(); ?>
 
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <!-- jQuery, Popper.js, Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Custom JS -->
     <script src="<?php echo get_bloginfo('template_directory'); ?>/script.js"></script>
-    <!-- Photoswipe -->
-    <script src="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/gallery.js"></script>
-    <script src="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/photoswipe.min.js"></script>
-    <script src="<?php echo get_bloginfo('template_directory'); ?>/photoswipe/photoswipe-ui-default.min.js"></script>
+    <!-- FancyBox -->
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 </body>
 </html>

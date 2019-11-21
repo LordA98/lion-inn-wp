@@ -48,5 +48,5 @@ jQuery(function($) {
 
         return false;
     });
-    
+
 });
