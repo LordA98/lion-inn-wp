@@ -20,7 +20,7 @@ $(function () {
 }
 </style>
 
-<figure class="col-3 modal-image-figure" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+<figure class="col-6 col-md-4 col-lg-3 modal-image-figure" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <a href="<?php echo content_url() . '/uploads/' . $post_title . "." . $post_mime_type; ?>" data-fancybox="gallery">
         <img src="<?php echo content_url() . '/uploads/' . $post_title . "." . $post_mime_type; ?>" 
             class="modal-image" itemprop="thumbnail" />
