@@ -47,14 +47,14 @@
 
 	<!--Controls-->
 	<a class="carousel-control-prev" href="#carousel-with-lb" role="button" data-slide="prev">
-		<div class="bg-secondary p-2 gallery-arrow bg-secondary">
-		<span class="carousel-control-prev-icon align-middle" aria-hidden="true"></span>
+		<div class="bg-secondary p-2 gallery-arrow bg-secondary d-none d-lg-block">
+			<span class="carousel-control-prev-icon align-middle" aria-hidden="true"></span>
 		</div>
 		<span class="sr-only">Previous</span>
 	</a>
 	<a class="carousel-control-next" href="#carousel-with-lb" role="button" data-slide="next">
-		<div class="bg-secondary p-2 gallery-arrow bg-secondary">
-		<span class="carousel-control-next-icon align-middle" aria-hidden="true"></span>
+		<div class="bg-secondary p-2 gallery-arrow bg-secondary d-none d-lg-block">
+			<span class="carousel-control-next-icon align-middle" aria-hidden="true"></span>
 		</div>
 		<span class="sr-only">Next</span>
 	</a>
