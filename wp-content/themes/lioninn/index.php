@@ -75,7 +75,7 @@ if (class_exists( 'LionGallery' )) {
                             </a>
                         </li>
                         <li class="nav-item mr-xl-5 collapse-purple">
-                            <a class="nav-link disabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#gallery">
+                            <a class="nav-link enabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#gallery">
                                 <span class="my-auto">Gallery</span>
                             </a>
                         </li>

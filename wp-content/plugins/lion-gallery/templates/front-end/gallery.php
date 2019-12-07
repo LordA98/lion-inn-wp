@@ -3,9 +3,23 @@
 <!--Carousel Wrapper-->
 <div id="carousel-with-lb" class="carousel slide carousel-multi-item mt-4" data-ride="carousel">
 
-  <!--Slides and lightbox-->
+	<!--Controls-->
+	<div class="controls-top d-flex justify-content-center mb-4">
+		<div>
+			<a class="p-2 mr-1 gallery-arrow rounded-circle" href="#carousel-with-lb" data-slide="prev">
+				<i class="fa fa-arrow-left"></i>
+			</a>
+		</div>
+		<div>
+			<a class="p-2 ml-1 gallery-arrow rounded-circle" href="#carousel-with-lb" data-slide="next">
+				<i class="fa fa-arrow-right"></i>
+			</a>
+		</div>
+	</div>
+  	<!--/.Controls-->
 
-	<div class="carousel-inner row justify-content-center mr-0" role="listbox">
+  	<!--Carousel Slides-->
+	<div class="carousel-inner row mx-0" role="listbox">
 
 		<?php 
 
@@ -27,9 +41,10 @@
 			$i=0;
 			foreach($slides as $key => $slide) {
 
+				// set first carousel to active
 				$active = ($i==0 ? "active" : "");
 				
-				echo "<div class='carousel-item $active text-center col-10 pl-4 pr-0'>";
+				echo "<div class='carousel-item $active text-center'>";
 
 				foreach($slide as $gallery => $tn) {
 					echo $tpl->render( "thumbnail", array("thumbnail" => $tn) );
@@ -43,22 +58,7 @@
 		?>
 
 	</div>
-	<!--/.Slides-->
-
-	<!--Controls-->
-	<a class="carousel-control-prev" href="#carousel-with-lb" role="button" data-slide="prev">
-		<div class="bg-secondary p-2 gallery-arrow bg-secondary d-none d-lg-block">
-			<span class="carousel-control-prev-icon align-middle" aria-hidden="true"></span>
-		</div>
-		<span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next" href="#carousel-with-lb" role="button" data-slide="next">
-		<div class="bg-secondary p-2 gallery-arrow bg-secondary d-none d-lg-block">
-			<span class="carousel-control-next-icon align-middle" aria-hidden="true"></span>
-		</div>
-		<span class="sr-only">Next</span>
-	</a>
-	<!--/.Controls-->
+	<!--/.Slides-->	
 
 </div>
 <!--/.Carousel Wrapper-->
