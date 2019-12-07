@@ -3,7 +3,7 @@
  */
 jQuery(function($) {
     
-    $('.figure').on('click', function() {        
+    $('.figure').on('click', function() {
         var data = {
             'action': 'load_images_ajax',
             gallery: $(this).parent().data("gallery")
