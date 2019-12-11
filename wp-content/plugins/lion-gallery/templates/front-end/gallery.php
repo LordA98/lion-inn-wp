@@ -1,7 +1,7 @@
 <?php $tpl = new LGTemplate( __DIR__ ); ?>
 
 <!--Carousel Wrapper-->
-<div id="carousel-with-lb" class="carousel slide carousel-multi-item mt-4" data-ride="carousel">
+<div id="carousel-with-lb" class="carousel slide carousel-multi-item mt-4 w-100" data-ride="carousel">
 
 	<!--Controls-->
 	<div class="controls-top d-flex justify-content-center mb-4">
