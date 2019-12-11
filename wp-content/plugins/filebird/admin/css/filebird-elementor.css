@@ -1,6 +1,0 @@
-.media-frame select.attachment-filters {
-    max-width: 30% !important;
-    width: 320px !important;
-}
-
-.media-frame select, .wp-admin .media-frame .wpmediacategory-filter{margin-top: 11px; max-width: 150px;}
