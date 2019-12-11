@@ -75,7 +75,7 @@ if (class_exists( 'LionGallery' )) {
                             </a>
                         </li>
                         <li class="nav-item mr-xl-5 collapse-purple">
-                            <a class="nav-link enabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#gallery">
+                            <a class="nav-link enabled pl-5 pt-xl-2 pl-xl-2 d-flex flex-column" href="#gallery-section">
                                 <span class="my-auto">Gallery</span>
                             </a>
                         </li>
@@ -513,7 +513,7 @@ if (class_exists( 'LionGallery' )) {
     <div class="container-fluid pb-4">
         <div class="container">
 
-            <div id="events" class="events mt-5 pt-5">
+            <div id="gallery-section" class="gallery mt-5 pt-5">
                 <div class="title text-center">
                     <h1 class="great-vibes section-heading">Gallery</h1>
                 </div>
