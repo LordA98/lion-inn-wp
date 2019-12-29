@@ -140,4 +140,12 @@ function load_images_ajax() {
 add_action('wp_ajax_nopriv_load_images_ajax', 'load_images_ajax');
 add_action('wp_ajax_load_images_ajax', 'load_images_ajax');
 
+/**
+ * Ensure default page after logging in is the dashboard
+ */
+function admin_default_page() {
+    return site_url() . '/wp-admin';
+}  
+add_filter('login_redirect', 'admin_default_page');
+
 ?>
