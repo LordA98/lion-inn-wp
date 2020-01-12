@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Mediamatic Lite
+ * Plugin Name: Mediamatic
  * Plugin URI:  http://mediamatic.frenify.com/1/
  * Description: Get organized with thousands of images. Organize media into folders.
  * Version:     1.7
@@ -44,7 +44,7 @@ define( 'MEDIAMATIC_URL', plugins_url( '/', MEDIAMATIC__FILE__ ) );
 define( 'MEDIAMATIC_ASSETS_URL', MEDIAMATIC_URL . 'assets/' );
 define( 'MEDIAMATIC_TEXT_DOMAIN', 'mediamatic' );
 define( 'MEDIAMATIC_PLUGIN_BASE', plugin_basename( MEDIAMATIC__FILE__ ) );
-define( 'MEDIAMATIC_PLUGIN_NAME', 'Mediamatic Lite' );
+define( 'MEDIAMATIC_PLUGIN_NAME', 'Mediamatic' );
 
 
 

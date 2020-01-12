@@ -1,6 +1,6 @@
 var oldCurrentFolder = null;
 
-var themedo_mediamatic_free 	= true;
+var themedo_mediamatic_free 	= false;
 var themedo_mediamatic_pro_link = 'http://mediamatic.frenify.com/1/';
 
 

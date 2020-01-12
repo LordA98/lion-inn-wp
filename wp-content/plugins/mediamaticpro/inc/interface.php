@@ -4,7 +4,7 @@ class Mediamatic_Interface {
 
 
 	private $version;
-	private $mediamatic_free = true;
+	private $mediamatic_free = false;
 	
 	public function __construct() 
 	{
