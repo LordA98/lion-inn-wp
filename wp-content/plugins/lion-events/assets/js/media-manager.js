@@ -28,17 +28,6 @@ jQuery(function($) {
             $('input[name="add-event-img-width"').val(width);
             $('#add-image-selected-name').text(image_url);
         });
-
-        // Change to media library tab
-        // $('.media-menu-item').toggleClass('active');
-        // Set filter to only event images - 'Events' category has a value of '11' for some reason
-        $("select#media-attachment-filters").val("5").change();
-        // Hide selects so user cannot change filter
-        $("div.media-toolbar-secondary").hide();
-        // Hide 'Upload Media' & 'Select Media' tabs - we only want selecting media
-        $('.media-router').hide();
-        // Hide right-sidebar (contains selected images details) as it isn't really needed
-        $('.media-sidebar').hide();
     });
 
     /**
@@ -65,17 +54,6 @@ jQuery(function($) {
             $('input[name="edit-event-img-width"').val(width);
             $('#edit-image-selected-name').text(image_url);         
         });
-
-        // Change to media library tab
-        //$('.media-menu-item').toggleClass('active');
-        // Set filter to only event images - 'Events' category has a value of '11' for some reason
-        $("select#media-attachment-filters").val("5").change();
-        // Hide selects so user cannot change filter
-        $("div.media-toolbar-secondary").hide();
-        // Hide 'Upload Media' & 'Select Media' tabs - we only want selecting media
-        $('.media-router').hide();
-        // Hide right-idebar (contains selected images details) as it isn't really needed
-        $('.media-sidebar').hide();
     });
 
 
@@ -104,13 +82,13 @@ jQuery(function($) {
         // Change to media library tab
         //$('.media-menu-item').toggleClass('active');
         // Set filter to only icons - 'Icons' category has a value of '10' for some reason
-        $("select#media-attachment-filters").val("6").change();
+        // $("select#media-attachment-filters").val("6").change();
         // Hide selects so user cannot change filter
-        $("div.media-toolbar-secondary").hide();
+        // $("div.media-toolbar-secondary").hide();
         // Hide 'Upload Media' & 'Select Media' tabs - we only want selecting media
-        $('.media-router').hide();
+        // $('.media-router').hide();
         // Hide right-idebar (contains selected images details) as it isn't really needed
-        $('.media-sidebar').hide();
+        // $('.media-sidebar').hide();
     });
 
 });
