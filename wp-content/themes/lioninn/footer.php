@@ -43,17 +43,6 @@
             <div class="copyright text-center mt-3">
                 <p class="mb-0">Copyright &copy; 2004 - 2018 All Content of this site is property of The Lion Inn and must not be reproduced without permission.  Every effort is made to ensure the details contained on this site are correct.  However, we cannot accept responsibility for errors and omissions.</p>
             </div>
-
-            <div class="feedback row mt-3">
-                <div class="col-4 offset-8 col-md-3 offset-md-9">
-                    <a href="https://www.surveymonkey.co.uk/r/YWJWPG8" target="_blank">
-                        <button type="button" href="" class="btn btn-sm btn-feedback py-1 px-2">
-                            <i class="fas fa-comment"></i>
-                            Feedback
-                        </button>
-                    </a>
-                </div>
-            </div>
         </div>
     </div> <!-- Container -->
 
