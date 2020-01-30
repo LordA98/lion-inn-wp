@@ -163,8 +163,14 @@ function modify_uploaded_file_title( $attachment_ID )
 }
 
 /**
- * Disable WordPress Update Notifications
+ * Disable WordPress Update Notifications for 'Owner' Role
  */
-
+function remove_core_updates(){
+    global $wp_version;return(object) array('last_checked'=> time(),'version_checked'=> $wp_version,);
+}
+$user = wp_get_current_user();
+if ( in_array( 'owner', (array) $user->roles ) ) {
+    add_filter('pre_site_transient_update_core', 'remove_core_updates');
+}
 
 ?>
