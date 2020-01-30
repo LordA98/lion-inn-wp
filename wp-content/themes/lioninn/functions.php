@@ -44,7 +44,7 @@ function remove_menu_pages() {
         remove_menu_page( 'versionpress' );
         remove_menu_page( 'tools.php' );
         remove_menu_page( 'options-general.php' );
-        remove_menu_page( 'edit.php?post_type=udb_widgets' );        
+        remove_menu_page( 'edit.php?post_type=udb_widgets' );
     }
 
     /**
@@ -153,15 +153,18 @@ add_filter('login_redirect', 'admin_default_page');
  */
 add_action( 'add_attachment', 'modify_uploaded_file_title' );
 function modify_uploaded_file_title( $attachment_ID ) 
-{
-	
+{	
     $the_post = array();
     $the_post['ID'] = $attachment_ID;
 	$filename = basename ( get_attached_file( $attachment_ID ) );
 	$fileWithoutExtension = preg_replace('/\\.[^.\\s]{3,4}$/', '', $filename);
     $the_post['post_title'] = $fileWithoutExtension;
-    wp_update_post( $the_post );
-	
+    wp_update_post( $the_post );	
 }
+
+/**
+ * Disable WordPress Update Notifications
+ */
+
 
 ?>
