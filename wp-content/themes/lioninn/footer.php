@@ -5,11 +5,15 @@
             <div class="row contact text-center">
                 <div class="col-4 order-lg-1 col-lg-1 offset-lg-2">
                     <i class="fas fa-phone mt-2"></i>
-                    <p class="mb-0 mt-1">01600 860322</p>
+                    <p class="mb-0 mt-1">
+                        <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                    </p>
                 </div>
                 <div class="col-4 order-lg-2 col-lg-1">
                     <i class="fas fa-envelope mt-2"></i>
-                    <p class="mb-0 mt-1 overflow">debs@globalnet.co.uk</p>
+                    <p class="mb-0 mt-1 overflow">
+                        <?php echo get_post_meta(get_the_ID(), 'email_address', TRUE); ?>
+                    </p>
                 </div>
                 <div class="col-4 order-lg-3 col-lg-1">
                     <i class="fas fa-map-marker-alt mt-2"></i>
@@ -41,7 +45,9 @@
             </div>
 
             <div class="copyright text-center mt-3">
-                <p class="mb-0">Copyright &copy; 2004 - 2018 All Content of this site is property of The Lion Inn and must not be reproduced without permission.  Every effort is made to ensure the details contained on this site are correct.  However, we cannot accept responsibility for errors and omissions.</p>
+                <p class="mb-0">
+                    <?php echo get_post_meta(get_the_ID(), 'copyright_message', TRUE); ?>
+                </p>
             </div>
         </div>
     </div> <!-- Container -->

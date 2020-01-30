@@ -87,11 +87,15 @@ if (class_exists( 'LionGallery' )) {
                             <div class="row contact text-center">
                                 <div class="col-4 order-xl-1 col-xl-1 offset-xl-2">
                                     <i class="fas fa-phone mt-2"></i>
-                                    <p class="mb-0 mt-1">01600 860322</p>
+                                    <p class="mb-0 mt-1">
+                                        <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                                    </p>
                                 </div>
                                 <div class="col-4 order-xl-2 col-xl-1">
                                     <i class="fas fa-envelope mt-2"></i>
-                                    <p class="mb-0 mt-1">debs@globalnet.co.uk</p>
+                                    <p class="mb-0 mt-1">
+                                        <?php echo get_post_meta(get_the_ID(), 'email_address', TRUE); ?>
+                                    </p>
                                 </div>
                                 <div class="col-4 order-xl-3 col-xl-1">
                                     <i class="fas fa-map-marker-alt mt-2"></i>
@@ -121,7 +125,9 @@ if (class_exists( 'LionGallery' )) {
                             </div>
 
                             <div class="copyright text-center mt-3 px-2">
-                                <p class="mb-0">Copyright &copy; 2004 - 2018 All Content of this site is property of The Lion Inn and must not be reproduced without permission.  Every effort is made to ensure the details contained on this site are correct.  However, we cannot accept responsibility for errors and omissions.</p>
+                                <p class="mb-0">
+                                    <?php echo get_post_meta(get_the_ID(), 'copyright_message', TRUE); ?>
+                                </p>
                             </div>
                         </div> <!-- End Footer -->
                     </ul>
@@ -134,9 +140,16 @@ if (class_exists( 'LionGallery' )) {
             <div class="my-auto">
                 <div class="center row">
                     <div class="col-xl-12 text-center mt-5 mb-3">
-                        <h1 class="great-vibes m-0 mr-3 main-heading">Welcome</h1>
-                        <h4 class="m-0 to">to</h4>
-                        <h1 class="algeria m-0 main-heading w-100">THE LION INN</h1>
+                        <h1 class="great-vibes m-0 mr-3 main-heading">
+                            <?php the_field('name'); ?>
+                            
+                        </h1>
+                        <h4 class="m-0 to">
+                            <?php echo get_post_meta(get_the_ID(), 'home_second_line', TRUE); ?>
+                        </h4>
+                        <h1 class="algeria m-0 main-heading w-100">
+                            <?php echo get_post_meta(get_the_ID(), 'home_third_line', TRUE); ?>
+                        </h1>
                     </div>
                 </div>
 
@@ -150,7 +163,9 @@ if (class_exists( 'LionGallery' )) {
                     </div>
                     <div class="col-6 col-sm-4 col-md-4 col-lg-2 col-xl-2 offset-xl-0 p-0 text-center">
                         <button type="button" class="btn btn-lg py-1 px-2 btn-phone">
-                            <span class="phone-no">01600 860322</span>
+                            <span class="phone-no">
+                                <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                            </span>
                         </button>
                     </div>
                     <div class="col-3 col-sm-4 col-md-2 col-lg-2 col-xl-1 p-0 pl-lg-2 px-xl-0 text-md-left">
@@ -185,30 +200,14 @@ if (class_exists( 'LionGallery' )) {
                 <div id="left-content" class="col-lg-6 col-xl-5 offset-xl-1 text-center pt-4 bg-white">
 
                     <div class="title">
-                        <h1 class="great-vibes section-heading">About Us</h1>
+                        <h1 class="great-vibes section-heading">
+                            <?php echo get_post_meta(get_the_ID(), 'about_us_title', TRUE); ?>
+                        </h1>
                     </div>
 
                     <div class="pt-3 px-4">
                         <p>
-                            Situated in Monmouthshire, in the heart of the picturesque Wye Valley, South Wales.  
-                            The Lion Inn is a well established and extremely popular public house.
-                        </p>
-                        <p>
-                            Built in the late 16th Century, actually completed in 1580, The Lion Inn was originally a coaching inn, brew house and pig farm.
-                            Many of the original features of the brewing cellar still remain, as do a number of outhouses that were used as pig sty's.
-                        </p>
-                        <p>
-                            The Lion Inn is the only traditional inn in the ancient village of Trellech.  It consists
-                            of two rooms, both with open fires and exposed wooden beams.  One room is used as a traditional
-                            village bar, the other as a restaurant area.
-                        </p>
-                        <p>
-                            The pub stocks a fine range of real ales and ciders, as well as the traditional range of keg Lager,
-                            Bitters, Ciders, Guiness and Spirits including a large range of whiskies, Gins and Rums.
-                        </p>
-                        <p>
-                            The whole emphasis of the pub is towards the traditional - Traditional Beers, Real Ciders, Quality
-                            Home Made Food and a Friendly atmosphere.
+                            <?php echo nl2br(get_post_meta(get_the_ID(), 'about_us_description', TRUE)); ?>
                         </p>
                     </div>
                 </div>
@@ -233,25 +232,25 @@ if (class_exists( 'LionGallery' )) {
         <div id="food" class="food my-5">
 
             <div class="title text-center col-12">
-                <h1 class="great-vibes section-heading">Food</h1>
+                <h1 class="great-vibes section-heading">
+                    <?php echo get_post_meta(get_the_ID(), 'food_main_title', TRUE); ?>
+                </h1>
             </div>
 
             <div class="menu row">
                 <div class="left col-lg-6 offset-lg-1 text-center">
-                    <h2 class="great-vibes minor-heading">Menu</h2>
+                    <h2 class="great-vibes minor-heading">
+                        <?php echo get_post_meta(get_the_ID(), 'food_sub_title_1', TRUE); ?>
+                    </h2>
                     <div class="mt-3 desc">
                         <p>
-                            The menus range from traditional pub grub, through to the exotic and unheard of; with children and vegetarians being catered for. Sourcing the majority of the produce within 10 miles of the pub.  For example, the meats come from the local communities of Shirenewton, Raglan & Trellech.  A "standard" menu is provided within the pub along with a number of "specials" menus.
-                        </p>
-                        <p>
-                            The specials boards change regularly and often feature dishes that offer new eating experiences for more adventurous diners. Regular favourites include Beef Stroganoff, Chicken in a creamy Tarragon sauce, Kangaroo steak, Ostrich with a creamy garlic sauce, Pork steak with a cider sauce and Duck.
-                        </p>
-                        <p>
-                            Special menu’s are created for Easter Sunday and Mother’s Day.  Takeaway pizza’s are also available.
+                            <?php echo nl2br(get_post_meta(get_the_ID(), 'food_description', TRUE)); ?>
                         </p>
                     </div>
                     <a class="btn btn-sm mt-3" href="menu">
-                        <span class="px-1">View Menu</span>
+                        <span class="px-1">
+                            <?php echo get_post_meta(get_the_ID(), 'food_button_value', TRUE); ?>
+                        </span>
                     </a>
                 </div>
 
@@ -262,42 +261,36 @@ if (class_exists( 'LionGallery' )) {
 
             <div class="book-table row mt-5">
                 <div class="times col-lg-4 text-center py-4">
-                    <h2 class="great-vibes minor-heading">Times</h2>
+                    <h2 class="great-vibes minor-heading">
+                        <?php echo get_post_meta(get_the_ID(), 'food_sub_title_2', TRUE); ?>
+                    </h2>
                     <i class="far fa-clock"></i>
                     <div class="opening-times">
                         <h4 class="mt-3 times-heading">Opening Times</h4>
                         <hr class="bg-light mx-auto mt-0"/>
                         <p>
-                            Monday - Wednesday <br/>
-                            12:00 - 23:00 <br/>
-                            Thursday - Saturday <br/>
-                            12:00 - 00:00 <br/>
-                            Sunday <br/>
-                            12:00 - 22:00
+                            <?php echo nl2br(get_post_meta(get_the_ID(), 'food_opening_times', TRUE)); ?>
                         </p>
                     </div>
                     <div class="dining-times">
                         <h4 class="mt-3 times-heading">Dining Times</h4>
                         <hr class="bg-light mx-auto mt-0"/>
                         <p>
-                            Monday - Saturday <br/>
-                            12:00 - 21:30 <br/>
-                            Sunday <br/>
-                            12:00 - 18:00
+                            <?php echo nl2br(get_post_meta(get_the_ID(), 'food_dining_times', TRUE)); ?>
                         </p>
                     </div>
                 </div>
 
                 <div class="reservation col-lg-8 text-center pt-4 bg-white">
-                    <h2 class="great-vibes minor-heading">Reservation</h2>
+                    <h2 class="great-vibes minor-heading">
+                        <?php echo get_post_meta(get_the_ID(), 'food_sub_title_3', TRUE); ?>
+                    </h2>
                     <i class="fas fa-book-open"></i>
-                    <h4 class="mt-3">Please call us on the number below.</h4>
+                    <h4 class="mt-3">
+                        <?php echo get_post_meta(get_the_ID(), 'food_sub_title_3.1', TRUE); ?>
+                    </h4>
                     <p class="mt-5">
-                        Please mention any special dietary requirements <br/>
-                        (vegetarian, gluten free, peanut allergy).
-                    </p>
-                    <p>
-                        Please also mention if you are bringing a dog.
+                        <?php echo nl2br(get_post_meta(get_the_ID(), 'food_reserv_description', TRUE)); ?>
                     </p>
                     <div class="icons mt-4">
                         <img class="mx-2" src="<?php echo get_bloginfo('template_directory'); ?>/images/pet-friendly.png" alt="Image of Pet Friendly Icon" />
@@ -307,7 +300,9 @@ if (class_exists( 'LionGallery' )) {
                     <div class="book-now mt-4 mb-lg-0 mb-3">
                         <h4 class="great-vibes mb-0">Book Now</h4>
                         <button type="button" class="btn btn-lg mt-4 py-1 px-3">
-                            <span>01600 860322</span>
+                            <span>
+                                <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                            </span>
                         </button>
                     </div>
                 </div>
@@ -318,28 +313,19 @@ if (class_exists( 'LionGallery' )) {
     <div class="container">
         <div id="accommodation" class="accommodation">
             <div class="title text-center">
-                <h1 class="great-vibes section-heading">Accommodation</h1>
+                <h1 class="great-vibes section-heading">
+                    <?php echo get_post_meta(get_the_ID(), 'accommodation_main_title', TRUE); ?>
+                </h1>
             </div>
 
             <div class="cottage row">
-                <div class="col-12 col-xl-6 text-center mt-xl-5">
-                    <h2 class="great-vibes minor-heading">Cottage</h2>
+                <div class="col-12 col-xl-6 text-center mt-xl-2">
+                    <h2 class="great-vibes minor-heading">
+                        <?php echo get_post_meta(get_the_ID(), 'accommodation_sub_title', TRUE); ?>
+                    </h2>
                     <div class="px-md-5">
-                        <p>The Lion Inn Cottage was originally an Elizabethan stone pig cot.</p>
                         <p>
-                            The cottage has been tastefully decorated in a traditional country style and can sleep a family of four.
-                            The open plan room is enhanced by skylights and contains a double bed and double sofa bed.
-                        </p>
-                        <p>
-                            The luxurious marble tiled bathroom contains a spacious shower unit.
-                            The fully equipped compact kitchen has been made to measure and boasts a traditional Belfast sink, double hob,
-                            microwave and refigerator.  Central heating (supplied by new slim-line storage heaters) and a carpeted floor
-                            ensure the cottage is cosy all year around.
-                        </p>
-                        <p>
-                            To the front of the cottage a walled patio ensures privacy
-                            and is a sun trap during warmer weather.  A welcome pack is available and packed lunches can be provided at a 
-                            small cost, if requested.
+                            <?php echo nl2br(get_post_meta(get_the_ID(), 'accommodation_description', TRUE)); ?>
                         </p>
                     </div>
                 </div>
@@ -351,52 +337,36 @@ if (class_exists( 'LionGallery' )) {
             <div class="cards text-center mt-4 row">
                 <div class="col-xl-4 mb-3 mb-xl-0">
                     <div class="card h-100">
-                        <div class="great-vibes card-header">B&B</div>
+                        <div class="great-vibes card-header">
+                            <?php echo get_post_meta(get_the_ID(), 'accommodation_left_card_title', TRUE); ?>
+                        </div>
                         <div class="card-body px-5">
                             <p class="card-text">
-                                Low Season £70 per night. <br/>
-                                High Season £80 per night. <br/>
-                                Prices assume 2 people sharing.
-                            </p>
-                            <p class="card-text">
-                                All year £58 per night 1 person.
-                            </p>
-                            <p class="card-text">
-                                Well behaved dogs welcome £2.50 per dog per day.
+                                <?php echo nl2br(get_post_meta(get_the_ID(), 'accommodation_left_card_desc', TRUE)); ?>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 mb-3 mb-xl-0">
                     <div class="card h-100">
-                        <div class="great-vibes card-header">Self-Catering</div>
+                        <div class="great-vibes card-header">
+                            <?php echo get_post_meta(get_the_ID(), 'accommodation_middle_card_title', TRUE); ?>
+                        </div>
                         <div class="card-body px-5">
-                            <p class="card-text">
-                                Low Season £50 per night. <br/>
-                                High Season £60 per night.  <br/>
-                            </p>
-                            <p class="card-text">
-                                Self Catering Tariff we provide bedding only, you <br/>
-                                provide towels, food, etc. <br/>
-                                Packed lunches can be provided.  <br/>
-                                £9.00 each includes sandwiches, soft drink, fruit, chocolate & crisps.  <br/>
-                                Towels can be hired at £5.00 each.
+                            <p class="card-text">                                
+                                <?php echo nl2br(get_post_meta(get_the_ID(), 'accommodation_middle_card_desc', TRUE)); ?>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 mb-3 mb-xl-0">
                     <div class="card h-100">
-                        <div class="great-vibes card-header">Season Dates</div>
+                        <div class="great-vibes card-header">
+                            <?php echo get_post_meta(get_the_ID(), 'accommodation_right_card_title', TRUE); ?>
+                        </div>
                         <div class="card-body px-5">
                             <p class="card-text">
-                                High Season <br/>
-                                May - September <br/>
-                                Decemeber 22nd - January 5th inclusive
-                            </p>
-                            <p class="card-text">
-                                Low Season <br/>
-                                October - April
+                                <?php echo nl2br(get_post_meta(get_the_ID(), 'accommodation_right_card_desc', TRUE)); ?>
                             </p>
                         </div>
                     </div>
@@ -407,7 +377,9 @@ if (class_exists( 'LionGallery' )) {
                 <div class="book-now mt-4 mb-lg-0 mb-3">
                     <h4 class="great-vibes mb-0">Book Now</h4>
                     <button type="button" class="btn btn-lg mt-4 py-1 px-3">
-                        <span>01600 860322</span>
+                        <span>
+                            <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                        </span>
                     </button>
                 </div>
             </div>
@@ -420,11 +392,15 @@ if (class_exists( 'LionGallery' )) {
 
             <div id="events" class="events mt-5 pt-5">
                 <div class="title text-center">
-                    <h1 class="great-vibes section-heading">Events</h1>
+                    <h1 class="great-vibes section-heading">
+                        <?php echo get_post_meta(get_the_ID(), 'events_main_title', TRUE); ?>
+                    </h1>
                 </div>
                 <!-- NOTE - use toggleable tabs for regular events section -->
                 <div class="regular">
-                    <h2 class="montserrat row event-sub-heading mb-0">Regular Events</h2>
+                    <h2 class="montserrat row event-sub-heading mb-0">
+                        <?php echo get_post_meta(get_the_ID(), 'events_sub_title_1', TRUE); ?>
+                    </h2>
                     <hr class="row mt-2"/>
                     <!-- Day Titles -->
                     <div class="row week-days week-days-titles">
@@ -483,7 +459,9 @@ if (class_exists( 'LionGallery' )) {
                 </div>
 
                 <div class="upcoming mt-5 mb-0 pb-0">
-                    <h2 class="row montserrat event-sub-heading mb-0">Upcoming Events</h2>
+                    <h2 class="row montserrat event-sub-heading mb-0">
+                        <?php echo get_post_meta(get_the_ID(), 'events_sub_title_2', TRUE); ?>
+                    </h2>
                     <hr class="row mt-2"/>
 
                     <?php
@@ -515,7 +493,9 @@ if (class_exists( 'LionGallery' )) {
 
             <div id="gallery-section" class="gallery mt-5 pt-5">
                 <div class="title text-center">
-                    <h1 class="great-vibes section-heading">Gallery</h1>
+                    <h1 class="great-vibes section-heading">
+                        <?php echo get_post_meta(get_the_ID(), 'gallery_title', TRUE); ?>
+                    </h1>
                 </div>
                 
                 <div class="row">
