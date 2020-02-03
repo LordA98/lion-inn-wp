@@ -141,14 +141,13 @@ if (class_exists( 'LionGallery' )) {
                 <div class="center row">
                     <div class="col-xl-12 text-center mt-5 mb-3">
                         <h1 class="great-vibes m-0 mr-3 main-heading">
-                            <?php the_field('name'); ?>
-                            
+                            Welcome                            
                         </h1>
                         <h4 class="m-0 to">
-                            <?php echo get_post_meta(get_the_ID(), 'home_second_line', TRUE); ?>
+                            to
                         </h4>
                         <h1 class="algeria m-0 main-heading w-100">
-                            <?php echo get_post_meta(get_the_ID(), 'home_third_line', TRUE); ?>
+                            THE LION INN
                         </h1>
                     </div>
                 </div>
@@ -201,20 +200,22 @@ if (class_exists( 'LionGallery' )) {
 
                     <div class="title">
                         <h1 class="great-vibes section-heading">
-                            <?php echo get_post_meta(get_the_ID(), 'about_us_title', TRUE); ?>
+                            <?php the_field('about_us_title'); ?>
                         </h1>
                     </div>
 
                     <div class="pt-3 px-4">
                         <p>
-                            <?php echo nl2br(get_post_meta(get_the_ID(), 'about_us_description', TRUE)); ?>
+                            <?php the_field('about_us_description'); ?>
                         </p>
                     </div>
                 </div>
 
                 <!-- Image -->
-                <div id="right-content" class="col-lg-6 col-xl-5 p-4 bg-white text-center text-lg-left">
-                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/pub_original.jpg" alt="Image of The Lion Inn" class="mt-lg-5 ml-xl-4 mt-xl-0 about-us-image" />
+                <div id="right-content" class="d-flex col-lg-6 col-xl-5 p-4 bg-white text-center text-lg-left">
+                    <?php if( get_field('about_us_image') ): ?>
+                        <img src="<?php the_field('about_us_image'); ?>" alt="Image of The Lion Inn" class="ml-xl-4 align-self-center about-us-image" />
+                    <?php endif; ?>
                 </div>
                 
             </div>
