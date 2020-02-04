@@ -153,26 +153,17 @@ if (class_exists( 'LionGallery' )) {
                 </div>
 
                 <div class="buttons row">
-                    <div class="col-3 col-sm-2 offset-sm-2 col-md-2 offset-md-2 col-lg-2 offset-lg-3 col-xl-1 offset-xl-4 p-0 pr-lg-2 px-xl-0 text-right">
-                        <button type="button" class="btn btn-transparent btn-lg p-0 py-sm-2 px-3 m-xl-0">
-                            <a href="#food">
-                                <i class="fas fa-utensils btn-icon"></i>
-                            </a>
-                        </button>
-                    </div>
-                    <div class="col-6 col-sm-4 col-md-4 col-lg-2 col-xl-2 offset-xl-0 p-0 text-center">
+                    <div class="col-6 col-sm-4 col-lg-2 ml-auto pr-5 bg-primary text-center">
                         <button type="button" class="btn btn-lg py-1 px-2 btn-phone">
                             <span class="phone-no">
                                 <?php the_field('phone_number'); ?>
                             </span>
                         </button>
                     </div>
-                    <div class="col-3 col-sm-4 col-md-2 col-lg-2 col-xl-1 p-0 pl-lg-2 px-xl-0 text-md-left">
-                        <button type="button" class="btn btn-transparent btn-lg p-0 py-sm-2 px-3 m-xl-0">
-                            <a href="#accommodation">
-                                <i class="fas fa-bed btn-icon"></i>
-                            </a>
-                        </button>
+                    <div class="col-6 col-sm-4 col-lg-2 mr-auto pl-0 bg-warning text-center">
+                        <a class="btn btn-lg" href="menu">
+                            <span class="px-1">View Menu</span>
+                        </a>
                     </div>
                 </div>
             </div>
