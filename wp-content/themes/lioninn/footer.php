@@ -6,13 +6,13 @@
                 <div class="col-4 order-lg-1 col-lg-1 offset-lg-2">
                     <i class="fas fa-phone mt-2"></i>
                     <p class="mb-0 mt-1">
-                        <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                        <?php the_field('phone_number'); ?>
                     </p>
                 </div>
                 <div class="col-4 order-lg-2 col-lg-1">
                     <i class="fas fa-envelope mt-2"></i>
                     <p class="mb-0 mt-1 overflow">
-                        <?php echo get_post_meta(get_the_ID(), 'email_address', TRUE); ?>
+                        <?php the_field('email_address'); ?>
                     </p>
                 </div>
                 <div class="col-4 order-lg-3 col-lg-1">
@@ -46,7 +46,7 @@
 
             <div class="copyright text-center mt-3">
                 <p class="mb-0">
-                    <?php echo get_post_meta(get_the_ID(), 'copyright_message', TRUE); ?>
+                    <?php the_field('copyright'); ?>
                 </p>
             </div>
         </div>

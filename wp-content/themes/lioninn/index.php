@@ -88,13 +88,13 @@ if (class_exists( 'LionGallery' )) {
                                 <div class="col-4 order-xl-1 col-xl-1 offset-xl-2">
                                     <i class="fas fa-phone mt-2"></i>
                                     <p class="mb-0 mt-1">
-                                        <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                                        <?php the_field('phone_number'); ?>
                                     </p>
                                 </div>
                                 <div class="col-4 order-xl-2 col-xl-1">
                                     <i class="fas fa-envelope mt-2"></i>
                                     <p class="mb-0 mt-1">
-                                        <?php echo get_post_meta(get_the_ID(), 'email_address', TRUE); ?>
+                                        <?php the_field('email_address'); ?>
                                     </p>
                                 </div>
                                 <div class="col-4 order-xl-3 col-xl-1">
@@ -163,7 +163,7 @@ if (class_exists( 'LionGallery' )) {
                     <div class="col-6 col-sm-4 col-md-4 col-lg-2 col-xl-2 offset-xl-0 p-0 text-center">
                         <button type="button" class="btn btn-lg py-1 px-2 btn-phone">
                             <span class="phone-no">
-                                <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                                <?php the_field('phone_number'); ?>
                             </span>
                         </button>
                     </div>
@@ -233,65 +233,55 @@ if (class_exists( 'LionGallery' )) {
         <div id="food" class="food my-5">
 
             <div class="title text-center col-12">
-                <h1 class="great-vibes section-heading">
-                    <?php echo get_post_meta(get_the_ID(), 'food_main_title', TRUE); ?>
-                </h1>
+                <h1 class="great-vibes section-heading">Food</h1>
             </div>
 
             <div class="menu row">
                 <div class="left col-lg-6 offset-lg-1 text-center">
-                    <h2 class="great-vibes minor-heading">
-                        <?php echo get_post_meta(get_the_ID(), 'food_sub_title_1', TRUE); ?>
-                    </h2>
+                    <h2 class="great-vibes minor-heading">Menu</h2>
                     <div class="mt-3 desc">
                         <p>
-                            <?php echo nl2br(get_post_meta(get_the_ID(), 'food_description', TRUE)); ?>
+                            <?php the_field('food_description'); ?>
                         </p>
                     </div>
                     <a class="btn btn-sm mt-3" href="menu">
-                        <span class="px-1">
-                            <?php echo get_post_meta(get_the_ID(), 'food_button_value', TRUE); ?>
-                        </span>
+                        <span class="px-1">View Menu</span>
                     </a>
                 </div>
 
-                <div class="right col-lg-3 offset-lg-1" style="overflow: hidden; position: relative; width: 100%;">
-                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/menu.png" alt="Image of Menu" style="background:green; height: 100%; width: auto; position: absolute; right: 0; top: 0; object-fit: cover;" />
+                <div class="right col-lg-3 offset-lg-1" class="food-image-container">
+                    <?php if( get_field('food_image') ): ?>
+                        <img src="<?php the_field('food_image'); ?>" alt="Image related to The Lion Inn Menu" class="food-image" />
+                    <?php endif; ?>
                 </div>
             </div>
 
             <div class="book-table row mt-5">
                 <div class="times col-lg-4 text-center py-4">
-                    <h2 class="great-vibes minor-heading">
-                        <?php echo get_post_meta(get_the_ID(), 'food_sub_title_2', TRUE); ?>
-                    </h2>
+                    <h2 class="great-vibes minor-heading">Times</h2>
                     <i class="far fa-clock"></i>
                     <div class="opening-times">
                         <h4 class="mt-3 times-heading">Opening Times</h4>
                         <hr class="bg-light mx-auto mt-0"/>
                         <p>
-                            <?php echo nl2br(get_post_meta(get_the_ID(), 'food_opening_times', TRUE)); ?>
+                            <?php the_field('opening_times'); ?>
                         </p>
                     </div>
                     <div class="dining-times">
                         <h4 class="mt-3 times-heading">Dining Times</h4>
                         <hr class="bg-light mx-auto mt-0"/>
                         <p>
-                            <?php echo nl2br(get_post_meta(get_the_ID(), 'food_dining_times', TRUE)); ?>
+                            <?php the_field('dining_times'); ?>
                         </p>
                     </div>
                 </div>
 
                 <div class="reservation col-lg-8 text-center pt-4 bg-white">
-                    <h2 class="great-vibes minor-heading">
-                        <?php echo get_post_meta(get_the_ID(), 'food_sub_title_3', TRUE); ?>
-                    </h2>
+                    <h2 class="great-vibes minor-heading">Reservation</h2>
                     <i class="fas fa-book-open"></i>
-                    <h4 class="mt-3">
-                        <?php echo get_post_meta(get_the_ID(), 'food_sub_title_3.1', TRUE); ?>
-                    </h4>
+                    <h4 class="mt-3">Please call us on the number below</h4>
                     <p class="mt-5">
-                        <?php echo nl2br(get_post_meta(get_the_ID(), 'food_reserv_description', TRUE)); ?>
+                        <?php the_field('reservation_description'); ?>
                     </p>
                     <div class="icons mt-4">
                         <img class="mx-2" src="<?php echo get_bloginfo('template_directory'); ?>/images/pet-friendly.png" alt="Image of Pet Friendly Icon" />
@@ -302,7 +292,7 @@ if (class_exists( 'LionGallery' )) {
                         <h4 class="great-vibes mb-0">Book Now</h4>
                         <button type="button" class="btn btn-lg mt-4 py-1 px-3">
                             <span>
-                                <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                                <?php the_field('phone_number'); ?>
                             </span>
                         </button>
                     </div>
@@ -314,60 +304,52 @@ if (class_exists( 'LionGallery' )) {
     <div class="container">
         <div id="accommodation" class="accommodation">
             <div class="title text-center">
-                <h1 class="great-vibes section-heading">
-                    <?php echo get_post_meta(get_the_ID(), 'accommodation_main_title', TRUE); ?>
-                </h1>
+                <h1 class="great-vibes section-heading">Accommodation</h1>
             </div>
 
             <div class="cottage row">
                 <div class="col-12 col-xl-6 text-center mt-xl-2">
-                    <h2 class="great-vibes minor-heading">
-                        <?php echo get_post_meta(get_the_ID(), 'accommodation_sub_title', TRUE); ?>
-                    </h2>
+                    <h2 class="great-vibes minor-heading">Cottage</h2>
                     <div class="px-md-5">
                         <p>
-                            <?php echo nl2br(get_post_meta(get_the_ID(), 'accommodation_description', TRUE)); ?>
+                            <?php the_field('accommodation_description'); ?>
                         </p>
                     </div>
                 </div>
                 <div class="col-12 col-xl-6 p-4">
-                    <img src="<?php echo get_bloginfo('template_directory'); ?>/images/cottage.webp" alt="Image of Bed" class="cottage-img">
+                    <?php if( get_field('accommodation_image') ): ?>
+                        <img src="<?php the_field('accommodation_image'); ?>" alt="Image related to The Lion Inn Accommodation" class="cottage-img" />
+                    <?php endif; ?>
                 </div>
             </div>
 
             <div class="cards text-center mt-4 row">
                 <div class="col-xl-4 mb-3 mb-xl-0">
                     <div class="card h-100">
-                        <div class="great-vibes card-header">
-                            <?php echo get_post_meta(get_the_ID(), 'accommodation_left_card_title', TRUE); ?>
-                        </div>
+                        <div class="great-vibes card-header">B&B</div>
                         <div class="card-body px-5">
                             <p class="card-text">
-                                <?php echo nl2br(get_post_meta(get_the_ID(), 'accommodation_left_card_desc', TRUE)); ?>
+                                <?php the_field('b&b_description'); ?>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 mb-3 mb-xl-0">
                     <div class="card h-100">
-                        <div class="great-vibes card-header">
-                            <?php echo get_post_meta(get_the_ID(), 'accommodation_middle_card_title', TRUE); ?>
-                        </div>
+                        <div class="great-vibes card-header">Self-Catering</div>
                         <div class="card-body px-5">
                             <p class="card-text">                                
-                                <?php echo nl2br(get_post_meta(get_the_ID(), 'accommodation_middle_card_desc', TRUE)); ?>
+                                <?php the_field('self_catering_description'); ?>
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-4 mb-3 mb-xl-0">
                     <div class="card h-100">
-                        <div class="great-vibes card-header">
-                            <?php echo get_post_meta(get_the_ID(), 'accommodation_right_card_title', TRUE); ?>
-                        </div>
+                        <div class="great-vibes card-header">Season Dates</div>
                         <div class="card-body px-5">
                             <p class="card-text">
-                                <?php echo nl2br(get_post_meta(get_the_ID(), 'accommodation_right_card_desc', TRUE)); ?>
+                                <?php the_field('season_dates_description'); ?>
                             </p>
                         </div>
                     </div>
@@ -379,7 +361,7 @@ if (class_exists( 'LionGallery' )) {
                     <h4 class="great-vibes mb-0">Book Now</h4>
                     <button type="button" class="btn btn-lg mt-4 py-1 px-3">
                         <span>
-                            <?php echo get_post_meta(get_the_ID(), 'phone_number', TRUE); ?>
+                            <?php the_field('phone_number'); ?>
                         </span>
                     </button>
                 </div>

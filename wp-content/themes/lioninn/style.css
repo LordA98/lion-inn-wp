@@ -228,6 +228,22 @@ Tags: bootstrap, restaurant, pub
   width: 25px;
 }
 
+.food .food-image-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.food .food-image {
+  background: green;
+  height: 100%;
+  width: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  object-fit: cover;
+}
+
 .book-now h4 {
   font-size: 22pt;
   position: absolute;
