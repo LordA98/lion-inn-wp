@@ -199,9 +199,7 @@ if (class_exists( 'LionGallery' )) {
                 <div id="left-content" class="col-lg-6 col-xl-5 offset-xl-1 text-center pt-4 bg-white">
 
                     <div class="title">
-                        <h1 class="great-vibes section-heading">
-                            <?php the_field('about_us_title'); ?>
-                        </h1>
+                        <h1 class="great-vibes section-heading">About Us</h1>
                     </div>
 
                     <div class="pt-3 px-4">
