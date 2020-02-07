@@ -152,19 +152,16 @@ if (class_exists( 'LionGallery' )) {
                     </div>
                 </div>
 
-                <div class="buttons row">
-                    <div class="col-6 col-sm-4 col-lg-2 ml-auto pr-5 bg-primary text-center">
-                        <button type="button" class="btn btn-lg py-1 px-2 btn-phone">
-                            <span class="phone-no">
-                                <?php the_field('phone_number'); ?>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="col-6 col-sm-4 col-lg-2 mr-auto pl-0 bg-warning text-center">
-                        <a class="btn btn-lg" href="menu">
-                            <span class="px-1">View Menu</span>
-                        </a>
-                    </div>
+                <div class="buttons row justify-content-center">
+                    <button type="button" class="col-4 col-sm-3 col-lg-2 mr-md-3 btn btn-phone">
+                        <span class="phone-no">
+                            <?php the_field('phone_number'); ?>
+                        </span>
+                    </button>
+                    <div class="home-button-break mt-3 mt-lg-0"></div>
+                    <a class="col-4 col-sm-3 col-lg-2 ml-md-3 btn btn-phone view-menu-button" href="menu">
+                        <span class="view-menu-button-text">View Menu</span>
+                    </a>
                 </div>
             </div>
 

@@ -21,7 +21,7 @@ Tags: bootstrap, restaurant, pub
   font-size: 3vw;
 }
 
-@media (min-width:768px) and (max-width:1200px) {
+@media (min-width: 768px) and (max-width: 1200px) {
   .about-us h1 {
     font-size: 6vw !important;
   }
@@ -37,7 +37,7 @@ Tags: bootstrap, restaurant, pub
   height: auto;
 }
 
-@media (min-width:900px) and (max-width:1200px) {
+@media (min-width: 900px) and (max-width: 1200px) {
   .about-us-image {
     width: 100%;
     height: auto;
@@ -145,7 +145,7 @@ Tags: bootstrap, restaurant, pub
 }
 
 .great-vibes {
-  font-family: 'Great Vibes', cursive;
+  font-family: "Great Vibes", cursive;
 }
 
 .algeria {
@@ -154,7 +154,10 @@ Tags: bootstrap, restaurant, pub
 
 @font-face {
   font-family: Algeria;
-  src: url("fonts/algeria/ALGERIA.eot?") format("eot"), url("fonts/algeria/ALGERIA.woff") format("woff"), url("fonts/algeria/ALGERIA.ttf") format("truetype"), url("fonts/algeria/ALGERIA.svg") format("svg");
+  src: url("fonts/algeria/ALGERIA.eot?") format("eot"),
+    url("fonts/algeria/ALGERIA.woff") format("woff"),
+    url("fonts/algeria/ALGERIA.ttf") format("truetype"),
+    url("fonts/algeria/ALGERIA.svg") format("svg");
   font-weight: 400;
   font-style: normal;
 }
@@ -164,8 +167,16 @@ Tags: bootstrap, restaurant, pub
 }
 
 .food-bg-image {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .2)), to(rgba(0, 0, 0, .2))), url("images/food-bg.jpg") no-repeat center center;
-  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url("images/food-bg.jpg") no-repeat center center;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.2)),
+      to(rgba(0, 0, 0, 0.2))
+    ),
+    url("images/food-bg.jpg") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("images/food-bg.jpg") no-repeat center center;
   background-size: cover;
   -o-background-size: cover;
   position: absolute;
@@ -179,7 +190,7 @@ Tags: bootstrap, restaurant, pub
   color: #fff;
 }
 
-@media (min-width:1000px) and (max-width:1100px) {
+@media (min-width: 1000px) and (max-width: 1100px) {
   .food-bg-image {
     height: 80%;
   }
@@ -190,8 +201,9 @@ Tags: bootstrap, restaurant, pub
 }
 
 .food .book-table {
-  -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, .19), 0 6px 20px 0 rgba(0, 0, 0, .19);
-  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, .19), 0 6px 20px 0 rgba(0, 0, 0, .19);
+  -webkit-box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .food .book-table p {
@@ -341,8 +353,16 @@ p {
 }
 
 .home-bg-image {
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .2)), to(rgba(0, 0, 0, .2))), url("images/home-bg.png") no-repeat center center;
-  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url("images/home-bg.png") no-repeat center center;
+  background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.2)),
+      to(rgba(0, 0, 0, 0.2))
+    ),
+    url("images/home-bg.png") no-repeat center center;
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("images/home-bg.png") no-repeat center center;
   background-size: cover;
   -o-background-size: cover;
   position: absolute;
@@ -352,7 +372,7 @@ p {
 }
 
 nav a {
-  font-size: .7vw;
+  font-size: 0.7vw;
   color: #fff;
   text-transform: uppercase;
 }
@@ -397,22 +417,47 @@ nav .mobile-footer {
 }
 
 .to:before {
-  right: .5em;
+  right: 0.5em;
   margin-left: -50%;
 }
 
 .to:after {
-  left: .5em;
+  left: 0.5em;
   margin-right: -50%;
+}
+
+.view-menu-button {
+  background-color: #fff;
+  color: #673ab7;
+}
+
+.view-menu-button:hover {
+  background-color: #673ab7;
+  color: #fff;
+}
+
+.view-menu-button-text {
+  font-size: 19pt;
+  border: none;
+}
+
+.home-button-break {
+  width: 0;
+}
+
+@media (max-width: 767px) {
+  .home-button-break {
+    width: 100%;
+  }
 }
 
 .phone-no {
   font-size: 19pt;
-  border: 1pt solid #673ab7;
+  border: none;
 }
 
 .btn-transparent {
-  background: rgba(0, 0, 0, .3);
+  background: rgba(0, 0, 0, 0.3);
   border: 1pt solid #fff;
 }
 
@@ -425,42 +470,42 @@ nav .mobile-footer {
   font-size: 30pt;
 }
 
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .section-heading {
     font-size: 15vw !important;
   }
-
   .minor-heading {
     font-size: 9vw;
   }
 }
 
-@media (min-width:1200px) {
+@media (min-width: 1200px) {
   .home-bg-image {
     background-attachment: fixed;
   }
 }
 
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .main-heading {
     font-size: 15vw;
   }
 }
 
-@media (min-width:992px) and (max-width:1200px) {
+@media (min-width: 992px) and (max-width: 1200px) {
   .to {
     font-size: 2vw;
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .to {
     font-size: 3vw;
   }
 }
 
-@media (min-width:768px) and (max-width:1200px) {
-  .phone-no {
+@media (min-width: 768px) and (max-width: 1200px) {
+  .phone-no,
+  .view-menu-button-text {
     font-size: 2.2vw;
   }
 
@@ -469,45 +514,28 @@ nav .mobile-footer {
   }
 }
 
-@media (max-width:1200px) {
-
-  .btn-phone,
-  .btn-transparent {
-    height: 50px;
-  }
-
-  .btn-phone {
-    width: 100%;
-  }
-}
-
-@media (max-width:992px) {
-  .btn-phone {
-    width: 80%;
-  }
-
-  .phone-no {
+@media (max-width: 992px) {
+  .phone-no,
+  .view-menu-button-text {
     font-size: 3vw;
   }
 }
 
-@media (max-width:768px) {
-  .phone-no {
-    font-size: 3.3vw;
+@media (max-width: 768px) {
+  .phone-no,
+  .view-menu-button-text {
+    font-size: 3.1vw;
   }
 }
 
-@media (max-width:576px) {
-  .btn-phone {
-    width: 90%;
-  }
-
-  .phone-no {
-    font-size: 5.8vw;
+@media (max-width: 576px) {
+  .phone-no,
+  .view-menu-button-text {
+    font-size: 3.5vw;
   }
 }
 
-@media (max-width:1199px) {
+@media (max-width: 1199px) {
   #navbarSupportedContent {
     background-color: #000;
     padding: 0;
@@ -568,27 +596,26 @@ nav .mobile-footer {
   }
 }
 
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .food .book-table h4 {
     font-size: 5vw;
   }
 }
 
-@media (max-width:992px) {
+@media (max-width: 992px) {
   .food .menu .right {
     visibility: hidden;
     height: 0;
   }
 }
 
-@media (max-width:700px) {
+@media (max-width: 700px) {
   .tab-content {
     padding-left: 20px;
   }
 }
 
-@media (max-width:576px) {
-
+@media (max-width: 576px) {
   .events .upcoming .date .month,
   .events .upcoming .info p,
   .events .upcoming .more a {
@@ -601,7 +628,7 @@ nav .mobile-footer {
   }
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .events .regular .nav-item a {
     height: 50px;
   }
@@ -616,8 +643,7 @@ nav .mobile-footer {
   }
 }
 
-@media (max-width:576px) {
-
+@media (max-width: 576px) {
   .week-days .col-1,
   .week-days .col-lg-1,
   .week-days .col-md-1,
@@ -630,8 +656,7 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:576px) {
-
+@media (min-width: 576px) {
   .week-days .col-1,
   .week-days .col-lg-1,
   .week-days .col-md-1,
@@ -644,8 +669,7 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:768px) {
-
+@media (min-width: 768px) {
   .week-days .col-1,
   .week-days .col-lg-1,
   .week-days .col-md-1,
@@ -658,8 +682,7 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:992px) {
-
+@media (min-width: 992px) {
   .week-days .col-1,
   .week-days .col-lg-1,
   .week-days .col-md-1,
@@ -672,8 +695,7 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:1200px) {
-
+@media (min-width: 1200px) {
   .week-days .col-1,
   .week-days .col-lg-1,
   .week-days .col-md-1,
@@ -686,7 +708,7 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:992px) and (max-width:1310px) {
+@media (min-width: 992px) and (max-width: 1310px) {
   .footer .contact p.overflow {
     word-wrap: break-word;
   }
@@ -696,7 +718,7 @@ nav .mobile-footer {
   }
 }
 
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .menu-options h4 {
     font-size: 3.5vw !important;
   }
@@ -706,7 +728,7 @@ nav .mobile-footer {
   }
 }
 
-@media (max-width:576px) {
+@media (max-width: 576px) {
   .menu-items h3 {
     font-size: 3.5vw !important;
   }
@@ -720,14 +742,13 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:1200px) and (max-width:1600px) {
+@media (min-width: 1200px) and (max-width: 1600px) {
   .menu-items p.price {
     font-size: 1vw !important;
   }
 }
 
-@media (max-width:576px) {
-
+@media (max-width: 576px) {
   .menu-options .col-1,
   .menu-options .col-lg-1,
   .menu-options .col-md-1,
@@ -740,8 +761,7 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:576px) {
-
+@media (min-width: 576px) {
   .menu-options .col-1,
   .menu-options .col-lg-1,
   .menu-options .col-md-1,
@@ -754,8 +774,7 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:768px) {
-
+@media (min-width: 768px) {
   .menu-options .col-1,
   .menu-options .col-lg-1,
   .menu-options .col-md-1,
@@ -768,8 +787,7 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:992px) {
-
+@media (min-width: 992px) {
   .menu-options .col-1,
   .menu-options .col-lg-1,
   .menu-options .col-md-1,
@@ -782,8 +800,7 @@ nav .mobile-footer {
   }
 }
 
-@media (min-width:1200px) {
-
+@media (min-width: 1200px) {
   .menu-options .col-1,
   .menu-options .col-lg-1,
   .menu-options .col-md-1,
@@ -917,7 +934,7 @@ nav .mobile-footer {
 }
 
 #accommodation .card-header {
-  color: #FFF;
+  color: #fff;
   background-color: #673ab7;
   font-size: 30pt;
 }
@@ -951,13 +968,13 @@ nav .mobile-footer {
   height: 14rem;
 }
 
-@media (max-width:768px) {
+@media (max-width: 768px) {
   .figure {
     height: 13rem;
   }
 }
 
-@media (min-width:768px) and (max-width:1200px) {
+@media (min-width: 768px) and (max-width: 1200px) {
   .figure {
     height: 11rem;
   }
