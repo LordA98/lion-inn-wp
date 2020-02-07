@@ -160,7 +160,7 @@ class LionMenu {
 
         // Render save and change menu buttons
         $menus = $this->db->get( 'menu' );
-        echo $tpl->render( 'lm-edit-buttons', array( "menus" => $menus) );
+        echo $tpl->render( 'lm-top-level-buttons', array( "menus" => $menus) );
 
         // Print Sections & Items related to Menu
         if(isset($_GET["menu_id"]) && is_numeric($_GET["menu_id"])) {
@@ -168,9 +168,12 @@ class LionMenu {
             // Print Current Menu Title & Published Icon
             $current_menu = $this->db->get( 'menu', array ( "id" => $_GET["menu_id"] ) );
             $menu = $current_menu[0];
+            
+            echo '<span class="menu-id" hidden>' . $_GET["menu_id"] . '</span>';
+            echo '<span class="published" hidden>' . $menu->toPublish . '</span>';
             echo "<h1>$menu->name</h1>";
 
-            echo $tpl->render( 'lm-add-button' , array( "modal" => "add-section-modal", "title" => "Add Section", "optClasses" => "add-section", "btn_size" => "btn-sm", "w" => "400", "h" => "250" ));
+            echo $tpl->render( 'lm-second-level-buttons');
             
             $sections = $this->db->get( "section" , array ( "parent_menu" => $_GET["menu_id"] ) );
 
