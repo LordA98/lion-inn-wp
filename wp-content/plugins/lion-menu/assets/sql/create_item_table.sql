@@ -11,6 +11,7 @@ CREATE TABLE tableplaceholder (
     description VARCHAR(1000),
     isVegetarian boolean,
     isGlutenFree boolean,
+    isVegan boolean,
     toPublish boolean NOT NULL DEFAULT 1,
     parent_section mediumint(9) NOT NULL,
     PRIMARY KEY  (id),

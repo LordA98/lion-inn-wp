@@ -77,7 +77,8 @@
         <?php echo $tpl->render( 'lm-textarea-input', array( "id" => "desc-input", "name" => "item-desc", "label" => "Description", "optClasses" => "hideIfSubsec" )); ?>
         <?php echo $tpl->render( 'lm-checkbox-input', array( "id" => "veg-check", "name" => "item-veg", "label" => "Vegetarian", "optClasses" => "hideIfSubsec hideIfNote" )); ?>
         <?php echo $tpl->render( 'lm-checkbox-input', array( "id" => "gf-check", "name" => "item-gf", "label" => "Gluten Free", "optClasses" => "hideIfSubsec hideIfNote" )); ?>
-        <?php echo $tpl->render( 'lm-form-buttons', array( "value" => "Add" )); ?>       
+        <?php echo $tpl->render( 'lm-checkbox-input', array( "id" => "vegan-check", "name" => "item-vegan", "label" => "Vegan", "optClasses" => "hideIfSubsec hideIfNote" )); ?>
+        <?php echo $tpl->render( 'lm-form-buttons', array( "value" => "Add" )); ?>
     </form>
 
 </div>
@@ -96,6 +97,7 @@
         <?php echo $tpl->render( 'lm-textarea-input', array( "id" => "desc-input", "name" => "item-desc", "label" => "Description", "optClasses" => "hideIfSubsec" )); ?>
         <?php echo $tpl->render( 'lm-checkbox-input', array( "id" => "veg-check", "name" => "item-veg", "label" => "Vegetarian", "optClasses" => "hideIfSubsec hideIfNote" )); ?>
         <?php echo $tpl->render( 'lm-checkbox-input', array( "id" => "gf-check", "name" => "item-gf", "label" => "Gluten Free", "optClasses" => "hideIfSubsec hideIfNote" )); ?>
+        <?php echo $tpl->render( 'lm-checkbox-input', array( "id" => "vegan-check", "name" => "item-vegan", "label" => "Vegan", "optClasses" => "hideIfSubsec hideIfNote" )); ?>
         <?php echo $tpl->render( 'lm-form-buttons', array( "value" => "Save" )); ?>        
     </form>
 
