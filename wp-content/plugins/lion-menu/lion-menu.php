@@ -167,11 +167,17 @@ class LionMenu {
 
             // Print Current Menu Title & Published Icon
             $current_menu = $this->db->get( 'menu', array ( "id" => $_GET["menu_id"] ) );
-            $menu = $current_menu[0];
+            $menu = $current_menu[0];            
             
             echo '<span class="menu-id" hidden>' . $_GET["menu_id"] . '</span>';
             echo '<span class="published" hidden>' . $menu->toPublish . '</span>';
-            echo "<h1>$menu->name</h1>";
+            echo "<h1 class='menu-name'>$menu->name</h1>";
+
+            if($menu->toPublish) {
+                echo $icon_tpl->render( 'lm-icon', array( "classes" => "fas fa-check-circle toPublish mr-3", "tooltip" => "Published")); 
+            } else {
+                echo $icon_tpl->render( 'lm-icon', array( "classes" => "fas fa-times-circle mr-3", "tooltip" => "Not Published"));
+            }
 
             echo $tpl->render( 'lm-second-level-buttons');
             
