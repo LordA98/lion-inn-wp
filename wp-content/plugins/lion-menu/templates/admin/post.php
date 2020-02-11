@@ -49,18 +49,6 @@ function handle_ajax() {
 
     // handle request
     if($form_data) {
-        if(array_key_exists("add-gallery",$form_data)) {
-            $params = array(
-                'title' => $form_data["gallery-name"],
-                'description' => $form_data["gallery-name"],
-                'date_created' => current_time( 'mysql' ),
-                'toPublish' => (array_key_exists("publish-gallery", $form_data))?(1):(0)
-            );
-
-            $result = $db->insert("galleries", $params);
-
-            handleGalleryResult($result, "add", $form_data["gallery-name"]);
-        }
         // Add Menu
         if(array_key_exists("add-menu",$form_data)) {
             $params = array(
@@ -143,6 +131,7 @@ function handle_ajax() {
                 'description' => $form_data["item-desc"],
                 'isVegetarian' => (array_key_exists("item-veg",$form_data))?(1):(0),
                 'isGlutenFree' => (array_key_exists("item-gf",$form_data))?(1):(0),
+                'isVegan' => (array_key_exists("item-vegan",$form_data))?(1):(0),
                 'toPublish' => (array_key_exists("publish-item",$form_data))?(1):(0),
                 'parent_section' => $form_data["add-item"]
             );
@@ -164,6 +153,7 @@ function handle_ajax() {
                     'description' => $form_data["item-desc"],
                     'isVegetarian' => (array_key_exists("item-veg",$form_data))?(1):(0),
                     'isGlutenFree' => (array_key_exists("item-gf",$form_data))?(1):(0),
+                    'isVegan' => (array_key_exists("item-vegan",$form_data))?(1):(0),
                     'toPublish' => (array_key_exists("publish-item",$form_data))?(1):(0)
                 ), 
                 array('id' => $form_data["edit-item"])

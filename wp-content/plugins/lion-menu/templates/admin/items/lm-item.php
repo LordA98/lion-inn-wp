@@ -71,7 +71,7 @@
                 echo "<img class='mx-2 icon gf-icon' src='". plugins_url() . '/lion-menu/assets/images/gluten-free.png' . "' alt='Image of Gluten Free Icon' />";
             }
             if($isVegan) {
-                echo "<img class='mx-2 icon gf-icon' src='". plugins_url() . '/lion-menu/assets/images/vegan.png' . "' alt='Image of Vegan Icon' />";
+                echo "<img class='mx-2 icon vegan-icon' src='". plugins_url() . '/lion-menu/assets/images/vegan.png' . "' alt='Image of Vegan Icon' />";
             } 
             ?>
         </div>

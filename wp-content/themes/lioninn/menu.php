@@ -66,6 +66,11 @@ if (class_exists( 'LionMenu' )) {
                 <img class="mx-2" src="<?php echo get_bloginfo('template_directory'); ?>/images/vegetarian.png" alt="Image of Vegetarian Icon" />
                 <p>Vegetarian</p>
             </div>
+
+            <div class="vegan offset-1">
+                <img class="mx-2" src="<?php echo get_bloginfo('template_directory'); ?>/images/vegan.png" alt="Image of Vegan Icon" />
+                <p>Vegan</p>
+            </div>
         </div>
 
 

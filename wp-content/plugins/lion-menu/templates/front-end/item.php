@@ -62,7 +62,10 @@
             }
             if($isGlutenFree) {
                 echo "<img class='mx-2' src='" . plugins_url() . "/lion-menu/assets/images/gluten-free.png' alt='Image of Gluten Free Icon' />";
-            } 
+            }
+            if($isVegan) {
+                echo "<img class='mx-2' src='" . plugins_url() . "/lion-menu/assets/images/vegan.png' alt='Image of Vegan Icon' />";
+            }
         ?>
     </div>
 
