@@ -58,8 +58,6 @@ class LionGallery {
      * Plugin Deactivation Hook
      */
 	function deactivate() {
-        $this->db->deleteTables();
-
         flush_rewrite_rules();
 	}
 

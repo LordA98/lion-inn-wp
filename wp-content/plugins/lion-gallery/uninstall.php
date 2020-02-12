@@ -2,7 +2,7 @@
 /**
  * Trigger this file on plugin uninstall
  * 
- * @package LionEvents
+ * @package LionGallery
  */
 
 if( !defined( 'WP_UNINSTALL_PLUGIN' )) {
@@ -10,8 +10,8 @@ if( !defined( 'WP_UNINSTALL_PLUGIN' )) {
 }
 
 // Clear Database Data
-// require_once(plugin_dir_path(__FILE__).'/includes/ld-sql-manager.class.php');
+require_once(plugin_dir_path(__FILE__).'/includes/lg-sql-manager.class.php');
 
-// $db = new LDSQLManager();
+$db = new LGSQLManager();
 
-// $db->deleteTables();
+$db->deleteTables();
