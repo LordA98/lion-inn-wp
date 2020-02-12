@@ -1,6 +1,6 @@
 <?php
 /**
- * Backwards Compatibility
+ * Backwards compatibility.
  *
  * @package Ultimate Dashboard
  */
@@ -80,15 +80,18 @@ if ( get_option( 'comments' ) ) {
 }
 
 /**
- * Handle udb_widget_type
- * Can be used for "whole checking" or "partial checking"
+ * Handle udb_widget_type.
+ *
+ * Can be used for "whole checking" or "partial checking".
  *
  * @param int $post_id The post ID.
  */
 function udb_handle_widget_type( $post_id ) {
+
 	$widget_type = get_post_meta( $post_id, 'udb_widget_type', true );
 
 	if ( ! $widget_type ) {
+
 		$content = get_post_meta( $post_id, 'udb_content', true );
 
 		if ( $content ) {
@@ -98,15 +101,18 @@ function udb_handle_widget_type( $post_id ) {
 		}
 
 		update_post_meta( $post_id, 'udb_widget_type', $widget_type );
+
 	}
+
 }
 add_action( 'udb_compat_widget_type', 'udb_handle_widget_type' );
 
 /**
- * Whole checking udb_widget_type compatibility
+ * Whole checking udb_widget_type compatibility.
  */
 function udb_compat_widget_type() {
-	// no need to check more if ever checked.
+
+	// Make sure we don't check again.
 	if ( get_option( 'udb_compat_widget_type' ) ) {
 		return;
 	}
@@ -127,7 +133,8 @@ function udb_compat_widget_type() {
 		do_action( 'udb_compat_widget_type', $widget->ID );
 	}
 
-	// mark it, so no need to check more next time.
+	// Make sure we don't check again.
 	update_option( 'udb_compat_widget_type', 1 );
+
 }
 add_action( 'admin_init', 'udb_compat_widget_type' );

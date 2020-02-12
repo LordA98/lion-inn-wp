@@ -1,37 +1,36 @@
 === Ultimate Dashboard ===
 Contributors: davidvongries
-Tags: Dashboard, Wordpress Dashboard, Dashboard Widgets, Custom Dashboard, WP Admin
-Requires at least: 4.0
-Tested up to: 5.2
+Tags: Dashboard, Wordpress Dashboard, Dashboard Widgets, Custom WordPress Dashboard, Custom Dashboard, WP Admin, WordPress Admin
+Requires at least: 4.6
+Tested up to: 5.3
 Requires PHP: 5.6
-Stable tag: 2.4
+Stable tag: 2.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Remove the default WordPress dashboard widgets and create your own set of widgets with Ultimate Dashboard.
+Create a Custom WordPress Dashboard.
 
 == Description ==
-Ultimate Dashboard is a lightweight WordPress plugin that lets you replace the default WordPress dashboard widgets with your own set of useful icon & text widgets.
+[Ultimate Dashboard](https://ultimatedashboard.io/) is a clean & lightweight plugin that allows you to create a custom WordPress dashboard.
 
-Create custom WordPress dashboard widgets and send your clients and users to the key areas of their website – or anywhere else.
+Replace the default WordPress dashboard widgets with your own set of icon- & text widgets.
 
 = Features =
-* Give the WordPress dashboard a more meaningful use for your clients & users
-* Remove all/individual default WordPress dashboard widgets
-* Create your own set of icon widgets
+* Create icon widgets
 * Create text widgets
-* Choose between FontAwesome & WordPress Dashicons for your icon widgets
-* Import/Export widgets & settings
+* Remove all or individual default WordPress widgets
+* Export/Import dashboard widgets & settings
 * Add custom CSS to your WordPress dashboard
 
 Get even more Features with [Ultimate Dashboard PRO](https://ultimatedashboard.io/?utm_source=wordpress&utm_medium=description&utm_campaign=udb).
 
 = Ultimate Dashboard PRO =
 * Remove 3rd party widgets
-* Add video widgets
-* Add HTML widgets
+* Create video widgets
+* Create contact form widgets
+* Create HTML widgets
 * WordPress multisite support
-* Rebrand the WordPress login & admin screen
+* White Label the WordPress login & admin area
 
 [youtube https://www.youtube.com/watch?v=SFnXOYQ7vWk]
 
@@ -58,6 +57,10 @@ For multisite, third party Widget support & more check out [Ultimate Dashboard P
 3. Ultimate Dashboard Settings Page
 
 == Changelog ==
+= 2.5.1 | January 3, 2020 =
+* Fixed: Text decoration issue
+= 2.5 | September 27, 2019 =
+* Maintenance Release
 = 2.4 | April 30, 2019 =
 * New: Text Widgets
 * New: Tooltips for Icon Widgets

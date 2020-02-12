@@ -1,20 +1,19 @@
 <?php
 /**
- * Exports Page Template
+ * Tools template.
  *
  * @package Ultimate Dashboard
  */
 
 defined( 'ABSPATH' ) || die( "Can't access directly" );
+
 ?>
 
 <div class="wrap settingstuff">
 	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 	<?php settings_errors(); ?>
-
 	<div class="clearfix">
 		<div class="left-col">
-
 			<form method="post" action="options.php">
 				<div class="neatbox">
 					<?php
@@ -24,10 +23,8 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 					?>
 				</div>
 			</form>
-
-		</div><!-- /left-col -->
+		</div>
 		<div class="right-col">
-
 			<form method="post" action="options.php" enctype="multipart/form-data">
 				<div class="neatbox">
 					<?php
@@ -37,9 +34,6 @@ defined( 'ABSPATH' ) || die( "Can't access directly" );
 					?>
 				</div>
 			</form>
-
-		</div><!-- /right-col -->
-	</div><!-- /clearfix -->
-
-</div><!-- /wrap -->
-
+		</div>
+	</div>
+</div>

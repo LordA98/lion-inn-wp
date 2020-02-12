@@ -1,19 +1,16 @@
 <?php
 /**
- * Settings Page Template
+ * Settings page template.
  *
  * @package Ultimate Dashboard
  */
 
-// exit if accessed directly.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) || die( "Can't access directly" );
+
 ?>
 
 <div class="wrap settingstuff">
 	<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
-
 	<form method="post" action="options.php">
 		<div class="neatbox has-subboxes has-bigger-heading">
 			<?php

@@ -2,12 +2,11 @@
 /**
  * Plugin Name: Ultimate Dashboard
  * Plugin URI: https://ultimatedashboard.io/
- * Description: Ultimate Dashboard gives you full control over your WordPress Dashboard. Remove the default Dashboard Widgets and and create your own for a better user experience.
- * Version: 2.4
+ * Description: Create a Custom WordPress Dashboard.
+ * Version: 2.5.1
  * Author: David Vongries
  * Author URI: https://mapsteps.com/
  * Text Domain: ultimate-dashboard
- * Domain Path: /languages
  *
  * @package Ultimate Dashboard
  */
@@ -19,15 +18,7 @@ define( 'ULTIMATE_DASHBOARD_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'ULTIMATE_DASHBOARD_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 /**
- * Text domain
- */
-function udb_textdomain() {
-	load_plugin_textdomain( 'ultimate-dashboard', false, plugin_basename( dirname( __FILE__ ) ) . '/languages' );
-}
-add_action( 'plugins_loaded', 'udb_textdomain' );
-
-/**
- * Admin Scripts & Styles
+ * Admin scripts & styles.
  */
 function udb_admin_scripts() {
 
@@ -35,7 +26,7 @@ function udb_admin_scripts() {
 
 	$plugin_data = get_plugin_data( __FILE__ );
 
-	// Widget Edit Screen & Create a New Widget Screen.
+	// Widget edit screen & create a new widget screen.
 	if ( ( 'post.php' === $pagenow || 'post-new.php' === $pagenow ) && 'udb_widgets' === $typenow ) {
 
 		// FontAwesome CSS.
@@ -50,6 +41,8 @@ function udb_admin_scripts() {
 		wp_register_style( 'ultimate-dashboard-cpt', ULTIMATE_DASHBOARD_PLUGIN_URL . 'assets/css/ultimate-dashboard-cpt.css', array(), $plugin_data['Version'] );
 		wp_enqueue_style( 'ultimate-dashboard-cpt' );
 
+		do_action( 'udb_edit_styles' );
+
 		// Select2 JS.
 		wp_register_script( 'select2', ULTIMATE_DASHBOARD_PLUGIN_URL . 'assets/js/select2.min.js', array( 'jquery' ), '4.0.6-rc.1', true );
 		wp_enqueue_script( 'select2' );
@@ -57,9 +50,12 @@ function udb_admin_scripts() {
 		// Custom Post Type JS.
 		wp_register_script( 'ultimate-dashboard-cpt', ULTIMATE_DASHBOARD_PLUGIN_URL . 'assets/js/ultimate-dashboard-cpt.js', array( 'jquery' ), $plugin_data['Version'], true );
 		wp_enqueue_script( 'ultimate-dashboard-cpt' );
+
+		do_action( 'udb_edit_scripts' );
+
 	}
 
-	// Dashboard Widget Overview & Settings.
+	// Dashboard widget overview & settings.
 	if ( 'edit.php' === $pagenow && 'udb_widgets' === $typenow ) {
 
 		// FontAwesome CSS.
@@ -79,7 +75,7 @@ function udb_admin_scripts() {
 
 	}
 
-	// WordPress Dashboard.
+	// WordPress dashboard.
 	if ( 'index.php' === $pagenow ) {
 
 		// FontAwesome CSS.
@@ -90,29 +86,57 @@ function udb_admin_scripts() {
 		wp_register_style( 'ultimate-dashboard-index', ULTIMATE_DASHBOARD_PLUGIN_URL . 'assets/css/ultimate-dashboard-index.css', array(), $plugin_data['Version'] );
 		wp_enqueue_style( 'ultimate-dashboard-index' );
 
+		do_action( 'udb_dashboard_styles' );
+
 		// Dashboard JS.
 		wp_register_script( 'ultimate-dashboard-index', ULTIMATE_DASHBOARD_PLUGIN_URL . 'assets/js/ultimate-dashboard-index.js', array( 'jquery' ), $plugin_data['Version'], true );
 		wp_enqueue_script( 'ultimate-dashboard-index' );
 
+		do_action( 'udb_dashboard_scripts' );
+
 	}
 
-	// Highlight PRO Link in Sub-Menu.
-	echo '<style>#adminmenu #menu-posts-udb_widgets a[href="edit.php?post_type=udb_widgets&page=addons"] { color: tomato; }</style>';
+	// Highlight PRO link in sub-menu.
+	echo '<style>#adminmenu #menu-posts-udb_widgets a[href="https://ultimatedashboard.io/pro/"] { color: tomato; }</style>';
 
 }
 add_action( 'admin_enqueue_scripts', 'udb_admin_scripts' );
 
+
 /**
- * Action Links
+ * Action links.
  *
- * @param string $links Links.
+ * @param array $links The action links array.
+ *
+ * @return array The action links array.
  */
 function udb_add_action_links( $links ) {
+
 	$settings = array( '<a href="' . admin_url( 'edit.php?post_type=udb_widgets&page=settings' ) . '">' . __( 'Settings', 'ultimate-dashboard' ) . '</a>' );
+
 	return array_merge( $links, $settings );
 
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'udb_add_action_links' );
 
-// Required Files.
+/**
+ * Plugin deactivation.
+ */
+function udb_deactivate() {
+
+	$udb_settings = get_option( 'udb_settings' );
+
+	if ( isset( $udb_settings['remove-on-uninstall'] ) ) {
+
+		delete_option( 'udb_settings' );
+		delete_option( 'udb_pro_settings' );
+		delete_option( 'udb_import' );
+		delete_option( 'udb_compact_widget_widget_type' );
+
+	}
+
+}
+register_deactivation_hook( plugin_basename( __FILE__ ), 'udb_deactivate' );
+
+// Required files.
 require_once ULTIMATE_DASHBOARD_PLUGIN_DIR . 'inc/init.php';
