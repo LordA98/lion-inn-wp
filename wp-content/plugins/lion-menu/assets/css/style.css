@@ -2,9 +2,11 @@
  * Styling for Sortable / Draggable Lists
  * From the Sortable site
  */
-body.dragging, body.dragging * {
+body.dragging,
+body.dragging * {
     cursor: move !important;
 }
+
 .dragged {
     position: absolute !important;
     opacity: 0.5;
@@ -17,6 +19,7 @@ ol.sortable li {
     position: relative;
     list-style-type: none !important;
 }
+
 ol.sortable li:before {
     position: absolute;
 }
@@ -42,8 +45,9 @@ ol.vertical li.placeholder {
     position: relative;
     margin: 0;
     padding: 0;
-    border: none; 
+    border: none;
 }
+
 ol.vertical li.placeholder:before {
     position: absolute;
     content: "";
@@ -54,7 +58,7 @@ ol.vertical li.placeholder:before {
     top: -4px;
     border: 5px solid transparent;
     border-left-color: red;
-    border-right: none; 
+    border-right: none;
 }
 
 
@@ -71,9 +75,15 @@ a.button-link {
 }
 
 /* Admin content width */
-ol.sortable, .admin-buttons { width: 60%; }
+ol.sortable,
+.admin-buttons {
+    width: 60%;
+}
+
 @media (max-width: 1300px) {
-    ol.sortable, .admin-buttons {
+
+    ol.sortable,
+    .admin-buttons {
         width: 100%;
     }
 }
@@ -85,25 +95,29 @@ ol.nested-sortable i.fa-bars:hover {
     color: #7c7c7c;
     cursor: move;
 }
-ol.sortable i, 
+
+ol.sortable i,
 ol.nested-sortable i {
     color: #d3d3d3;
 }
-ol.sortable i.fa-edit:hover, 
+
+ol.sortable i.fa-edit:hover,
 ol.nested-sortable i.fa-edit:hover {
     color: #7c7c7c;
     cursor: pointer;
 }
-ol.sortable i.fa-trash-alt:hover, 
+
+ol.sortable i.fa-trash-alt:hover,
 ol.nested-sortable i.fa-trash-alt:hover,
-ol.sortable i.fa-times-circle, 
+ol.sortable i.fa-times-circle,
 ol.nested-sortable i.fa-times-circle {
     color: red;
     cursor: pointer;
 }
-ol.sortable i.fa-plus:hover, 
+
+ol.sortable i.fa-plus:hover,
 ol.nested-sortable i.fa-plus:hover,
-ol.sortable i.fa-check-circle, 
+ol.sortable i.fa-check-circle,
 ol.nested-sortable i.fa-check-circle {
     color: green;
     cursor: pointer;
@@ -121,6 +135,7 @@ ol.nested-sortable i.fa-check-circle {
 .purpleBg {
     background-color: #673ab7 !important;
 }
+
 .white-font {
     color: white !important;
 }
@@ -128,6 +143,7 @@ ol.nested-sortable i.fa-check-circle {
 .fs-10 {
     font-size: 10pt;
 }
+
 .fs-14 {
     font-size: 14pt;
 }
@@ -157,17 +173,19 @@ img.icon {
 }
 
 /* POST Response Message */
-#message {
+#lm-message {
     top: 32px;
     left: 160px;
 }
+
 @media (max-width: 960px) {
-    #message {
+    #lm-message {
         left: 36px;
     }
 }
+
 @media (max-width: 785px) {
-    #message {
+    #lm-message {
         left: 0px;
     }
 }

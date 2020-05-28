@@ -5,6 +5,7 @@
  * So that correct server response is sent
  */
 function handleGalleryResult($result, $type, $name) {
+    console_log($name);
     if($result !== false) {
         if($type == "edit") {
             echo "<strong>Success!</strong> " . $name . " updated successfully.";

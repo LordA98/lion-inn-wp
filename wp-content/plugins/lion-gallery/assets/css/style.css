@@ -1,0 +1,17 @@
+/* POST Response Message */
+#lg-message {
+  top: 32px;
+  left: 160px;
+}
+
+@media (max-width: 960px) {
+  #lg-message {
+    left: 36px;
+  }
+}
+
+@media (max-width: 785px) {
+  #lg-message {
+    left: 0px;
+  }
+}
