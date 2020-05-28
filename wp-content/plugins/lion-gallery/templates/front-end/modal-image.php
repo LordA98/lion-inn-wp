@@ -9,6 +9,7 @@ $(function () {
 <style>
 .modal-image-figure {
     text-align: center;
+    max-width: 100%;
 }
 .modal-image-figure:hover {
     cursor: pointer;
