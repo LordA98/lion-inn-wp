@@ -28,6 +28,7 @@ class LDSQLManager {
      */
     public function createTables() {
         $this->createTable("docs");
+        $this->createTable("groups");
     }
 
     /**
@@ -60,6 +61,7 @@ class LDSQLManager {
      */
     public function deleteTables() {
         $this->deleteTable("docs");
+        $this->deleteTable("groups");
     }
 
     /**
