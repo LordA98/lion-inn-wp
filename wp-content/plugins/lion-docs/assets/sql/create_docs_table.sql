@@ -4,5 +4,8 @@ CREATE TABLE tableplaceholder (
     filename VARCHAR(200),
     date_uploaded datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
     date_updated datetime,
-    PRIMARY KEY  (id)
+    group mediumint(9),
+    toPublish boolean NOT NULL DEFAULT 1,
+    PRIMARY KEY  (id),
+    FOREIGN KEY (group) REFERENCES prefixplaceholder_groups(id)
 ) charsetplaceholder;
