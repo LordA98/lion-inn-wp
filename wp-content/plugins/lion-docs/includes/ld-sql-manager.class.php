@@ -60,7 +60,7 @@ class LDSQLManager {
      * Remove Plugin Tables
      */
     public function deleteTables() {
-        $this->deleteTable("docs");
+        // $this->deleteTable("docs");
         $this->deleteTable("groups");
     }
 
