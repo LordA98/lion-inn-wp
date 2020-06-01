@@ -27,8 +27,8 @@ class LDSQLManager {
      * Create the 4 Tables Needed for the Plugin
      */
     public function createTables() {
-        $this->createTable("docs");
         $this->createTable("groups");
+        $this->createTable("docs");
     }
 
     /**
@@ -60,7 +60,7 @@ class LDSQLManager {
      * Remove Plugin Tables
      */
     public function deleteTables() {
-        // $this->deleteTable("docs");
+        $this->deleteTable("docs");
         $this->deleteTable("groups");
     }
 
