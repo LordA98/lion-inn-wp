@@ -117,7 +117,7 @@ class LionDocs {
         echo $tpl->render( 'ld-header', $data );
 
         // Upload button
-        echo $upld->render( 'ld-upload-button' );
+        echo $upld->render( 'ld-buttons' );
 
         // List of docs
         $docs = $this->db->get( 'docs' );

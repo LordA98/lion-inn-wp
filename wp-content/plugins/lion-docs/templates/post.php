@@ -53,6 +53,25 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         ));
         return;
     }
+
+    // Add Group
+    if(isset($_POST["add-group"])) {
+        // Get ID for parent group if need be
+        if($_POST["parent-group"] != "0" && isset($_POST["is-sub-group"])) {
+            // $db->get("groups", )
+        }
+
+        $params = array(
+            'name' => $_POST["group-name"],
+            'isSubGroup' => (isset($_POST["is-sub-group"]))?(1):(0),
+            'parent_group' => $_POST["parent-group"],
+            'toPublish' => (isset($_POST["publish-group"]))?(1):(0)
+        );
+
+        $db->insert("groups", $params);
+
+        return;
+    }
 }
 
 /**
