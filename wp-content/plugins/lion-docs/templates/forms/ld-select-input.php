@@ -2,11 +2,11 @@
     <label for="<?php echo $id; ?>" class="col-4 col-form-label"><?php echo $label; ?></label>
     <select class="col-8 custom-select" name="<?php echo $name; ?>" id="<?php echo $id; ?>">
 
-        <!-- TODO:LThis may need to be made more flexible if a select input is required that is not for listing groups -->
-        <option value="0" selected>-- Select Group --</option>
+        <!-- NOTE: This select input may need to be used for various things so be careful changing variable names -->
+        <option value="0" selected>-- Select Option --</option>
         <?php 
-        foreach($options as $doc) {
-            echo "<option value='$doc->id'><?php echo $doc->title; ?></option>";
+        foreach($options as $opt) {
+            echo "<option value='$opt->id'>$opt->name</option>";
         }
         ?>
 

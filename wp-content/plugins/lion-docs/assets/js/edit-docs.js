@@ -89,7 +89,7 @@ jQuery(function ($) {
         $('input[name="is-sub-group"]').prop('checked', false);
         $('#parent-group').hide();
         $('#parent-group').val("0");
-        $('input[name="publish-doc"]').prop('checked', true);
+        $('input[name="publish-group"]').prop('checked', true);
     });
     /**
      * Toggle Parent Group select input when isSubGroup checkbox is selected

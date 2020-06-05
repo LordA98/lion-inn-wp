@@ -119,9 +119,15 @@ class LionDocs {
         // Upload button
         echo $upld->render( 'ld-buttons' );
 
-        // List of docs
+        // Get docs & groups
         $docs = $this->db->get( 'docs' );
-        echo $upld->render( 'ld-doc-list', array('docs' => $docs) );
+        $groups = $this->db->get( 'groups' );
+        
+        // Merge results into one array
+        // $merged = 
+
+        // Display on page
+        echo $upld->render( 'ld-docs', array('docs' => $docs) );
     }
     
 }

@@ -15,8 +15,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             'title' => $_POST["doc-name"],
             'filename' => $_FILES["file-upload"]['name'],
             'date_uploaded' => current_time( 'mysql' ),
-            'section' => $_POST["section"],
-            'parent_doc' => $_POST["parent-doc"],
+            'doc_group' => $_POST["group"],
             'toPublish' => (isset($_POST["publish-doc"]))?(1):(0)
         );
 
@@ -33,8 +32,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             'title' => $_POST["doc-name"],
             'filename' => $_FILES["file-upload"]['name'],
             'date_updated' => current_time( 'mysql' ),
-            'section' => $_POST["section"],
-            'parent_doc' => $_POST["parent-doc"],
+            'doc_group' => $_POST["group"],
             'toPublish' => (isset($_POST["publish-doc"]))?(1):(0)
             ), 
             array('id' => $_POST["edit-doc"])
@@ -56,15 +54,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Add Group
     if(isset($_POST["add-group"])) {
-        // Get ID for parent group if need be
-        if($_POST["parent-group"] != "0" && isset($_POST["is-sub-group"])) {
-            // $db->get("groups", )
-        }
-
         $params = array(
             'name' => $_POST["group-name"],
             'isSubGroup' => (isset($_POST["is-sub-group"]))?(1):(0),
-            'parent_group' => $_POST["parent-group"],
+            'parent_group' => ($_POST["parent-group"] == "0")?(NULL):($_POST["parent-group"]),
             'toPublish' => (isset($_POST["publish-group"]))?(1):(0)
         );
 
@@ -89,7 +82,7 @@ function upload_file() {
         ld_log_me('File Upload Successful - ' . $_FILES["file-upload"]['name']);
         move_uploaded_file(
             $_FILES['file-upload']['tmp_name'], 
-            WP_PLUGIN_DIR . '/lion-docs/docs/pdf/' . $_POST["section"] . '/' . $_FILES['file-upload']['name']
+            WP_PLUGIN_DIR . '/lion-docs/docs/pdf/' . $_FILES['file-upload']['name']
         );
 
     }

@@ -4,9 +4,6 @@
     <th scope="row"><?php echo $id; ?></th>
     <td class="doc-name"><?php echo $title; ?></td>
     <td class="filename"><?php echo $filename; ?></td>
-    <td class="section"><?php echo $section; ?></td>
-    <td class="parent-doc"><?php echo $parent_doc; ?></td>
-    <td><?php echo $views; ?></td>
     <td class="publish-doc">
         <div class="publish-value" data-id="<?php echo $toPublish; ?>" hidden><?php echo $toPublish; ?></div>
         <?php
