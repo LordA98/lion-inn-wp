@@ -122,12 +122,37 @@ class LionDocs {
         // Get docs & groups
         $docs = $this->db->get( 'docs' );
         $groups = $this->db->get( 'groups' );
+                
+        // Assign docs to corresponding groups and subgroups
+        array_walk($groups, function($group) use (&$docs) {
+            $group->docs = [];
+            array_walk($docs, function($doc) use (&$group) {
+                if($group->id === $doc->doc_group) {
+                    array_push($group->docs, $doc);
+                }
+            });
+        });
         
-        // Merge results into one array
-        // $merged = 
+        // Separate into groups and subgroups
+        $sub = array_filter($groups, function($group) { return ($group->isSubGroup == 1); });
+        $groups = array_filter($groups, function($group) { return ($group->isSubGroup == 0); });
+
+        // Merge subgroups into parent groups
+        array_walk($groups, function($group) use (&$sub) {
+            $group->subgroups = [];
+            array_walk($sub, function($sub) use (&$group) {
+                if($group->id === $sub->parent_group) {
+                    array_push($group->subgroups, $sub);
+                }
+            });
+        });
+        
+        echo "<pre>"; 
+        print_r($groups); 
+        echo "</pre>";
 
         // Display on page
-        echo $upld->render( 'ld-docs', array('docs' => $docs) );
+        // echo $upld->render( 'ld-docs', array('docs' => $docs) );
     }
     
 }
