@@ -1620,8 +1620,8 @@ msgid "No"
 msgstr "No"
 
 #: wp-includes/class-wp-editor.php:1282
-#: wp-includes/class-walker-comment.php:242
-#: wp-includes/class-walker-comment.php:391 wp-includes/js/dist/editor.js:12438
+#: wp-includes/class-walker-comment.php:250
+#: wp-includes/class-walker-comment.php:438 wp-includes/js/dist/editor.js:12438
 #: wp-includes/js/dist/block-library.js:11514
 #: wp-includes/js/dist/block-library.js:12403
 #: wp-includes/js/dist/format-library.js:1056
@@ -1673,18 +1673,18 @@ msgstr "All"
 msgid "Comments are closed."
 msgstr "Comments are closed."
 
-#: wp-includes/class-walker-comment.php:269
-#: wp-includes/class-walker-comment.php:359
+#: wp-includes/class-walker-comment.php:302
+#: wp-includes/class-walker-comment.php:400
 msgid "Your comment is awaiting moderation."
 msgstr "Your comment is awaiting moderation."
 
 #. translators: 1: comment date, 2: comment time
-#: wp-includes/class-walker-comment.php:300
-#: wp-includes/class-walker-comment.php:387
+#: wp-includes/class-walker-comment.php:339
+#: wp-includes/class-walker-comment.php:434
 msgid "%1$s at %2$s"
 msgstr "%1$s at %2$s"
 
-#: wp-includes/class-walker-comment.php:304
+#: wp-includes/class-walker-comment.php:343
 msgid "(Edit)"
 msgstr "(Edit)"
 
@@ -2215,7 +2215,7 @@ msgstr "Or link to existing content"
 msgid "Words"
 msgstr "Words"
 
-#: wp-includes/class-walker-comment.php:242
+#: wp-includes/class-walker-comment.php:250
 msgid "Pingback:"
 msgstr "Pingback:"
 
@@ -2334,8 +2334,9 @@ msgstr "WordPress &rsaquo; Success"
 msgid "Set featured image"
 msgstr "Set featured image"
 
-#: wp-includes/class-walker-comment.php:287
-#: wp-includes/class-walker-comment.php:376
+#. translators: %s: Comment author link.
+#: wp-includes/class-walker-comment.php:326
+#: wp-includes/class-walker-comment.php:423
 msgid "%s <span class=\"says\">says:</span>"
 msgstr "%s <span class=\"says\">says:</span>"
 
@@ -4622,8 +4623,8 @@ msgstr "The site already appears to be uninitialised."
 msgid "The %s table is not installed. Please run the network database upgrade."
 msgstr "The %s table is not installed. Please run the network database upgrade."
 
-#: wp-includes/class-walker-comment.php:271
-#: wp-includes/class-walker-comment.php:361
+#: wp-includes/class-walker-comment.php:304
+#: wp-includes/class-walker-comment.php:402
 msgid "Your comment is awaiting moderation. This is a preview, your comment will be visible after it has been approved."
 msgstr "Your comment is awaiting approval. This is a preview, your comment will be visible after it has been approved."
 
@@ -8532,7 +8533,7 @@ msgid "Edit Post"
 msgstr "Edit Post"
 
 #. translators: Name of a comment's author after being anonymized.
-#: wp-includes/comment.php:3495 wp-includes/class-wp-theme.php:839
+#: wp-includes/comment.php:3500 wp-includes/class-wp-theme.php:839
 #: wp-includes/comment-template.php:31
 msgid "Anonymous"
 msgstr "Anonymous"
@@ -8744,7 +8745,7 @@ msgstr "Unapproved"
 msgid "Duplicate comment detected; it looks as though you&#8217;ve already said that!"
 msgstr "Duplicate comment detected; it looks as though you&#8217;ve already said that!"
 
-#: wp-includes/comment.php:2248
+#: wp-includes/comment.php:2253
 msgid "Could not update comment status"
 msgstr "Could not update comment status"
 
@@ -9298,7 +9299,7 @@ msgstr "You should specify a nonce action to be verified by using the first para
 msgid "Scripts and styles should not be registered or enqueued until the %1$s, %2$s, or %3$s hooks."
 msgstr "Scripts and styles should not be registered or enqueued until the %1$s, %2$s, or %3$s hooks."
 
-#: wp-includes/comment.php:3310
+#: wp-includes/comment.php:3315
 msgid "<strong>ERROR</strong>: please type a comment."
 msgstr "<strong>ERROR</strong>: please type a comment."
 
@@ -9307,11 +9308,11 @@ msgstr "<strong>ERROR</strong>: please type a comment."
 msgid "Error establishing a database connection"
 msgstr "Error establishing a database connection"
 
-#: wp-includes/comment.php:3285
+#: wp-includes/comment.php:3290
 msgid "<strong>ERROR</strong>: please enter a valid email address."
 msgstr "<strong>ERROR</strong>: please enter a valid email address."
 
-#: wp-includes/comment.php:3283
+#: wp-includes/comment.php:3288
 msgid "<strong>ERROR</strong>: please fill the required fields (name, email)."
 msgstr "<strong>ERROR</strong>: please fill the required fields (name, email)."
 
@@ -9964,7 +9965,7 @@ msgstr "Drag and drop to reorder media files."
 msgid "Link Text"
 msgstr "Link Text"
 
-#: wp-includes/comment.php:3324
+#: wp-includes/comment.php:3329
 msgid "<strong>ERROR</strong>: The comment could not be saved. Please try again later."
 msgstr "<strong>ERROR</strong>: the comment could not be saved. Please try again later."
 
@@ -11099,7 +11100,7 @@ msgstr[1] "Your theme has %s widget areas, but this particular page doesn&#8217;
 msgid "You can navigate to other pages on your site while using the Customizer to view and edit the widgets displayed on those pages."
 msgstr "You can navigate to other pages on your site while using the Customiser to view and edit the widgets displayed on those pages."
 
-#: wp-includes/comment.php:3223
+#: wp-includes/comment.php:3228
 msgid "Sorry, comments are not allowed for this item."
 msgstr "Sorry, comments are not allowed for this item."
 
@@ -11261,39 +11262,39 @@ msgstr "Mine"
 msgid "Limit result set to users who are considered authors."
 msgstr "Limit result set to users who are considered authors."
 
-#: wp-includes/comment.php:3340 wp-includes/comment.php:3449
+#: wp-includes/comment.php:3345 wp-includes/comment.php:3454
 msgid "WordPress Comments"
 msgstr "WordPress Comments"
 
-#: wp-includes/comment.php:3375
+#: wp-includes/comment.php:3380
 msgid "Comment Author"
 msgstr "Comment Author"
 
-#: wp-includes/comment.php:3376
+#: wp-includes/comment.php:3381
 msgid "Comment Author Email"
 msgstr "Comment Author Email"
 
-#: wp-includes/comment.php:3377
+#: wp-includes/comment.php:3382
 msgid "Comment Author URL"
 msgstr "Comment Author URL"
 
-#: wp-includes/comment.php:3378
+#: wp-includes/comment.php:3383
 msgid "Comment Author IP"
 msgstr "Comment Author IP"
 
-#: wp-includes/comment.php:3379
+#: wp-includes/comment.php:3384
 msgid "Comment Author User Agent"
 msgstr "Comment Author User Agent"
 
-#: wp-includes/comment.php:3380
+#: wp-includes/comment.php:3385
 msgid "Comment Date"
 msgstr "Comment Date"
 
-#: wp-includes/comment.php:3381
+#: wp-includes/comment.php:3386
 msgid "Comment Content"
 msgstr "Comment Content"
 
-#: wp-includes/comment.php:3382
+#: wp-includes/comment.php:3387
 msgid "Comment URL"
 msgstr "Comment URL"
 
@@ -11330,7 +11331,7 @@ msgid "Completed"
 msgstr "Completed"
 
 #. translators: %d: Comment ID
-#: wp-includes/comment.php:3526
+#: wp-includes/comment.php:3531
 msgid "Comment %d contains personal data but could not be anonymized."
 msgstr "Comment %d contains personal data but could not be anonymised."
 
@@ -11614,7 +11615,7 @@ msgstr "Insufficient Requirements"
 msgid "URL"
 msgstr "URL"
 
-#: wp-includes/script-loader.php:1538 wp-includes/comment.php:3425
+#: wp-includes/script-loader.php:1538 wp-includes/comment.php:3430
 msgid "Comments"
 msgstr "Comments"
 
@@ -11790,7 +11791,7 @@ msgstr "For some strange yet very annoying reason, this post could not be edited
 
 #: wp-includes/class-wp-xmlrpc-server.php:3825
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:476
-#: wp-includes/comment.php:3196
+#: wp-includes/comment.php:3201
 msgid "Sorry, comments are closed for this item."
 msgstr "Sorry, comments are closed for this item."
 
@@ -13240,7 +13241,7 @@ msgstr "Query parameter not permitted: %s"
 
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:403
 #: wp-includes/rest-api/endpoints/class-wp-rest-comments-controller.php:420
-#: wp-includes/comment.php:3275
+#: wp-includes/comment.php:3280
 msgid "Sorry, you must be logged in to comment."
 msgstr "Sorry, you must be logged in to comment."
 
