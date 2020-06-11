@@ -4,7 +4,7 @@
 #Docs {
     box-sizing: border-box;
     position: fixed;
-    left: 500px; 
+    left: 500px;
     width: calc(100% - 500px);
     border-top: 1px solid #666;
     height: 100vh;
@@ -16,12 +16,15 @@
 .level-1 {
     font-size: 1.3rem !important;
 }
+
 .level-2 {
     font-size: 1.1rem !important;
 }
+
 .level-3 {
     font-size: 0.9rem !important;
 }
+
 .level-4 {
     font-size: 0.8rem !important;
 }
@@ -33,11 +36,13 @@
     top: 32px;
     left: 160px;
 }
+
 @media (max-width: 960px) {
     #message {
         left: 36px;
     }
 }
+
 @media (max-width: 785px) {
     #message {
         left: 0px;

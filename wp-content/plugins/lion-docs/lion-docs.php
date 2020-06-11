@@ -146,13 +146,9 @@ class LionDocs {
                 }
             });
         });
-        
-        echo "<pre>"; 
-        print_r($groups); 
-        echo "</pre>";
 
         // Display on page
-        // echo $upld->render( 'ld-docs', array('docs' => $docs) );
+        echo $upld->render( 'ld-docs', array('groups' => $groups) );
     }
     
 }
