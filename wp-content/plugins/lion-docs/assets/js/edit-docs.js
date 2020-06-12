@@ -14,6 +14,14 @@ jQuery(function ($) {
         $('input[name=' + $inputName + ']').val($parentListItemId);
     }
 
+    /** 
+     * When $(.iconClicked) {set hidden input value ready to parent item's ID for form submission} 
+     */
+    function setFilename($inputName, $caller) {
+        $filename = $($caller).parent().siblings('td.filename').text();
+        $('input[name=' + $inputName + ']').val($filename);
+    }
+
     /**
      * Check value of hidden div 
      * Tick publish checkbox if 1, leave unticked if 0
@@ -71,6 +79,7 @@ jQuery(function ($) {
     });
     $(".delete-doc").on("click", function () {
         setPostVar("delete-doc", this);
+        setFilename("doc-filename", this);
     });
 
     /**

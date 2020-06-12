@@ -1,12 +1,13 @@
 <?php
 
+require_once( WP_PLUGIN_DIR . '/lion-docs/includes/ld-debug.php' );
+require_once( WP_PLUGIN_DIR . '/lion-docs/includes/ld-sql-manager.class.php' );
+
 /**
  * Handle POST Requests on Plugin Admin Page
  */
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    require_once( WP_PLUGIN_DIR . '/lion-docs/includes/ld-debug.php' );
-    require_once( WP_PLUGIN_DIR . '/lion-docs/includes/ld-sql-manager.class.php' );
     $db = new LDSQLManager();
 
     // Add Document
@@ -49,6 +50,13 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $db->delete("docs", array(
             'id' => $_POST["delete-doc"]
         ));
+
+        if(isset($_POST["delete-file"]) && fileNotLinkedWithAnotherDocument($_POST["doc-filename"])) {
+            delete_file($_POST["doc-filename"]);
+        }
+
+        // Response should include a message on whether file was removed or not.
+
         return;
     }
 
@@ -86,4 +94,22 @@ function upload_file() {
         );
 
     }
+}
+
+/**
+ * Delete uploaded documentation file
+ */
+function delete_file(string $filename) {
+    wp_delete_file(WP_PLUGIN_DIR . '/lion-docs/docs/pdf/' . $filename);
+}
+
+/**
+ * Check if a file is linked with another piece of documentation
+ * Called before deleting a file
+ */
+function fileNotLinkedWithAnotherDocument(string $filename) {
+    $db = new LDSQLManager();
+    $docs = $db->get("docs", array("filename" => "$filename"));
+    if(count($docs) > 0) return false;
+    return true;
 }

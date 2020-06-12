@@ -107,9 +107,9 @@ class LDSQLManager {
             $whereSql = "";
             foreach($where as $key => $value) {
                 if($i++ == 0) {
-                    $whereSql .= "{$key} = {$value}"; // one / first where clause
+                    $whereSql .= "{$key} = '{$value}'"; // one / first where clause
                 } else {
-                    $whereSql .= " AND {$key} = {$value}"; // multiple where clauses
+                    $whereSql .= " AND {$key} = '{$value}'"; // multiple where clauses
                 }
             }
 
@@ -122,9 +122,9 @@ class LDSQLManager {
         $sql = str_replace("prefixplaceholder", $this->wpdb->prefix . "ld", $sql);        
 
         // Run SELECT query
-        $menus = $this->wpdb->get_results($sql);
+        $results = $this->wpdb->get_results($sql);
 
-        return $menus;
+        return $results;
     }
 
     /**
