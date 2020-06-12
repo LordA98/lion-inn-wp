@@ -3,6 +3,7 @@
 <?php
   foreach($groups as $group) {
     // This groups docs
+    // TODO: convert this into a template and add edit and delete buttons 
     echo '
       <div class="row">
         <div class="align-self-center mx-3">
