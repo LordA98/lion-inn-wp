@@ -51,7 +51,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             'id' => $_POST["delete-doc"]
         ));
 
-        if(isset($_POST["delete-file"]) && fileNotLinkedWithAnotherDocument($_POST["doc-filename"])) {
+        if(isset($_POST["delete-file"]) && file_not_linked_with_another_document($_POST["doc-filename"])) {
             delete_file($_POST["doc-filename"]);
         }
 
@@ -70,6 +70,21 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         );
 
         $db->insert("groups", $params);
+
+        return;
+    }
+
+    // Delete Group
+    if(isset($_POST["delete-group"])) {
+        $db->delete("groups", array(
+            'id' => $_POST["delete-group"]
+        ));
+
+        if(isset($_POST["delete-files"])) {
+            delete_files_in_group($_POST["delete-group"]);
+        }
+
+        // Response should include a message on whether files were removed or not.
 
         return;
     }
@@ -104,10 +119,23 @@ function delete_file(string $filename) {
 }
 
 /**
+ * Delete uploaded documentation files for this group
+ */
+function delete_files_in_group(string $group) {
+    $db = new LDSQLManager();
+    $docs = $db->get("docs", array("doc_group" => $group));
+
+    array_walk($docs, function($doc) {
+        if(file_not_linked_with_another_document($doc->filename))
+            delete_file($doc->filename);
+    });
+}
+
+/**
  * Check if a file is linked with another piece of documentation
  * Called before deleting a file
  */
-function fileNotLinkedWithAnotherDocument(string $filename) {
+function file_not_linked_with_another_document(string $filename) {
     $db = new LDSQLManager();
     $docs = $db->get("docs", array("filename" => "$filename"));
     if(count($docs) > 0) return false;

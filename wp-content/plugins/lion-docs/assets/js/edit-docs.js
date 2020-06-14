@@ -10,8 +10,8 @@ jQuery(function ($) {
      * When $(.iconClicked) {set hidden input value ready to parent item's ID for form submission} 
      */
     function setPostVar($inputName, $caller) {
-        $parentListItemId = $($caller).parent().parent().attr('id');
-        $('input[name=' + $inputName + ']').val($parentListItemId);
+        $id = $($caller).parent().parent().attr('id');
+        $('input[name=' + $inputName + ']').val($id);
     }
 
     /** 
@@ -100,6 +100,11 @@ jQuery(function ($) {
         $('#parent-group').val("0");
         $('input[name="publish-group"]').prop('checked', true);
     });
+
+    $(".delete-group").on("click", function () {
+        setPostVar("delete-group", this);
+    });
+
     /**
      * Toggle Parent Group select input when isSubGroup checkbox is selected
      */
