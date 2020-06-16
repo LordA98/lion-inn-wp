@@ -36,8 +36,16 @@ jQuery(function ($) {
     /**
      * Set text input value to $inputName
      */
-    function setTextInput($inputName, $caller) {
+    function setDocTextInput($inputName, $caller) {
         $value = $($caller).parent().siblings('.' + $inputName).text();
+        $('input[name=' + $inputName + ']').val($value);
+    }
+
+    /**
+     * Set text input value to $inputName
+     */
+    function setGroupTextInput($inputName, $caller) {
+        $value = $($caller).parent().siblings().children('.group-name').text();
         $('input[name=' + $inputName + ']').val($value);
     }
 
@@ -71,7 +79,7 @@ jQuery(function ($) {
         setPostVar("edit-doc", this);
 
         // Set form values to current item values
-        setTextInput("doc-name", this);
+        setDocTextInput("doc-name", this);
         setSelectInput("section-select-input", "section", this);
         setSelectInput("parent-doc-select-input", "parent-doc", this);
         setFile("file-upload", this);
@@ -100,7 +108,10 @@ jQuery(function ($) {
         $('#parent-group').val("0");
         $('input[name="publish-group"]').prop('checked', true);
     });
-
+    $(".edit-group").on("click", function () {
+        setPostVar("edit-group", this);
+        setGroupTextInput("group-name", this);
+    });
     $(".delete-group").on("click", function () {
         setPostVar("delete-group", this);
     });

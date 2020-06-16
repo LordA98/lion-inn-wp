@@ -24,6 +24,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         upload_file();
 
+        // Response
+
         return;
     }
 
@@ -42,6 +44,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         // check if file exists and upload? or does this get handled?
         // upload_file();
 
+        // Response
+
         return;
     }
 
@@ -51,11 +55,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             'id' => $_POST["delete-doc"]
         ));
 
-        if(isset($_POST["delete-file"]) && file_not_linked_with_another_document($_POST["doc-filename"])) {
-            delete_file($_POST["doc-filename"]);
-        }
-
-        // Response should include a message on whether file was removed or not.
+        // Response
 
         return;
     }
@@ -71,26 +71,35 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $db->insert("groups", $params);
 
+        // Response
+
+        return;
+    }
+
+    // Edit Group
+    if(isset($_POST["edit-group"])) {        
+        $db->update("groups", array(
+            'name' => $_POST["group-name"],
+            'isSubGroup' => (isset($_POST["is-sub-group"]))?(1):(0),
+            'parent_group' => ($_POST["parent-group"] == "0")?(NULL):($_POST["parent-group"]),
+            'toPublish' => (isset($_POST["publish-group"]))?(1):(0)
+            ), 
+            array('id' => $_POST["edit-group"])
+        );
+
+        // Response
+
         return;
     }
 
     // Delete Group
     if(isset($_POST["delete-group"])) {
         // Delete desired group
-        // $db->foreign_key_checks(0);
         $db->delete("groups", array(
             'id' => $_POST["delete-group"]
         ));
-        // $db->foreign_key_checks(1);
 
-        // Delete files in group from FS
-        if(isset($_POST["delete-files"])) {
-            delete_files_in_group($_POST["delete-group"]);
-        }
-
-        // Handle sub groups
-
-        // Response should include a message on whether files were removed or not.
+        // Response.
 
         return;
     }
