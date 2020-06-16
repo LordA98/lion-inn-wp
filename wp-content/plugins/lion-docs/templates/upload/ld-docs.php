@@ -2,8 +2,9 @@
 
 <?php
   foreach($groups as $group) {
+    echo "<div class='" . $group->id . "'>";
+
     // This groups docs
-    // TODO: convert this into a template and add edit and delete buttons
     echo $tpl->render( 'ld-group-name', array('group' => $group, 'type' => 'group'));
 
     echo $tpl->render( 'ld-doc-list', array('docs' => $group->docs));
@@ -15,6 +16,6 @@
       echo $tpl->render( 'ld-doc-list', array('docs' => $sub->docs));
     }
 
-    echo "<br/><br/>";
+    echo "</div><br/><br/>";
   }
 ?>

@@ -34,6 +34,34 @@ jQuery(function ($) {
     }
 
     /**
+     * Check value of hidden div 
+     * Tick publish checkbox if 1, leave unticked if 0
+     */
+    function setGroupPublish($caller) {
+        $checked = $($caller).siblings(".publish-group").children(".publish-value").text();
+        (Number($checked)) ? ($('input[name=publish-group]').prop('checked', true)) : ($('input[name=publish-value]').prop('checked', false));
+
+        return $checked;
+    }
+
+    /**
+     * Set checkbox for edit subgroup
+     */
+    function setGroupSubgroup($caller) {
+        $type = $($caller).parent().siblings(".group-type").children("span").text();
+
+        if ($type === "Subgroup") {
+            $('input[name=is-sub-group]').prop('checked', true);
+            $("#edit-parent-group").show();
+        } else {
+            $('input[name=is-sub-group]').prop('checked', false);
+            $("#edit-parent-group").hide();
+        }
+
+        return $type;
+    }
+
+    /**
      * Set text input value to $inputName
      */
     function setDocTextInput($inputName, $caller) {
@@ -50,6 +78,14 @@ jQuery(function ($) {
     }
 
     /**
+     * Set select input value for parent group 
+     */
+    function setParentGroupSelect($caller) {
+        $value = $($caller).parent().parent().parent().attr('class');
+        $('#edit-parent-group-input option[value=' + $value + ']').prop('selected', true);
+    }
+
+    /**
      * Set currently selected file
      */
     function setFile($inputName, $caller) {
@@ -63,9 +99,9 @@ jQuery(function ($) {
     /**
      * Set select input (dropdown)
      */
-    function setSelectInput($inputId, $currentValueHolder, $caller) {
-        $value = $($caller).parent().siblings("." + $currentValueHolder).text();
-        $('#' + $inputId + ' option[value=' + $value + ']').prop('selected', true);
+    function setDocGroupSelect($caller) {
+        $value = $($caller).parent().parent().parent().parent().parent().attr('class');
+        $('#edit-group-select-input option[value=' + $value + ']').prop('selected', true);
     }
 
     /**
@@ -74,14 +110,14 @@ jQuery(function ($) {
     $(".upload-doc").on("click", function () {
         $('input[name="doc-name"]').val('');
         $('input[name="publish-doc"]').prop('checked', true);
+        $(".file-selected").html("<i>No file selected...</i>");
     });
     $(".edit-doc").on("click", function () {
         setPostVar("edit-doc", this);
 
         // Set form values to current item values
         setDocTextInput("doc-name", this);
-        setSelectInput("section-select-input", "section", this);
-        setSelectInput("parent-doc-select-input", "parent-doc", this);
+        setDocGroupSelect(this);
         setFile("file-upload", this);
         setCheckbox("publish-doc", "publish-value", this);
     });
@@ -111,6 +147,9 @@ jQuery(function ($) {
     $(".edit-group").on("click", function () {
         setPostVar("edit-group", this);
         setGroupTextInput("group-name", this);
+        setGroupPublish(this);
+        setGroupSubgroup(this);
+        setParentGroupSelect(this);
     });
     $(".delete-group").on("click", function () {
         setPostVar("delete-group", this);

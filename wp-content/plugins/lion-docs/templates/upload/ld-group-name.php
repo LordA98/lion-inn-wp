@@ -1,7 +1,7 @@
 <?php $tpl = new LDTemplate( __DIR__ ); ?>
 
 <div class="row" id="<?php echo $group->id; ?>">
-  <div class="align-self-center mx-3">
+  <div class="group-type align-self-center mx-3">
     <?php
       if($type == 'group') { ?>
         <span class="badge badge-success my-auto">Group</span>

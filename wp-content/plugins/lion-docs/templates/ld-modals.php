@@ -28,9 +28,9 @@
         <h3 class="mb-4">Edit Documentation</h3>
         <input type="hidden" name="edit-doc" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "doc-name-input", "name" => "doc-name", "label" => "Document Name", "placeholder" => "Enter Display Name" )); ?>
-        <?php echo $tpl->render( 'ld-select-input', array( "id" => "group-select-input", "name" => "group", "label" => "Group", "options" => $docs)); ?>
+        <?php echo $tpl->render( 'ld-select-input', array( "id" => "edit-group-select-input", "name" => "group", "label" => "Group", "options" => $docs)); ?>
         <?php echo $tpl->render( 'ld-file-upload', array( "id" => "file-upload-input", "name" => "file-upload", "label" => "Select File" )); ?>
-        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "publish-doc-check", "name" => "publish-doc", "label" => "Publish", "optClasses" => "mb-3" )); ?>
+        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "edit-publish-doc-check", "name" => "publish-doc", "label" => "Publish", "optClasses" => "mb-3" )); ?>
         <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Edit" )); ?>
     </form>
 
@@ -61,7 +61,7 @@
         <span id="create-parent-group" style="display:none;">
             <?php echo $tpl->render( 'ld-select-input', array( "id" => "create-parent-group-input", "name" => "parent-group", "label" => "Parent Group", "options" => $docs )); ?>        
         </span>
-        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "publish-doc-check", "name" => "publish-group", "label" => "Publish", "optClasses" => "mb-3" )); ?>
+        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "create-publish-group-check", "name" => "publish-group", "label" => "Publish", "optClasses" => "mb-3" )); ?>
         <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Create" )); ?>
     </form>
 
@@ -79,7 +79,7 @@
         <span id="edit-parent-group" style="display:none;">
             <?php echo $tpl->render( 'ld-select-input', array( "id" => "edit-parent-group-input", "name" => "parent-group", "label" => "Parent Group", "options" => $docs )); ?>        
         </span>
-        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "publish-doc-check", "name" => "publish-group", "label" => "Publish", "optClasses" => "mb-3" )); ?>
+        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "edit-publish-group-check", "name" => "publish-group", "label" => "Publish", "optClasses" => "mb-3" )); ?>
         <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Edit" )); ?>
     </form>
 
@@ -91,7 +91,6 @@
     <form action="#" method="post" class="row d-flex p-3">
         <h3 class="mb-4">Are you sure you want to delete this?</h3>
         <input type="hidden" name="delete-group" /> <br/>
-        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "delete-files", "name" => "delete-files", "label" => "Delete Files in Group" )); ?>
         <input type="submit" value="Delete" class="btn btn-danger ml-auto" />
     </form>
 
