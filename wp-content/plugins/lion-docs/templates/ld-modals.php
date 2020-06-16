@@ -57,9 +57,9 @@
         <h3 class="mb-4">Create Documentation Group</h3>
         <input type="hidden" name="add-group" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "group-name-input", "name" => "group-name", "label" => "Group Name", "placeholder" => "Enter Group Name" )); ?>
-        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "is-sub-check", "name" => "is-sub-group", "label" => "Subgroup", "optClasses" => "mb-3" )); ?>
-        <span id="parent-group" style="display:none;">
-            <?php echo $tpl->render( 'ld-select-input', array( "id" => "parent-group-input", "name" => "parent-group", "label" => "Parent Group", "options" => $docs )); ?>        
+        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "create-is-sub-check", "name" => "is-sub-group", "label" => "Subgroup", "optClasses" => "mb-3" )); ?>
+        <span id="create-parent-group" style="display:none;">
+            <?php echo $tpl->render( 'ld-select-input', array( "id" => "create-parent-group-input", "name" => "parent-group", "label" => "Parent Group", "options" => $docs )); ?>        
         </span>
         <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "publish-doc-check", "name" => "publish-group", "label" => "Publish", "optClasses" => "mb-3" )); ?>
         <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Create" )); ?>
@@ -75,9 +75,9 @@
         <h3 class="mb-4">Edit Documentation Group</h3>
         <input type="hidden" name="edit-group" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "group-name-input", "name" => "group-name", "label" => "Group Name", "placeholder" => "Enter Group Name" )); ?>
-        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "is-sub-check", "name" => "is-sub-group", "label" => "Subgroup", "optClasses" => "mb-3" )); ?>
-        <span id="parent-group" style="display:none;">
-            <?php echo $tpl->render( 'ld-select-input', array( "id" => "parent-group-input", "name" => "parent-group", "label" => "Parent Group", "options" => $docs )); ?>        
+        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "edit-is-sub-check", "name" => "is-sub-group", "label" => "Subgroup", "optClasses" => "mb-3" )); ?>
+        <span id="edit-parent-group" style="display:none;">
+            <?php echo $tpl->render( 'ld-select-input', array( "id" => "edit-parent-group-input", "name" => "parent-group", "label" => "Parent Group", "options" => $docs )); ?>        
         </span>
         <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "publish-doc-check", "name" => "publish-group", "label" => "Publish", "optClasses" => "mb-3" )); ?>
         <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Edit" )); ?>

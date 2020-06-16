@@ -152,4 +152,11 @@ class LDSQLManager {
         $this->wpdb->delete($table, $where);
     }
 
+    /**
+     * Alter foreign keys checks for database
+     */
+    public function foreign_key_checks($value) {        
+        $this->wpdb->query("SET FOREIGN_KEY_CHECKS=$value;");
+    }
+
 }

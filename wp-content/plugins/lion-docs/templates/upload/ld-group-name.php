@@ -2,11 +2,16 @@
 
 <div class="row" id="<?php echo $group->id; ?>">
   <div class="align-self-center mx-3">
-    <span class="badge badge-success my-auto">Group</span>
+    <?php
+      if($type == 'group') { ?>
+        <span class="badge badge-success my-auto">Group</span>
+    <?php } else { ?>
+        <span class="badge badge-primary my-auto">Subgroup</span>
+    <?php } ?>    
   </div>
   <div>
     <?php
-      if($heading == 'h2') { ?>
+      if($type == 'group') { ?>
         <h2 class="group-name d-inline"><?php echo $group->name; ?></h2>
     <?php } else { ?>
         <h4 class="group-name d-inline"><?php echo $group->name; ?></h4>

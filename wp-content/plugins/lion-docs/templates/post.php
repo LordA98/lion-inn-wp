@@ -76,13 +76,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Delete Group
     if(isset($_POST["delete-group"])) {
+        // Delete desired group
+        // $db->foreign_key_checks(0);
         $db->delete("groups", array(
             'id' => $_POST["delete-group"]
         ));
+        // $db->foreign_key_checks(1);
 
+        // Delete files in group from FS
         if(isset($_POST["delete-files"])) {
             delete_files_in_group($_POST["delete-group"]);
         }
+
+        // Handle sub groups
 
         // Response should include a message on whether files were removed or not.
 

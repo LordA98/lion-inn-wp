@@ -108,8 +108,11 @@ jQuery(function ($) {
     /**
      * Toggle Parent Group select input when isSubGroup checkbox is selected
      */
-    $("#is-sub-check").click(function () {
-        $("#parent-group").toggle(this.unchecked);
+    $("#create-is-sub-check").click(function () {
+        $("#create-parent-group").toggle(this.unchecked);
+    });
+    $("#edit-is-sub-check").click(function () {
+        $("#edit-parent-group").toggle(this.unchecked);
     });
 
 });

@@ -6,4 +6,5 @@ CREATE TABLE tableplaceholder (
     toPublish boolean NOT NULL DEFAULT 1,
     PRIMARY KEY  (id),
     FOREIGN KEY (parent_group) REFERENCES prefixplaceholder_groups(id)
+    ON DELETE CASCADE
 ) charsetplaceholder;
