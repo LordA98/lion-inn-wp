@@ -43,7 +43,6 @@
         <h3 class="mb-4">Are you sure you want to delete this?</h3>
         <input type="hidden" name="delete-doc" /> 
         <input type="hidden" name="doc-filename" /> <br/>
-        <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "delete-file", "name" => "delete-file", "label" => "Delete File from FS" )); ?>
         <input type="submit" value="Delete" class="btn btn-danger ml-auto" />
     </form>
 

@@ -12,9 +12,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Add Document
     if(isset($_POST["add-doc"])) {
+        $name = null;
+        if(isset($_FILES["file-upload"])) {
+            $name = $_FILES["file-upload"]["name"];
+        }
+
         $params = array(
             'title' => $_POST["doc-name"],
-            'filename' => $_FILES["file-upload"]['name'],
+            'filename' => $name,
             'date_uploaded' => current_time( 'mysql' ),
             'doc_group' => $_POST["group"],
             'toPublish' => (isset($_POST["publish-doc"]))?(1):(0)
@@ -22,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $db->insert("docs", $params);
 
-        upload_file();
+        if($name) upload_file();
 
         // Response
 
@@ -66,10 +71,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Add Group
     if(isset($_POST["add-group"])) {
+        if(!isset($_POST["is-sub-group"]) || $_POST["parent-group"] == "0") {
+            $parent = NULL;
+        } else {
+            $parent = $_POST["parent-group"];
+        }
+
         $params = array(
             'name' => $_POST["group-name"],
             'isSubGroup' => (isset($_POST["is-sub-group"]))?(1):(0),
-            'parent_group' => ($_POST["parent-group"] == "0")?(NULL):($_POST["parent-group"]),
+            'parent_group' => $parent,
             'toPublish' => (isset($_POST["publish-group"]))?(1):(0)
         );
 
@@ -82,10 +93,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Edit Group
     if(isset($_POST["edit-group"])) {        
+        if(!isset($_POST["is-sub-group"]) || $_POST["parent-group"] == "0") {
+            $parent = NULL;
+        } else {
+            $parent = $_POST["parent-group"];
+        }
+
         $db->update("groups", array(
             'name' => $_POST["group-name"],
             'isSubGroup' => (isset($_POST["is-sub-group"]))?(1):(0),
-            'parent_group' => ($_POST["parent-group"] == "0")?(NULL):($_POST["parent-group"]),
+            'parent_group' => $parent,
             'toPublish' => (isset($_POST["publish-group"]))?(1):(0)
             ), 
             array('id' => $_POST["edit-group"])
