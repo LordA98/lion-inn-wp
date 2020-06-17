@@ -24,7 +24,7 @@
 <!-- Edit Doc Modal -->
 <div id="edit-doc-modal" style="display:none;">
     
-    <form action="#" method="post">
+    <form action="upload.php" method="post" class="doc-edit-form" enctype="multipart/form-data">
         <h3 class="mb-4">Edit Documentation</h3>
         <input type="hidden" name="edit-doc" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "doc-name-input", "name" => "doc-name", "label" => "Document Name", "placeholder" => "Enter Display Name" )); ?>
@@ -53,7 +53,7 @@
 <!-- Create Group Modal -->
 <div id="create-group-modal" style="display:none;">
 
-    <form action="#" method="post" class="doc-form">
+    <form action="#" method="post" class="group-form">
         <h3 class="mb-4">Create Documentation Group</h3>
         <input type="hidden" name="add-group" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "group-name-input", "name" => "group-name", "label" => "Group Name", "placeholder" => "Enter Group Name" )); ?>

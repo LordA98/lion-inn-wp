@@ -31,9 +31,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Edit Document
     if(isset($_POST["edit-doc"])) {
+        $name = null;
+        if(isset($_FILES["file-upload"])) {
+            $name = $_FILES["file-upload"]["name"];
+        }
+
         $db->update("docs", array(
             'title' => $_POST["doc-name"],
-            'filename' => $_FILES["file-upload"]['name'],
+            'filename' => $name,
             'date_updated' => current_time( 'mysql' ),
             'doc_group' => $_POST["group"],
             'toPublish' => (isset($_POST["publish-doc"]))?(1):(0)
@@ -41,8 +46,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             array('id' => $_POST["edit-doc"])
         );
 
-        // check if file exists and upload? or does this get handled?
-        // upload_file();
+        upload_file();
 
         // Response
 
