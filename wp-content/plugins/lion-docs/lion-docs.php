@@ -85,7 +85,8 @@ class LionDocs {
      */
     public function admin_menu_pages() {
         add_menu_page( 'Documentation Page', 'HowTo', 'manage_options', 'ld-how-to', array( $this, 'docs_init' ), 'dashicons-media-document' );
-        add_submenu_page( 'ld-how-to', 'Upload Documentation', 'Upload', 'manage_options', 'ld-upload-docs-subpage', array( $this, 'upload_docs_init' ) );
+        add_submenu_page( 'ld-how-to', 'Documentation & Groups', 'Documentation', 'manage_options', 'ld-docs-subpage', array( $this, 'groups_init' ) );
+        add_submenu_page( 'ld-how-to', 'File Manager', 'File Manager', 'manage_options', 'ld-file-man-subpage', array( $this, 'file_man_init' ) );
     }
     
     /**
@@ -101,7 +102,7 @@ class LionDocs {
     /**
      * Upload New Documentation Subpage
      */
-    public function upload_docs_init() {
+    public function groups_init() {
         $tpl = new LDTemplate( __DIR__ . '/templates' );
         $upld = new LDTemplate( __DIR__ . '/templates/upload' );
 
@@ -149,6 +150,30 @@ class LionDocs {
 
         // Display on page
         echo $upld->render( 'ld-docs', array('groups' => $groups) );
+    }
+
+    /**
+     * Manage Documentation Files in File System that are used for docs
+     */
+    public function file_man_init() {
+        $tpl = new LDTemplate( __DIR__ . '/templates' );
+        $upld = new LDTemplate( __DIR__ . '/templates/upload' );
+
+        // Add Modal Support & Render Modals
+        add_thickbox();
+        echo $tpl->render( 'ld-modals' );
+
+        // message response
+        echo $tpl->render( 'lm-message' );
+
+        // Print Header section of Admin Page
+        $data = array ('title' => 'Upload Documentation', 'desc' => "Upload new documentation here to be visible on the 'HowTo' page.");
+        echo $tpl->render( 'ld-header', $data );
+
+        // Upload button
+        echo $upld->render( 'ld-buttons' );
+
+        
     }
     
 }
