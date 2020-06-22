@@ -7,10 +7,10 @@
 ?>
 
 <!-- Upload New Doc Modal -->
-<div id="upload-doc-modal" style="display:none;">
+<div id="create-doc-modal" style="display:none;">
 
-    <form action="upload.php" method="post" class="doc-form" enctype="multipart/form-data">
-        <h3 class="mb-4">Upload Documentation</h3>
+    <form action="#" method="post" class="doc-form">
+        <h3 class="mb-4">Create Document</h3>
         <input type="hidden" name="add-doc" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "doc-name-input", "name" => "doc-name", "label" => "Document Name", "placeholder" => "Enter Display Name" )); ?>
         <?php echo $tpl->render( 'ld-select-input', array( "id" => "group-select-input", "name" => "group", "label" => "Group", "options" => $docs )); ?>
@@ -24,8 +24,8 @@
 <!-- Edit Doc Modal -->
 <div id="edit-doc-modal" style="display:none;">
     
-    <form action="upload.php" method="post" class="doc-edit-form" enctype="multipart/form-data">
-        <h3 class="mb-4">Edit Documentation</h3>
+    <form action="#" method="post" class="doc-edit-form">
+        <h3 class="mb-4">Edit Document</h3>
         <input type="hidden" name="edit-doc" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "doc-name-input", "name" => "doc-name", "label" => "Document Name", "placeholder" => "Enter Display Name" )); ?>
         <?php echo $tpl->render( 'ld-select-input', array( "id" => "edit-group-select-input", "name" => "group", "label" => "Group", "options" => $docs)); ?>
@@ -90,6 +90,30 @@
     <form action="#" method="post" class="row d-flex p-3">
         <h3 class="mb-4">Are you sure you want to delete this?</h3>
         <input type="hidden" name="delete-group" /> <br/>
+        <input type="submit" value="Delete" class="btn btn-danger ml-auto" />
+    </form>
+
+</div>
+
+
+<!-- Create Group Modal -->
+<div id="upload-file-modal" style="display:none;">
+
+    <form action="upload.php" method="post" class="file-form" enctype="multipart/form-data">
+        <h3 class="mb-4">Upload File</h3>
+        <input type="hidden" name="add-file" />
+        <?php echo $tpl->render( 'ld-file-upload', array( "id" => "file-upload-input", "name" => "file-upload", "label" => "Select File" )); ?>
+        <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Upload" )); ?>
+    </form>
+
+</div>
+
+<!-- Delete Group Modal -->
+<div id="delete-file-modal" style="display:none;">
+
+    <form action="#" method="post" class="row d-flex p-3">
+        <h3 class="mb-4">Are you sure you want to delete this?</h3>
+        <input type="hidden" name="delete-file" /> <br/>
         <input type="submit" value="Delete" class="btn btn-danger ml-auto" />
     </form>
 

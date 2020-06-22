@@ -1,4 +1,4 @@
-<?php $tpl = new LDTemplate( __DIR__ ); ?>
+<?php $tpl = new LDTemplate( dirname(__DIR__, 1) . "/shared" ); ?>
 
 <tr id="<?php echo $id; ?>">
     <th scope="row"><?php echo $id; ?></th>

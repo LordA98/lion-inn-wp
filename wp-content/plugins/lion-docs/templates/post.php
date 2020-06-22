@@ -124,6 +124,41 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         return;
     }
+
+    // Upload File
+    if(isset($_POST["add-file"])) {
+        $name = null;
+        if(isset($_FILES["file-upload"])) {
+            $name = $_FILES["file-upload"]["name"];
+        }
+
+        $params = array(
+            'filename' => $name,
+            'date_uploaded' => current_time( 'mysql' )
+        );
+
+        $db->insert("files", $params);
+
+        if($name) upload_file();
+
+        // Response
+
+        return;
+    }
+
+    // Delete Document
+    if(isset($_POST["delete-file"])) {
+        $db->delete("files", array(
+            'id' => $_POST["delete-file"]
+        ));
+
+        // TODO: Delete file from file system
+
+        // Response
+
+        return;
+    }
+
 }
 
 /**

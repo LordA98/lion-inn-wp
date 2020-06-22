@@ -104,7 +104,7 @@ class LionDocs {
      */
     public function groups_init() {
         $tpl = new LDTemplate( __DIR__ . '/templates' );
-        $upld = new LDTemplate( __DIR__ . '/templates/upload' );
+        $dcmt = new LDTemplate( __DIR__ . '/templates/documents' );
 
         // Add Modal Support & Render Modals
         add_thickbox();
@@ -118,7 +118,7 @@ class LionDocs {
         echo $tpl->render( 'ld-header', $data );
 
         // Upload button
-        echo $upld->render( 'ld-buttons' );
+        echo $dcmt->render( 'ld-doc-buttons' );
 
         // Get docs & groups
         $docs = $this->db->get( 'docs' );
@@ -149,7 +149,7 @@ class LionDocs {
         });
 
         // Display on page
-        echo $upld->render( 'ld-docs', array('groups' => $groups) );
+        echo $dcmt->render( 'ld-docs', array('groups' => $groups) );
     }
 
     /**
@@ -157,7 +157,7 @@ class LionDocs {
      */
     public function file_man_init() {
         $tpl = new LDTemplate( __DIR__ . '/templates' );
-        $upld = new LDTemplate( __DIR__ . '/templates/upload' );
+        $fls = new LDTemplate( __DIR__ . '/templates/files' );
 
         // Add Modal Support & Render Modals
         add_thickbox();
@@ -167,13 +167,15 @@ class LionDocs {
         echo $tpl->render( 'lm-message' );
 
         // Print Header section of Admin Page
-        $data = array ('title' => 'Upload Documentation', 'desc' => "Upload new documentation here to be visible on the 'HowTo' page.");
+        $data = array ('title' => 'File Manager', 'desc' => "Manage files located in the file system.  These files are used for documentation.");
         echo $tpl->render( 'ld-header', $data );
 
         // Upload button
-        echo $upld->render( 'ld-buttons' );
+        echo $fls->render( 'ld-file-buttons' );
 
-        
+        // Display list of files in file system
+        $files = $this->db->get( 'files' );
+        echo $fls->render( 'ld-files', array('files' => $files) );
     }
     
 }

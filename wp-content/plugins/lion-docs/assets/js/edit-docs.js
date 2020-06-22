@@ -11,6 +11,7 @@ jQuery(function ($) {
      */
     function setPostVar($inputName, $caller) {
         $id = $($caller).parent().parent().attr('id');
+        console.log($id);
         $('input[name=' + $inputName + ']').val($id);
     }
 
@@ -107,7 +108,7 @@ jQuery(function ($) {
     /**
      * Handle Add, Edit & Delete Forms
      */
-    $(".upload-doc").on("click", function () {
+    $(".create-doc").on("click", function () {
         $('input[name="doc-name"]').val('');
         $('input[name="publish-doc"]').prop('checked', true);
         $(".file-selected").html("<i>No file selected...</i>");
@@ -163,6 +164,17 @@ jQuery(function ($) {
     });
     $("#edit-is-sub-check").click(function () {
         $("#edit-parent-group").toggle(this.unchecked);
+    });
+
+    /**
+     * Handle File Manager Forms
+     */
+    $(".upload-file").on("click", function () {
+        $(".file-selected").html("<i>No file selected...</i>");
+    });
+    $(".delete-file").on("click", function () {
+        // TODO: hidden input not getting set on modal for some reason
+        setPostVar("delete-file", this);
     });
 
 });
