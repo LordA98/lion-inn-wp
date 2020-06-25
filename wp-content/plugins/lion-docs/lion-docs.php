@@ -123,6 +123,16 @@ class LionDocs {
         // Get docs & groups
         $docs = $this->db->get( 'docs' );
         $groups = $this->db->get( 'groups' );
+        $files = $this->db->get( 'files' );
+
+        // Replace file FK with filenames
+        array_walk($docs, function($doc) use (&$files) {
+            array_walk($files, function($file) use (&$doc) {
+                if($file->id == $doc->file) {
+                    $doc->filename = $file->name;
+                }
+            });
+        });
                 
         // Assign docs to corresponding groups and subgroups
         array_walk($groups, function($group) use (&$docs) {
@@ -148,7 +158,7 @@ class LionDocs {
             });
         });
 
-        // Display on page
+        // Display groups and docs on page
         echo $dcmt->render( 'ld-docs', array('groups' => $groups) );
     }
 

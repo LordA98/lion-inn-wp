@@ -1,9 +1,14 @@
-<?php $tpl = new LDTemplate( dirname(__DIR__, 1) . "/shared" ); ?>
+<?php 
+$tpl = new LDTemplate( dirname(__DIR__, 1) . "/shared" ); 
+
+?>
 
 <tr id="<?php echo $id; ?>">
     <th scope="row"><?php echo $id; ?></th>
     <td class="doc-name"><?php echo $title; ?></td>
-    <td class="filename"><?php echo $filename; ?></td>
+    <td class="filename" data-file="<?php echo $file; ?>">
+        <?php echo $filename; ?>
+    </td>
     <td class="publish-doc">
         <div class="publish-value" data-id="<?php echo $toPublish; ?>" hidden><?php echo $toPublish; ?></div>
         <?php

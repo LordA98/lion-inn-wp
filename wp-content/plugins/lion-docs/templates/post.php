@@ -12,14 +12,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Add Document
     if(isset($_POST["add-doc"])) {
-        $name = null;
-        if(isset($_FILES["file-upload"])) {
-            $name = $_FILES["file-upload"]["name"];
-        }
-
         $params = array(
             'title' => $_POST["doc-name"],
-            'filename' => $name,
+            'file' => $_POST["filename"],
             'date_uploaded' => current_time( 'mysql' ),
             'doc_group' => $_POST["group"],
             'toPublish' => (isset($_POST["publish-doc"]))?(1):(0)
@@ -32,14 +27,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Edit Document
     if(isset($_POST["edit-doc"])) {
-        $name = null;
-        if(isset($_FILES["file-upload"])) {
-            $name = $_FILES["file-upload"]["name"];
-        }
-
         $db->update("docs", array(
             'title' => $_POST["doc-name"],
-            'filename' => $name,
+            'file' => $_POST["filename"],
             'date_updated' => current_time( 'mysql' ),
             'doc_group' => $_POST["group"],
             'toPublish' => (isset($_POST["publish-doc"]))?(1):(0)
@@ -117,7 +107,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $params = array(
-            'filename' => $name,
+            'name' => $name,
             'date_uploaded' => current_time( 'mysql' )
         );
 
@@ -136,7 +126,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             'id' => $_POST["delete-file"]
         ));
 
-        delete_file($file[0]->filename);
+        delete_file($file[0]->name);
 
         return;
     }

@@ -31,9 +31,9 @@ jQuery(function ($) {
       .siblings("." + $parentClassName)
       .children("." + $childClassName)
       .text();
-    Number($checked)
-      ? $("input[name=" + $parentClassName + "]").prop("checked", true)
-      : $("input[name=" + $parentClassName + "]").prop("checked", false);
+    Number($checked) ?
+      $("input[name=" + $parentClassName + "]").prop("checked", true) :
+      $("input[name=" + $parentClassName + "]").prop("checked", false);
 
     return $checked;
   }
@@ -47,9 +47,9 @@ jQuery(function ($) {
       .siblings(".publish-group")
       .children(".publish-value")
       .text();
-    Number($checked)
-      ? $("input[name=publish-group]").prop("checked", true)
-      : $("input[name=publish-value]").prop("checked", false);
+    Number($checked) ?
+      $("input[name=publish-group]").prop("checked", true) :
+      $("input[name=publish-value]").prop("checked", false);
 
     return $checked;
   }
@@ -105,11 +105,12 @@ jQuery(function ($) {
    * Set currently selected file
    */
   function setFile($inputName, $caller) {
-    $value = $($caller).parent().siblings(".filename").text();
-    if ($value == "") {
-      $value = "No file selected...";
-    }
-    $(".file-selected").html("<i>" + $value + "</i>");
+    $value = $($caller).parent().siblings(".filename").attr("data-file");
+    console.log($value);
+    $("#edit-file-select-input option[value=" + $value + "]").prop(
+      "selected",
+      true
+    );
   }
 
   /**
@@ -143,7 +144,7 @@ jQuery(function ($) {
     // Set form values to current item values
     setDocTextInput("doc-name", this);
     setDocGroupSelect(this);
-    setFile("file-upload", this);
+    setFile("filename", this);
     setCheckbox("publish-doc", "publish-value", this);
   });
   $(".delete-doc").on("click", function () {
