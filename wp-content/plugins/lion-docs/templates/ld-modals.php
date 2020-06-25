@@ -3,7 +3,8 @@
 
     require_once(plugin_dir_path(__DIR__) . '/includes/ld-sql-manager.class.php');
     $db = new LDSQLManager();
-    $docs = $db->get( "groups" );
+    $groups = $db->get( "groups" );
+    $files = $db->get( "files" );
 ?>
 
 <!-- Upload New Doc Modal -->
@@ -13,8 +14,8 @@
         <h3 class="mb-4">Create Document</h3>
         <input type="hidden" name="add-doc" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "doc-name-input", "name" => "doc-name", "label" => "Document Name", "placeholder" => "Enter Display Name" )); ?>
-        <?php echo $tpl->render( 'ld-select-input', array( "id" => "group-select-input", "name" => "group", "label" => "Group", "options" => $docs )); ?>
-        <?php echo $tpl->render( 'ld-file-upload', array( "id" => "file-upload-input", "name" => "file-upload", "label" => "Select File" )); ?>
+        <?php echo $tpl->render( 'ld-select-input', array( "id" => "group-select-input", "name" => "group", "label" => "Group", "options" => $groups )); ?>
+        <?php echo $tpl->render( 'ld-select-input', array( "id" => "file-select-input", "name" => "file", "label" => "File", "options" => $files )); ?>        
         <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "publish-doc-check", "name" => "publish-doc", "label" => "Publish", "optClasses" => "mb-3" )); ?>
         <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Upload" )); ?>
     </form>
@@ -28,8 +29,8 @@
         <h3 class="mb-4">Edit Document</h3>
         <input type="hidden" name="edit-doc" />
         <?php echo $tpl->render( 'ld-text-input', array( "id" => "doc-name-input", "name" => "doc-name", "label" => "Document Name", "placeholder" => "Enter Display Name" )); ?>
-        <?php echo $tpl->render( 'ld-select-input', array( "id" => "edit-group-select-input", "name" => "group", "label" => "Group", "options" => $docs)); ?>
-        <?php echo $tpl->render( 'ld-file-upload', array( "id" => "file-upload-input", "name" => "file-upload", "label" => "Select File" )); ?>
+        <?php echo $tpl->render( 'ld-select-input', array( "id" => "edit-group-select-input", "name" => "group", "label" => "Group", "options" => $groups)); ?>
+        <?php echo $tpl->render( 'ld-select-input', array( "id" => "edit-file-select-input", "name" => "file", "label" => "File", "options" => $files)); ?>        
         <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "edit-publish-doc-check", "name" => "publish-doc", "label" => "Publish", "optClasses" => "mb-3" )); ?>
         <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Edit" )); ?>
     </form>

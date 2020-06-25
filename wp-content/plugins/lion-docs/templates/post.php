@@ -27,8 +27,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $db->insert("docs", $params);
 
-        // Response
-
         return;
     }
 
@@ -49,8 +47,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             array('id' => $_POST["edit-doc"])
         );
 
-        // Response
-
         return;
     }
 
@@ -59,8 +55,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $db->delete("docs", array(
             'id' => $_POST["delete-doc"]
         ));
-
-        // Response
 
         return;
     }
@@ -82,8 +76,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $db->insert("groups", $params);
 
-        // Response
-
         return;
     }
 
@@ -104,8 +96,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             array('id' => $_POST["edit-group"])
         );
 
-        // Response
-
         return;
     }
 
@@ -115,8 +105,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $db->delete("groups", array(
             'id' => $_POST["delete-group"]
         ));
-
-        // Response.
 
         return;
     }
@@ -137,8 +125,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if($name) upload_file();
 
-        // Response
-
         return;
     }
 
@@ -151,8 +137,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         ));
 
         delete_file($file[0]->filename);
-
-        // Response
 
         return;
     }
