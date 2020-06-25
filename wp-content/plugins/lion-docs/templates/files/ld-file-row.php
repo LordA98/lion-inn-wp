@@ -4,6 +4,6 @@
     <th scope="row"><?php echo $id; ?></th>
     <td class="filename"><?php echo $filename; ?></td>
     <td>
-    <?php echo $tpl->render( 'ld-icon-link', array( "aClasses" => "delete-doc", "modal" => "delete-file-modal", "tooltip" => "Delete", "iClasses" => "fa-trash-alt", "w" => "275", "h" => "215" )); ?>
+    <?php echo $tpl->render( 'ld-icon-link', array( "aClasses" => "delete-file", "modal" => "delete-file-modal", "tooltip" => "Delete", "iClasses" => "fa-trash-alt", "w" => "275", "h" => "215" )); ?>
     </td>
 </tr>

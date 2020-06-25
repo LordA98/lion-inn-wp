@@ -27,8 +27,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $db->insert("docs", $params);
 
-        if($name) upload_file();
-
         // Response
 
         return;
@@ -50,8 +48,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             ), 
             array('id' => $_POST["edit-doc"])
         );
-
-        upload_file();
 
         // Response
 
@@ -146,13 +142,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         return;
     }
 
-    // Delete Document
+    // Delete File
     if(isset($_POST["delete-file"])) {
+        $file = $db->get("files", array("id" => $_POST["delete-file"]));
+
         $db->delete("files", array(
             'id' => $_POST["delete-file"]
         ));
 
-        // TODO: Delete file from file system
+        delete_file($file[0]->filename);
 
         // Response
 
@@ -189,26 +187,3 @@ function delete_file(string $filename) {
     wp_delete_file(WP_PLUGIN_DIR . '/lion-docs/docs/pdf/' . $filename);
 }
 
-/**
- * Delete uploaded documentation files for this group
- */
-function delete_files_in_group(string $group) {
-    $db = new LDSQLManager();
-    $docs = $db->get("docs", array("doc_group" => $group));
-
-    array_walk($docs, function($doc) {
-        if(file_not_linked_with_another_document($doc->filename))
-            delete_file($doc->filename);
-    });
-}
-
-/**
- * Check if a file is linked with another piece of documentation
- * Called before deleting a file
- */
-function file_not_linked_with_another_document(string $filename) {
-    $db = new LDSQLManager();
-    $docs = $db->get("docs", array("filename" => "$filename"));
-    if(count($docs) > 0) return false;
-    return true;
-}
