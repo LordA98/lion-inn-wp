@@ -14,6 +14,14 @@
       echo $tpl->render( 'ld-group-name', array('group' => $sub, 'type' => 'sub'));
       
       echo $tpl->render( 'ld-doc-list', array('docs' => $sub->docs));
+
+      // Sub Sub Groups docs
+      foreach($sub->subgroups as $subsub) {
+        echo $tpl->render( 'ld-group-name', array('group' => $subsub, 'type' => 'sub'));
+        
+        echo $tpl->render( 'ld-doc-list', array('docs' => $subsub->docs));
+        
+      }
     }
 
     echo "</div><br/><br/>";

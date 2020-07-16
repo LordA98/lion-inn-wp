@@ -182,6 +182,10 @@ class LionDocs {
         $sub = array_filter($groups, function($group) { return ($group->isSubGroup == 1); });
         $groups = array_filter($groups, function($group) { return ($group->isSubGroup == 0); });
 
+        echo '<pre>';
+        echo print_r($sub);
+        echo '</pre>';
+
         // Merge subgroups into parent groups
         array_walk($groups, function($group) use (&$sub) {
             $group->subgroups = [];
