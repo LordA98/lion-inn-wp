@@ -84,25 +84,25 @@ class LionDocs {
      * Create Subpages
      */
     public function admin_menu_pages() {
-        add_menu_page( 'Documentation Page', 'HowTo', 'manage_options', 'ld-how-to', array( $this, 'docs_init' ), 'dashicons-media-document' );
-        add_submenu_page( 'ld-how-to', 'Documentation & Groups', 'Documentation', 'manage_options', 'ld-docs-subpage', array( $this, 'groups_init' ) );
+        add_menu_page( 'Documentation Page', 'HowTo', 'manage_options', 'ld-how-to', array( $this, 'how_to_init' ), 'dashicons-media-document' );
+        add_submenu_page( 'ld-how-to', 'Documentation & Groups', 'Documentation', 'manage_options', 'ld-docs-subpage', array( $this, 'docs_init' ) );
         add_submenu_page( 'ld-how-to', 'File Manager', 'File Manager', 'manage_options', 'ld-file-man-subpage', array( $this, 'file_man_init' ) );
     }
     
     /**
      * Initialise Admin Page with Menu-related content
      */
-    public function docs_init() {
+    public function how_to_init() {
         $tpl = new LDTemplate( __DIR__ . '/templates' );
 
         // Render side nav & doc iframe
-        echo $tpl->render( 'ld-docs' );
+        echo $tpl->render( 'ld-how-to', array('groups' => $this->get_groups()) );
     }
 
     /**
      * Upload New Documentation Subpage
      */
-    public function groups_init() {
+    public function docs_init() {
         $tpl = new LDTemplate( __DIR__ . '/templates' );
         $dcmt = new LDTemplate( __DIR__ . '/templates/documents' );
 
@@ -114,13 +114,47 @@ class LionDocs {
         echo $tpl->render( 'lm-message' );
 
         // Print Header section of Admin Page
-        $data = array ('title' => 'Upload Documentation', 'desc' => "Upload new documentation here to be visible on the 'HowTo' page.");
+        $data = array ('title' => 'Upload Documentation', 'desc' => "Upload new documentation here to be visible on the 'HowTo' page.  NOTE: Only caters for 1 level of subgroups.");
         echo $tpl->render( 'ld-header', $data );
 
         // Upload button
         echo $dcmt->render( 'ld-doc-buttons' );
 
-        // Get docs & groups
+        // Display groups and docs on page
+        echo $dcmt->render( 'ld-docs', array('groups' => $this->get_groups()) );
+    }
+
+    /**
+     * Manage Documentation Files in File System that are used for docs
+     */
+    public function file_man_init() {
+        $tpl = new LDTemplate( __DIR__ . '/templates' );
+        $fls = new LDTemplate( __DIR__ . '/templates/files' );
+
+        // Add Modal Support & Render Modals
+        add_thickbox();
+        echo $tpl->render( 'ld-modals' );
+
+        // message response
+        echo $tpl->render( 'lm-message' );
+
+        // Print Header section of Admin Page
+        $data = array ('title' => 'File Manager', 'desc' => "Manage files located in the file system.  These files are used for documentation.");
+        echo $tpl->render( 'ld-header', $data );
+
+        // Upload button
+        echo $fls->render( 'ld-file-buttons' );
+
+        // Display list of files in file system
+        $files = $this->db->get( 'files' );
+        echo $fls->render( 'ld-files', array('files' => $files) );
+    }
+
+    /**
+     * Return array of groups, docs and files
+     */
+    private function get_groups() {
+        // Get docs, groups & files
         $docs = $this->db->get( 'docs' );
         $groups = $this->db->get( 'groups' );
         $files = $this->db->get( 'files' );
@@ -158,34 +192,7 @@ class LionDocs {
             });
         });
 
-        // Display groups and docs on page
-        echo $dcmt->render( 'ld-docs', array('groups' => $groups) );
-    }
-
-    /**
-     * Manage Documentation Files in File System that are used for docs
-     */
-    public function file_man_init() {
-        $tpl = new LDTemplate( __DIR__ . '/templates' );
-        $fls = new LDTemplate( __DIR__ . '/templates/files' );
-
-        // Add Modal Support & Render Modals
-        add_thickbox();
-        echo $tpl->render( 'ld-modals' );
-
-        // message response
-        echo $tpl->render( 'lm-message' );
-
-        // Print Header section of Admin Page
-        $data = array ('title' => 'File Manager', 'desc' => "Manage files located in the file system.  These files are used for documentation.");
-        echo $tpl->render( 'ld-header', $data );
-
-        // Upload button
-        echo $fls->render( 'ld-file-buttons' );
-
-        // Display list of files in file system
-        $files = $this->db->get( 'files' );
-        echo $fls->render( 'ld-files', array('files' => $files) );
+        return $groups;
     }
     
 }

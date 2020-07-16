@@ -1,6 +1,18 @@
 <?php $nav = new LDTemplate( __DIR__ ); ?>
 
 <div id="accordion">
+
+    <pre>
+    <?php echo print_r($groups); ?>
+    </pre>
+
+    <?php 
+        foreach($groups as $group) { 
+            echo $nav->render('ld-group', $group);
+        }            
+    ?>
+    
+
     <div id="general-docs">
         <div id="general-heading">
             <a class="btn btn-link p-0 level-1" data-toggle="collapse" data-target="#collapse-general" aria-expanded="true" aria-controls="collapse-general">

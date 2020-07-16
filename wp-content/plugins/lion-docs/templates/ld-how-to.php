@@ -7,10 +7,10 @@ $default = plugins_url() . '/lion-docs/docs/pdf/general/accessing-the-admin-pane
 
 <div class='container-fluid'>
     <div class='row py-3'>
-        <div class='col-2'>
+        <div class='col-3'>
             <h3>HowTo Articles</h3>
             
-            <?php echo $nav->render('ld-nav'); ?>
+            <?php echo $nav->render('ld-nav', array('groups' => $groups)); ?>
         </div>
         <div class='col' id='main'>
             <?php echo $docs->render('ld-iframe', array('pdf' => $default)); ?>
