@@ -28,6 +28,19 @@ $showhide = $id == 1 ? "show" : "hide";
           foreach($sub->docs as $subdoc) {
             echo $nav->render("ld-nav-link", array("filename" => plugins_url() . "/lion-docs/docs/pdf/" . $subdoc->filename, "title" => $subdoc->title));
           }
+
+          foreach($sub->subgroups as $subsub) {
+            echo '
+              <span class="level-3">' . $subsub->name . '</span>
+              <div class="ml-4 level-4">
+            ';
+
+            foreach($subsub->docs as $subsubdoc) {
+              echo $nav->render("ld-nav-link", array("filename" => plugins_url() . "/lion-docs/docs/pdf/" . $subsubdoc->filename, "title" => $subsubdoc->title));
+            }
+
+            echo '</div>';
+          }
           
           echo '</div>';
         }

@@ -53,13 +53,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     if(isset($_POST["add-group"])) {
         if(!isset($_POST["is-sub-group"]) || $_POST["parent-group"] == "0") {
             $parent = NULL;
+            $level = 1;
         } else {
-            $parent = $_POST["parent-group"];
+            $arr = explode("-", $_POST["parent-group"]);
+            $parent = $arr[0];
+            $level = $arr[1] + 1;
         }
 
         $params = array(
             'name' => $_POST["group-name"],
-            'isSubGroup' => (isset($_POST["is-sub-group"]))?(1):(0),
+            'level' => $level,
             'parent_group' => $parent,
             'toPublish' => (isset($_POST["publish-group"]))?(1):(0)
         );
@@ -70,16 +73,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Edit Group
-    if(isset($_POST["edit-group"])) {        
+    if(isset($_POST["edit-group"])) {
         if(!isset($_POST["is-sub-group"]) || $_POST["parent-group"] == "0") {
             $parent = NULL;
+            $level = 1;
         } else {
-            $parent = $_POST["parent-group"];
+            $arr = explode("-", $_POST["parent-group"]);
+            $parent = $arr[0];
+            $level = $arr[1] + 1;
         }
 
         $db->update("groups", array(
             'name' => $_POST["group-name"],
-            'isSubGroup' => (isset($_POST["is-sub-group"]))?(1):(0),
+            'level' => $level,
             'parent_group' => $parent,
             'toPublish' => (isset($_POST["publish-group"]))?(1):(0)
             ), 

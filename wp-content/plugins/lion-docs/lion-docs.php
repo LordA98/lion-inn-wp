@@ -179,19 +179,26 @@ class LionDocs {
         });
         
         // Separate into groups and subgroups
-        $sub = array_filter($groups, function($group) { return ($group->isSubGroup == 1); });
-        $groups = array_filter($groups, function($group) { return ($group->isSubGroup == 0); });
+        $subsub = array_filter($groups, function($group) { return ($group->level == 3); });
+        $sub = array_filter($groups, function($group) { return ($group->level == 2); });
+        $groups = array_filter($groups, function($group) { return ($group->level == 1); });
 
-        echo '<pre>';
-        echo print_r($sub);
-        echo '</pre>';
+        // Merge subsubgroups into parent subgroups
+        array_walk($sub, function($sub) use (&$subsub) {
+            $sub->subgroups = [];
+            array_walk($subsub, function($ss) use (&$sub) {
+                if($sub->id === $ss->parent_group) {
+                    array_push($sub->subgroups, $ss);
+                }
+            });
+        });
 
         // Merge subgroups into parent groups
         array_walk($groups, function($group) use (&$sub) {
             $group->subgroups = [];
-            array_walk($sub, function($sub) use (&$group) {
-                if($group->id === $sub->parent_group) {
-                    array_push($group->subgroups, $sub);
+            array_walk($sub, function($s) use (&$group) {
+                if($group->id === $s->parent_group) {
+                    array_push($group->subgroups, $s);
                 }
             });
         });

@@ -6,7 +6,7 @@
         <option value="0" selected>-- Select Option --</option>
         <?php 
         foreach($options as $opt) {
-            echo "<option value='$opt->id'>$opt->name</option>";
+            echo "<option value='$opt->id-$opt->level'>$opt->name</option>";
         }
         ?>
 

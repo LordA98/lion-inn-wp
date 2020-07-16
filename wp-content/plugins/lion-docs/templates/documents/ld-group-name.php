@@ -6,18 +6,22 @@ $shared = new LDTemplate( dirname(__DIR__, 1) . "/shared" );
 <div class="row" id="<?php echo $group->id; ?>">
   <div class="group-type align-self-center mx-3">
     <?php
-      if($type == 'group') { ?>
+      if($group->level == 1) { ?>
         <span class="badge badge-success my-auto">Group</span>
-    <?php } else { ?>
+    <?php } else if($group->level == 2) { ?>
         <span class="badge badge-primary my-auto">Subgroup</span>
+    <?php } else { ?>
+        <span class="badge badge-warning my-auto">Subsubgroup</span>
     <?php } ?>    
   </div>
   <div>
     <?php
-      if($type == 'group') { ?>
+      if($group->level == 1) { ?>
         <h2 class="group-name d-inline"><?php echo $group->name; ?></h2>
-    <?php } else { ?>
+    <?php } else if($group->level == 2) { ?>
         <h4 class="group-name d-inline"><?php echo $group->name; ?></h4>
+    <?php } else { ?>
+        <h6 class="group-name d-inline"><?php echo $group->name; ?></h6>
     <?php } ?>
   </div>
   <div class="align-self-center mx-3">    
