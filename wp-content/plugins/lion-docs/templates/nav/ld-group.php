@@ -16,7 +16,7 @@ $showhide = $id == 1 ? "show" : "hide";
 
       <?php 
         foreach($docs as $doc) {
-          echo $nav->render('ld-nav-link', array('filename' => plugins_url() . '/lion-docs/docs/pdf/' . $doc->filename, 'title' => $doc->title));
+          echo $nav->render('ld-nav-link', array('filename' => plugins_url() . '/lion-docs/docs/' . $doc->filename, 'title' => $doc->title));
         }
 
         foreach($subgroups as $sub) {
@@ -26,7 +26,7 @@ $showhide = $id == 1 ? "show" : "hide";
           ';
                 
           foreach($sub->docs as $subdoc) {
-            echo $nav->render("ld-nav-link", array("filename" => plugins_url() . "/lion-docs/docs/pdf/" . $subdoc->filename, "title" => $subdoc->title));
+            echo $nav->render("ld-nav-link", array("filename" => plugins_url() . "/lion-docs/docs/" . $subdoc->filename, "title" => $subdoc->title));
           }
 
           foreach($sub->subgroups as $subsub) {
@@ -36,7 +36,7 @@ $showhide = $id == 1 ? "show" : "hide";
             ';
 
             foreach($subsub->docs as $subsubdoc) {
-              echo $nav->render("ld-nav-link", array("filename" => plugins_url() . "/lion-docs/docs/pdf/" . $subsubdoc->filename, "title" => $subsubdoc->title));
+              echo $nav->render("ld-nav-link", array("filename" => plugins_url() . "/lion-docs/docs/" . $subsubdoc->filename, "title" => $subsubdoc->title));
             }
 
             echo '</div>';

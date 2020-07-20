@@ -2,7 +2,8 @@
 $docs = new LDTemplate( __DIR__ );
 $nav = new LDTemplate( __DIR__ . '/nav' );
 
-$default = plugins_url() . '/lion-docs/docs/pdf/general/accessing-the-admin-panel.pdf';
+// TODO: figure out dynamic default
+$default = plugins_url() . '/lion-docs/docs/general/accessing-the-admin-panel.pdf';
 ?>
 
 <div class='container-fluid'>

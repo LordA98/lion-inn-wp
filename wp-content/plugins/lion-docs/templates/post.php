@@ -154,7 +154,7 @@ function upload_file() {
         ld_log_me('File Upload Successful - ' . $_FILES["file-upload"]['name']);
         move_uploaded_file(
             $_FILES['file-upload']['tmp_name'], 
-            WP_PLUGIN_DIR . '/lion-docs/docs/pdf/' . $_FILES['file-upload']['name']
+            WP_PLUGIN_DIR . '/lion-docs/docs/' . $_FILES['file-upload']['name']
         );
 
     }
@@ -164,6 +164,6 @@ function upload_file() {
  * Delete uploaded documentation file
  */
 function delete_file(string $filename) {
-    wp_delete_file(WP_PLUGIN_DIR . '/lion-docs/docs/pdf/' . $filename);
+    wp_delete_file(WP_PLUGIN_DIR . '/lion-docs/docs/' . $filename);
 }
 
