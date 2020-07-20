@@ -154,15 +154,6 @@ jQuery(function ($) {
   });
 
   /**
-   * Print Value of Selected File
-   */
-  $(".custom-file-input").on("change", function () {
-    $(".file-selected").html(
-      "<i>" + this.value.replace("C:\\fakepath\\", "") + "</i>"
-    );
-  });
-
-  /**
    * Handle Group Related Forms
    */
   $(".create-group").on("click", function () {
@@ -203,6 +194,11 @@ jQuery(function ($) {
   /**
    * Handle File Manager Forms
    */
+  $(".custom-file-input").on("change", function () {
+    $(".file-selected").html(
+      "<i>" + this.value.replace("C:\\fakepath\\", "") + "</i>"
+    );
+  });
   $(".upload-file").on("click", function () {
     $(".file-selected").html("<i>No file selected...</i>");
   });

@@ -98,19 +98,19 @@
 </div>
 
 
-<!-- Create Group Modal -->
+<!-- Upload File Modal -->
 <div id="upload-file-modal" style="display:none;">
 
     <form action="upload.php" method="post" class="file-form" enctype="multipart/form-data">
         <h3 class="mb-4">Upload File</h3>
         <input type="hidden" name="add-file" />
-        <?php echo $tpl->render( 'ld-file-upload', array( "id" => "file-upload-input", "name" => "file-upload", "label" => "Select File" )); ?>
+        <?php echo $tpl->render( 'ld-file-upload', array( "id" => "file-upload-input", "name" => "file-upload[]", "label" => "Select File" )); ?>
         <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Upload" )); ?>
     </form>
 
 </div>
 
-<!-- Delete Group Modal -->
+<!-- Delete File Modal -->
 <div id="delete-file-modal" style="display:none;">
 
     <form action="#" method="post" class="row d-flex p-3">

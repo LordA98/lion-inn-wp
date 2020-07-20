@@ -107,19 +107,27 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Upload File
     if(isset($_POST["add-file"])) {
-        $name = null;
-        if(isset($_FILES["file-upload"])) {
-            $name = $_FILES["file-upload"]["name"];
+        $total = count($_FILES['file-upload']['name']);
+
+        for( $i = 0; $i < $total; $i++ ) {
+            $name = null;
+            if(isset($_FILES["file-upload"]) && $_FILES["file-upload"]["name"][$i] != "") {
+                $name = $_FILES["file-upload"]["name"][$i];
+            }
+
+            $params = array(
+                'name' => $name,
+                'date_uploaded' => current_time( 'mysql' )
+            );
+
+            $db->insert("files", $params);
+
+            if($name) upload_file(
+                $_FILES['file-upload']['error'][$i], 
+                $_FILES['file-upload']['name'][$i], 
+                $_FILES['file-upload']['tmp_name'][$i]
+            );
         }
-
-        $params = array(
-            'name' => $name,
-            'date_uploaded' => current_time( 'mysql' )
-        );
-
-        $db->insert("files", $params);
-
-        if($name) upload_file();
 
         return;
     }
@@ -153,19 +161,19 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 /**
  * Handle file upload to desired document directory
  */
-function upload_file() {
-    if ( 0 < $_FILES['file-upload']['error'] ) {
+function upload_file($error, $name, $tmpName) {
+    if ( 0 < $error ) {
 
-        ld_log_me('File Upload Error - ' . $_FILES["file-upload"]['name']);
-        ld_log_me('File Upload Error - ' . $_FILES["file-upload"]['error']);
-        echo 'Error: ' . $_FILES['file-upload']['error'] . '<br>';
+        ld_log_me('File Upload Error - ' . print_r($name));
+        ld_log_me('File Upload Error - ' . print_r($error));
+        echo 'Error: ' . print_r($error) . '<br>';
 
     } else {
 
-        ld_log_me('File Upload Successful - ' . $_FILES["file-upload"]['name']);
+        ld_log_me('File Upload Successful - ' . $name);
         move_uploaded_file(
-            $_FILES['file-upload']['tmp_name'], 
-            WP_PLUGIN_DIR . '/lion-docs/docs/' . $_FILES['file-upload']['name']
+            $tmpName, 
+            WP_PLUGIN_DIR . '/lion-docs/docs/' . $name
         );
 
     }
