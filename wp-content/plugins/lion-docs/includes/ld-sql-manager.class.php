@@ -63,7 +63,7 @@ class LDSQLManager {
      */
     public function deleteTables() {
         $this->deleteTable("docs");
-        // $this->deleteTable("default");
+        $this->deleteTable("default");
         $this->deleteTable("files");
         $this->deleteTable("groups");
     }
