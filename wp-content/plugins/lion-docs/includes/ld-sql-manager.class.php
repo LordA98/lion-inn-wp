@@ -29,8 +29,8 @@ class LDSQLManager {
     public function createTables() {
         $this->createTable("groups");
         $this->createTable("files");
-        $this->createTable("default");
         $this->createTable("docs");
+        $this->createTable("default");
     }
 
     /**
@@ -62,8 +62,8 @@ class LDSQLManager {
      * Remove Plugin Tables
      */
     public function deleteTables() {
-        $this->deleteTable("docs");
         $this->deleteTable("default");
+        $this->deleteTable("docs");
         $this->deleteTable("files");
         $this->deleteTable("groups");
     }
