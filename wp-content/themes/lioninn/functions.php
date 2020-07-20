@@ -69,12 +69,35 @@ add_action( 'admin_menu', 'remove_menu_pages' );
  * NOTE :- Some subpages are removed via the User Role Editor plugin
  */
 function remove_submenu_pages() {
+    $user = wp_get_current_user();
+    if(isset($user->roles[0])) { 
+        $current_role = $user->roles[0];
+    } else {
+        $current_role = 'no_role';
+    }
+    
     remove_submenu_page( 'themes.php', 'theme-editor.php' );
     remove_submenu_page( 'plugins.php', 'plugin-editor.php' );
     remove_submenu_page( 'tools.php', 'tools.php' );
     remove_submenu_page( 'tools.php', 'import.php' );
     remove_submenu_page( 'tools.php', 'export.php' );
     remove_submenu_page( 'tools.php', 'tools.php?page=export_personal_data' );
+
+    /**
+     * Hide for Owners
+     */
+    if($current_role == 'owner') {
+        remove_submenu_page( 'ld-how-to', 'ld-docs-subpage' );
+        remove_submenu_page( 'ld-how-to', 'ld-file-man-subpage' );
+    }
+
+    /**
+     * Hide for Editors
+     */
+    if($current_role == 'editor') {
+        remove_submenu_page( 'ld-how-to', 'ld-docs-subpage' );
+        remove_submenu_page( 'ld-how-to', 'ld-file-man-subpage' );
+    }
 }
 add_action( 'admin_menu', 'remove_submenu_pages', 110 );
 
