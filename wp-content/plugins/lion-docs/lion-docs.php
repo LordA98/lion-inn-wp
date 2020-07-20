@@ -95,8 +95,11 @@ class LionDocs {
     public function how_to_init() {
         $tpl = new LDTemplate( __DIR__ . '/templates' );
 
+        // Get default doc
+        $default = $this->db->get( 'default' );
+
         // Render side nav & doc iframe
-        echo $tpl->render( 'ld-how-to', array('groups' => $this->get_groups()) );
+        echo $tpl->render( 'ld-how-to', array('groups' => $this->get_groups(), 'default' => $default[0]->filename ) );
     }
 
     /**
@@ -119,6 +122,10 @@ class LionDocs {
 
         // Upload button
         echo $dcmt->render( 'ld-doc-buttons' );
+
+        // Default file for HowTo iFrame
+        $default = $this->db->get( 'default' );
+        echo $dcmt->render( 'ld-default', $default[0] );
 
         // Display groups and docs on page
         echo $dcmt->render( 'ld-docs', array('groups' => $this->get_groups()) );

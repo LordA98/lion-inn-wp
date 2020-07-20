@@ -5,9 +5,19 @@
         <!-- NOTE: This select input may need to be used for various things so be careful changing variable names -->
         <option value="0" selected>-- Select Option --</option>
         <?php 
-        foreach($options as $opt) {
-            echo "<option value='$opt->id-$opt->level'>$opt->name</option>";
-        }
+            if($purpose == "groups") {
+                foreach($options as $opt) {
+                    echo "<option value='$opt->id-$opt->level'>$opt->name</option>";
+                }
+            } else if($purpose == "files") {
+                foreach($options as $opt) {
+                    echo "<option value='$opt->id'>$opt->name</option>";
+                }                
+            } else if($purpose == "docs") {
+                foreach($options as $opt) {
+                    echo "<option value='$opt->id'>$opt->title</option>";
+                }
+            }
         ?>
 
     </select>

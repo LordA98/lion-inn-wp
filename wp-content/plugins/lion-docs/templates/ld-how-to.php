@@ -2,8 +2,7 @@
 $docs = new LDTemplate( __DIR__ );
 $nav = new LDTemplate( __DIR__ . '/nav' );
 
-// TODO: figure out dynamic default
-$default = plugins_url() . '/lion-docs/docs/general/accessing-the-admin-panel.pdf';
+$def = plugins_url() . '/lion-docs/docs/' . $default;
 ?>
 
 <div class='container-fluid'>
@@ -14,7 +13,7 @@ $default = plugins_url() . '/lion-docs/docs/general/accessing-the-admin-panel.pd
             <?php echo $nav->render('ld-nav', array('groups' => $groups)); ?>
         </div>
         <div class='col' id='main'>
-            <?php echo $docs->render('ld-iframe', array('pdf' => $default)); ?>
+            <?php echo $docs->render('ld-iframe', array('pdf' => $def)); ?>
         </div>
     </div>
 </div>

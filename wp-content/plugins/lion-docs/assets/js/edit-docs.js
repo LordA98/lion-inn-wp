@@ -10,6 +10,7 @@ jQuery(function ($) {
    */
   function setPostVar($inputName, $caller) {
     $id = $($caller).parent().parent().attr("id");
+    console.log($id);
     $("input[name=" + $inputName + "]").val($id);
   }
 
@@ -180,6 +181,13 @@ jQuery(function ($) {
   });
   $(".delete-group").on("click", function () {
     setPostVar("delete-group", this);
+  });
+
+  /**
+   * Handle Default Edit Form(s)
+   */
+  $(".edit-default").on("click", function () {
+    setPostVar("edit-default", this);
   });
 
   /**

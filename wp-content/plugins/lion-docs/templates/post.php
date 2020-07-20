@@ -137,6 +137,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         return;
     }
 
+    // Set Default Document for HowTo iFrame
+    if(isset($_POST["edit-default"])) {
+        $db->update("default", array(
+            'default_doc' => $_POST["default-doc"]
+            ), 
+            array('id' => $_POST["edit-default"])
+        );
+
+        return;
+    }
+
 }
 
 /**
