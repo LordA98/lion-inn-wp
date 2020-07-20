@@ -7,8 +7,10 @@ CREATE TABLE tableplaceholder (
     doc_group mediumint(9),
     toPublish boolean NOT NULL DEFAULT 1,
     PRIMARY KEY  (id),
-    FOREIGN KEY (doc_group) REFERENCES prefixplaceholder_groups(id) 
-    ON DELETE CASCADE,    
-    FOREIGN KEY (file) REFERENCES prefixplaceholder_files(id) 
-    ON DELETE CASCASE
+    FOREIGN KEY (doc_group) 
+        REFERENCES prefixplaceholder_groups(id) 
+        ON DELETE CASCADE, 
+    FOREIGN KEY (file) 
+        REFERENCES prefixplaceholder_files(id) 
+        ON DELETE CASCADE
 ) charsetplaceholder;
