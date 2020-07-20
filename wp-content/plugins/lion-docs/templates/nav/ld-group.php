@@ -1,7 +1,7 @@
 <?php 
 $nav = new LDTemplate( __DIR__ ); 
 
-$showhide = $id == 1 ? "show" : "hide";
+$showhide = $order == 0 ? "show" : "hide";
 ?>
 
 <div>

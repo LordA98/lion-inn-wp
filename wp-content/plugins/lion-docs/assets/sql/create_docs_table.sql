@@ -6,6 +6,7 @@ CREATE TABLE tableplaceholder (
     date_updated datetime,
     doc_group mediumint(9),
     toPublish boolean NOT NULL DEFAULT 1,
+    isDefault boolean NOT NULL DEFAULT 0,
     PRIMARY KEY  (id),
     FOREIGN KEY (doc_group) 
         REFERENCES prefixplaceholder_groups(id) 

@@ -3,7 +3,9 @@
 <div id="accordion">
 
     <?php 
-        foreach($groups as $group) { 
+        $i = 0;
+        foreach($groups as $group) {
+            $group->order = $i++;
             echo $nav->render('ld-group', $group);
         }            
     ?>
