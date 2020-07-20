@@ -145,9 +145,6 @@ class LionDocs {
         // Upload button
         echo $fls->render( 'ld-file-buttons' );
 
-        // Set default file for HowTo iFrame
-        echo $fls->render( 'ld-default' ); 
-
         // Display list of files in file system
         $files = $this->db->get( 'files' );
         echo $fls->render( 'ld-files', array('files' => $files) );

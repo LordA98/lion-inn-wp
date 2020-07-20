@@ -19,7 +19,6 @@ $tpl = new LDTemplate( dirname(__DIR__, 1) . "/shared" );
             }
         ?>
     </td>
-    <td>
     <?php echo $tpl->render( 'ld-icon-link', array( "aClasses" => "edit-doc", "modal" => "edit-doc-modal", "tooltip" => "Edit", "iClasses" => "fa-edit mr-3", "w" => "500", "h" => "420" )); ?>
     </td>
     <td>
