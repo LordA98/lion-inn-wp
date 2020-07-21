@@ -125,6 +125,7 @@ class LionDocs {
 
         // Default file for HowTo iFrame
         $default = $this->db->get( 'default' );
+        if(!$default) $default = array(array("name" => "No Default Set", "title" => "No Default Set", "filename" => "No Default Set"));
         echo $dcmt->render( 'ld-default', $default[0] );
 
         // Display groups and docs on page

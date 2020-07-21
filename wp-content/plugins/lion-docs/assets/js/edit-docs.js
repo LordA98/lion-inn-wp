@@ -10,7 +10,7 @@ jQuery(function ($) {
    */
   function setPostVar($inputName, $caller) {
     $id = $($caller).parent().parent().attr("id");
-    console.log($id);
+    if (isNaN($id)) $id = "insert";
     $("input[name=" + $inputName + "]").val($id);
   }
 
