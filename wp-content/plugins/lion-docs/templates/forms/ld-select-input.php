@@ -7,7 +7,9 @@
         <?php 
             if($purpose == "groups") {
                 foreach($options as $opt) {
-                    echo "<option value='$opt->id-$opt->level'>$opt->name</option>";
+                    if($opt->level == 1) echo "<option value='$opt->id-$opt->level'>$opt->name</option>";
+                    if($opt->level == 2) echo "<option value='$opt->id-$opt->level'>$opt->name</option>";
+                    if($opt->level == 3) echo "<option value='$opt->id-$opt->level'>$opt->name</option>";
                 }
             } else if($purpose == "files") {
                 foreach($options as $opt) {

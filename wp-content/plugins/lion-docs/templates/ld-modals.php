@@ -6,6 +6,29 @@
     $groups = $db->get( "groups" );
     $files = $db->get( "files" );
     $docs = $db->get( "docs" );
+
+    // Split groups into 3 possible levels
+    $l3 = array_filter($groups, function($group) { return ($group->level == 3); });
+    $l2 = array_filter($groups, function($group) { return ($group->level == 2); });
+    $l1 = array_filter($groups, function($group) { return ($group->level == 1); });
+
+    // Assign parent group names for level 2
+    array_walk($l2, function($g) use (&$l1) {
+        array_walk($l1, function($gg) use (&$g) {
+            if($g->parent_group == $gg->id) {
+                $g->name = $gg->name . " // " . $g->name;
+            }
+        });
+    });
+    
+    // Assign parent group names for level 3
+    array_walk($l3, function($g) use (&$l2) {
+        array_walk($l2, function($gg) use (&$g) {
+            if($g->parent_group == $gg->id) {
+                $g->name = $gg->name . " // " . $g->name;
+            }
+        });
+    });
 ?>
 
 <!-- Upload New Doc Modal -->
