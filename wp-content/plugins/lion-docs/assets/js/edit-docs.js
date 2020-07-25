@@ -5,12 +5,19 @@
  * The .parent() / .sibling() paths start from the icon that was clicked.
  */
 jQuery(function ($) {
+  // regex to match pattern of id-level for documents and groups (e.g. 5-2)
+  $idLevelPattern = /\d+-\d+/;
+
   /**
    * When $(.iconClicked) {set hidden input value ready to parent item's ID for form submission}
    */
   function setPostVar($inputName, $caller) {
     $id = $($caller).parent().parent().attr("id");
-    if (isNaN($id)) $id = "insert";
+    if ($inputName == "edit-default" && isNaN($id)) {
+      $id = "insert"
+    } else {
+      $id = $id[0];
+    };
     $("input[name=" + $inputName + "]").val($id);
   }
 
@@ -61,7 +68,7 @@ jQuery(function ($) {
   function setGroupSubgroup($caller) {
     $type = $($caller).parent().siblings(".group-type").children("span").text();
 
-    if ($type === "Subgroup") {
+    if ($type === "Subgroup" || $type === "Subsubgroup") {
       $("input[name=is-sub-group]").prop("checked", true);
       $("#edit-parent-group").show();
     } else {
@@ -95,7 +102,8 @@ jQuery(function ($) {
    * Set select input value for parent group
    */
   function setParentGroupSelect($caller) {
-    $value = $($caller).parent().parent().parent().attr("class");
+    $value = $($caller).parent().parent().parent().parent().attr("class");
+    $value = $value.match($idLevelPattern);
     $("#edit-parent-group-input option[value=" + $value + "]").prop(
       "selected",
       true
@@ -107,7 +115,6 @@ jQuery(function ($) {
    */
   function setFile($inputName, $caller) {
     $value = $($caller).parent().siblings(".filename").attr("data-file");
-    console.log($value);
     $("#edit-file-select-input option[value=" + $value + "]").prop(
       "selected",
       true
@@ -125,6 +132,7 @@ jQuery(function ($) {
       .parent()
       .parent()
       .attr("class");
+    $value = $value.match($idLevelPattern);
     $("#edit-group-select-input option[value=" + $value + "]").prop(
       "selected",
       true
@@ -137,7 +145,8 @@ jQuery(function ($) {
   $(".create-doc").on("click", function () {
     $('input[name="doc-name"]').val("");
     $('input[name="publish-doc"]').prop("checked", true);
-    $(".file-selected").html("<i>No file selected...</i>");
+    $("#group-select-input option[value=0]").prop("selected", true);
+    $("#file-select-input option[value=0]").prop("selected", true);
   });
   $(".edit-doc").on("click", function () {
     setPostVar("edit-doc", this);
@@ -159,8 +168,8 @@ jQuery(function ($) {
   $(".create-group").on("click", function () {
     $('input[name="group-name"]').val("");
     $('input[name="is-sub-group"]').prop("checked", false);
-    $("#parent-group").hide();
-    $("#parent-group").val("0");
+    $("#create-parent-group").hide();
+    $("#create-parent-group-input option[value=0]").prop("selected", true);
     $('input[name="publish-group"]').prop("checked", true);
   });
   $(".edit-group").on("click", function () {

@@ -41,7 +41,7 @@
         <?php echo $tpl->render( 'ld-select-input', array( "id" => "group-select-input", "name" => "group", "label" => "Group", "options" => $groups, "purpose" => "groups" )); ?>
         <?php echo $tpl->render( 'ld-select-input', array( "id" => "file-select-input", "name" => "filename", "label" => "File", "options" => $files, "purpose" => "files" )); ?>        
         <?php echo $tpl->render( 'ld-checkbox-input', array( "id" => "publish-doc-check", "name" => "publish-doc", "label" => "Publish", "optClasses" => "mb-3" )); ?>
-        <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Upload" )); ?>
+        <?php echo $tpl->render( 'ld-form-buttons', array( "value" => "Create" )); ?>
     </form>
 
 </div>

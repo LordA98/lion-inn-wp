@@ -3,7 +3,7 @@ $tpl = new LDTemplate( __DIR__ );
 $shared = new LDTemplate( dirname(__DIR__, 1) . "/shared" );
 ?>
 
-<div class="row" id="<?php echo $group->id; ?>">
+<div class="row" id="<?php echo $group->id . "-" . $group->level; ?>">
   <div class="group-type align-self-center mx-3">
     <?php
       if($group->level == 1) { ?>
