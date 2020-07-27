@@ -13,7 +13,7 @@ jQuery(function ($) {
    */
   function setPostVar($inputName, $caller) {
     $id = $($caller).parent().parent().attr("id");
-    if ($inputName == "edit-default" && isNaN($id)) {
+    if ($inputName == "edit-default" && (isNaN($id) || $id == undefined || $id == "")) {
       $id = "insert"
     } else {
       $id = $id[0];
