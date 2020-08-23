@@ -61,7 +61,7 @@ function remove_menu_pages() {
         remove_menu_page( 'edit.php?post_type=acf-field-group' );
     }
 }
-add_action( 'admin_menu', 'remove_menu_pages' );
+add_action( 'admin_init', 'remove_menu_pages' );
 
 /**
  * Remove Sub Pages that aren't needed
